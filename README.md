@@ -2,6 +2,10 @@
 
 made with `material for mkdocs`
 
+## credit
+
+[template by material team](https://github.com/mkdocs-material/create-blog/blob/main/mkdocs.yml)
+
 ## first steps to follow
 
 1. `pip install mkdocs-material`
@@ -67,3 +71,4 @@ add to `features` in `theme` the following
 - navigation.indexes : index attached to sections (overview page)
 
 also add `nav` section to be explicit what to include in the sidebar/tabs. 
+
