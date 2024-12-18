@@ -72,3 +72,18 @@ add to `features` in `theme` the following
 
 also add `nav` section to be explicit what to include in the sidebar/tabs. 
 
+## author
+
+add `docs/blog/.author.yml` and use it in all posts
+
+
+## metadata of posts
+
+metadata include: 
+
+- date (enough)
+- authors
+- tags
+- categories
+- slug (if want to customize)
+- readtime
