@@ -57,3 +57,13 @@ can use `katex` instead per [documentation](https://squidfunk.github.io/mkdocs-m
 ## mdx: code block
 
 - add highlight, inlinehilite, snippets, superfences
+
+## nav
+
+rename nav (side) bar and/or turn it around. 
+
+add to `features` in `theme` the following   
+- navigation.tabs : tabs
+- navigation.indexes : index attached to sections (overview page)
+
+also add `nav` section to be explicit what to include in the sidebar/tabs. 
