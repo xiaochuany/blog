@@ -18,14 +18,16 @@ in `mkdocs.yml` config the theme, then customize it e.g. [dark/light toggle](htt
 
 ## add blog plugin
 
-without setting the plugin creates a directory structure (`/docs/blog/posts`). 
+without any setting, the plugin creates a directory structure (`/docs/blog/posts`). 
 
-Setting the follows should be straightforward. 
+Setting the following should be straightforward
 
 1. blog_toc
 1. archive_date_format
 1. categories_allowed
 1. pagination_per_page
+
+<!-- the `post_slugify` setting makes use of python markdown extension package, which needs to be enabled in `mkdocs.yml` -->
 
 
 
