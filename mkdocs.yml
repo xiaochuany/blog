@@ -29,4 +29,5 @@ plugins:
         kwds:
           case: lower
           short: true
-
+  - tags:
+      tags_file: tags.md

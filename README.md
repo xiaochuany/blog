@@ -27,7 +27,8 @@ Setting the following should be straightforward
 1. categories_allowed
 1. pagination_per_page
 
-<!-- the `post_slugify` setting makes use of python markdown extension package, which needs to be enabled in `mkdocs.yml` -->
+the `post_slugify` setting makes use of python markdown extension package, which is a dependency of `material`.  
 
+## add tags plugin
 
-
+pretty straightforward. add `tags` plugin and a md file in `docs`. 
