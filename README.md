@@ -40,9 +40,16 @@ rss is a third party plugin which requires installation.
 It is important that have the site_name, site_description and site_url settings configured as instructed in the basic blog tutorial. The RSS plugin makes use of this information to construct the feed, so make sure you have configured them.
 
 - `pip install mkdocs-rss-plugin`
-- add rss in  `mkdocs.yml` 
+- add rss in  `mkdocs.yml`
+- add in ci: run `pip install mkdocs-rss-plugin`
 
 ## extra 
 
 such as social media accounts in the footer
 
+## mdx: maths
+
+- add `arithmatex` extension in `mkdocs.yml`
+- point extra_javascript to `mathjax.js` (put under `docs/js`, define macros as needed)   
+
+can use `katex` instead per [documentation](https://squidfunk.github.io/mkdocs-material/reference/math/?h=math)

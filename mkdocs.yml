@@ -50,3 +50,12 @@ extra:
     - icon: fontawesome/brands/twitter
       name: xiaochuan on X
       link: https://x.com/xiaochuandev
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
+
+extra_javascript:
+  - js/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
