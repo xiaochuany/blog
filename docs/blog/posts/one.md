@@ -8,3 +8,12 @@ tags:
 ---
 
 # first post
+
+some maths
+
+\begin{equation}
+\label{eq}
+1 + 1 = 2
+\end{equation}
+
+this equation $\eqref{eq}$. 

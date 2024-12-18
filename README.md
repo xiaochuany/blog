@@ -50,6 +50,10 @@ such as social media accounts in the footer
 ## mdx: maths
 
 - add `arithmatex` extension in `mkdocs.yml`
-- point extra_javascript to `mathjax.js` (put under `docs/js`, define macros as needed)   
+- add `mathjax.js` to  extra_javascript (file put under `docs/js`, define macros as needed)   
 
 can use `katex` instead per [documentation](https://squidfunk.github.io/mkdocs-material/reference/math/?h=math)
+
+## mdx: code block
+
+- add highlight, inlinehilite, snippets, superfences

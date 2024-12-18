@@ -4,3 +4,12 @@ date:
 ---
 
 # second post
+
+
+some code 
+
+
+```py
+def foo():
+    pass
+```
