@@ -5,6 +5,8 @@ categories:
     - TIL
 tags:
     - time series
+authors:
+    - xy
 ---
 
 # first post
