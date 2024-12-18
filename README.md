@@ -31,4 +31,13 @@ the `post_slugify` setting makes use of python markdown extension package, which
 
 ## add tags plugin
 
-pretty straightforward. add `tags` plugin and a md file in `docs`. 
+add `tags` plugin in `mkdocs.yml` and `tags.md` in `docs`.
+
+## add rss plugin
+
+rss is a third party plugin which requires installation. 
+
+It is important that have the site_name, site_description and site_url settings configured as instructed in the basic blog tutorial. The RSS plugin makes use of this information to construct the feed, so make sure you have configured them.
+
+- `pip install mkdocs-rss-plugin`
+- add rss in  `mkdocs.yml` 
