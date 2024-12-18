@@ -17,4 +17,11 @@ theme:
 
 plugins:
   - search
-  - blog
+  - blog:
+      blog_toc: true
+      archive_date_format: yyyy
+      categories_allowed:
+        - Tutorials
+        - Notes
+        - TIL
+      pagination_per_page: 5

@@ -14,27 +14,18 @@ after these steps, ci should work and a site is published. new edits of docs in 
 
 ## customize the theme
 
-in `mkdocs.yml` config the theme
+in `mkdocs.yml` config the theme, then customize it e.g. [dark/light toggle](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)
 
-    theme:
-        name: material
+## add blog plugin
 
-then customize it according to needs. 
+without setting the plugin creates a directory structure (`/docs/blog/posts`). 
 
-1. dark/light switch
+Setting the follows should be straightforward. 
 
-        palette:
+1. blog_toc
+1. archive_date_format
+1. categories_allowed
+1. pagination_per_page
 
-            - media: "(prefers-color-scheme: light)"
-            scheme: default
-            toggle:
-                icon: material/brightness-7
-                name: Switch to dark mode
 
-            - media: "(prefers-color-scheme: dark)"
-            scheme: slate
-            toggle:
-                icon: material/brightness-4
-                name: Switch to system preference
 
-1. 
