@@ -41,3 +41,8 @@ It is important that have the site_name, site_description and site_url settings 
 
 - `pip install mkdocs-rss-plugin`
 - add rss in  `mkdocs.yml` 
+
+## extra 
+
+such as social media accounts in the footer
+

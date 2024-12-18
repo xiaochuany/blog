@@ -38,3 +38,15 @@ plugins:
       date_from_meta:
         as_creation: date.created
         as_update: date.updated
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      name: xiaochuan on LinkedIn
+      link: https://www.linkedin.com/in/xiaochuan-yang-088975188/
+    - icon: fontawesome/brands/youtube
+      name: xiaochuan on Youtube
+      link: https://www.youtube.com/@xiaochuanyang
+    - icon: fontawesome/brands/twitter
+      name: xiaochuan on X
+      link: https://x.com/xiaochuandev
