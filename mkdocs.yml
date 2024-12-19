@@ -1,6 +1,6 @@
 site_name: Xiaochuan's blog
 site_description: life is short
-site_url: http://xiaochuany.github.io/b/
+site_url: https://xiaochuany.github.io/b/
 
 theme:
   name: material
@@ -26,9 +26,10 @@ plugins:
       blog_toc: true
       archive_date_format: yyyy
       categories_allowed:
-        - Tutorials
-        - Notes
+        - Tutorial
+        - Note
         - TIL
+        - Essay
       pagination_per_page: 5
       post_slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
