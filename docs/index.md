@@ -1,6 +1,6 @@
-# Welcome to Xiaochuan's blog
+# Xiaochuan Yang
 
 
-## About 
+## About
 
-Mathematician/quant. I like to tinker with maths, ML and quant finance. 
+Mathematician/quant. I like to tinker with maths, ML and quant finance.

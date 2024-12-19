@@ -1,10 +1,10 @@
 site_name: Xiaochuan's blog
-site_description: life is short 
-site_url: http://xiaochuany.github.io/b/ 
+site_description: life is short
+site_url: http://xiaochuany.github.io/b/
 
 theme:
   name: material
-  features: 
+  features:
     # - navigation.tabs
     - navigation.indexes
     # - toc.integrate
@@ -55,9 +55,10 @@ extra:
       link: https://x.com/xiaochuandev
 
 markdown_extensions:
+  # math
   - pymdownx.arithmatex:
       generic: true
-  # code block
+  # code
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -65,6 +66,11 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  # emoji
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_javascript:
   - js/mathjax.js
