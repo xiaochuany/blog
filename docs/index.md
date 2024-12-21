@@ -1,6 +1,3 @@
-# Xiaochuan Yang
+# Blog
 
-
-## About
-
-Mathematician/quant. I like to tinker with maths, ML and quant finance.
+subscribe via [RSS:material-rss:](https://xiaochuany.github.io/b/feed_rss_created.xml)
