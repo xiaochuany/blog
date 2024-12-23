@@ -8,6 +8,7 @@ theme:
     # - navigation.tabs
     - navigation.indexes
     # - toc.integrate
+    - content.code.copy
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -22,6 +23,7 @@ theme:
 
 plugins:
   - search
+  - markdown-exec # execute code/bash
   - blog:
       blog_dir: .
       blog_toc: true
@@ -66,13 +68,24 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: ['.', 'docs/src']
+      check_paths: true
   - pymdownx.superfences
   # emoji
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # diagram
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  # callout
+  - admonition
+  - pymdownx.details
 
 extra_javascript:
   - js/mathjax.js
