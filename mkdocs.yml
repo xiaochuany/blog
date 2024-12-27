@@ -23,7 +23,25 @@ theme:
 
 plugins:
   - search
-  - markdown-exec # execute code/bash
+  - markdown-exec
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: true
+            show_if_no_docstring: true
+            inherited_members: true
+            members_order: source
+            separate_signature: true
+            unwrap_annotated: true
+            filters:
+            - '!^_'
+            merge_init_into_class: true
+            docstring_section_style: spacy
+            signature_crossrefs: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+
   - blog:
       blog_dir: .
       blog_toc: true
@@ -45,6 +63,9 @@ plugins:
       date_from_meta:
         as_creation: date.created
         as_update: date.updated
+      categories:
+        - categories
+        - tags
 
 extra:
   social:
