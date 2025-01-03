@@ -39,10 +39,10 @@ slug: packaging
     )
     ```
 
-- create a wheel with source distribution:
+- create build distribution and source distribution:
 
     ```bash
-    python -m build --sdist
+    python setup.py sdist bdist_wheel
     ```
 
 ## With `uv`
