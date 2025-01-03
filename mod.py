@@ -4,7 +4,7 @@ class ExampleClass:
 
     """
 
-    def __init__(self, a:str, b: int):
+    def __init__(self, a: str, b: int):
         """
         Initializes ExampleClass with param1 and param2.
 
@@ -14,8 +14,8 @@ class ExampleClass:
         """
         self.param1 = a
         self.param2 = b
- 
-    def method1(self, arg:str):
+
+    def method1(self, arg: str):
         """
         Example method1 oo.
 
@@ -38,8 +38,7 @@ class ExampleClass:
         print(self.param2)
 
 
-def calculate_area(length: float, 
-                   width: float):
+def calculate_area(length: float, width: float):
     """
     Calculates the area of a rectangle.
 
