@@ -5,13 +5,14 @@ tags:
     - dev tools
 categories: 
     - Tutorial
+slug: packaging
 ---
 
 # Mini tutorial for python packaging
 
 !!! abstract 
     This mini-tutorial is a beginner's cheatsheet to python packaging. Check [Python packaing user guide](https://packaging.python.org/en/latest/) for an authoritive guidance on the topic.  
-
+<!-- more -->
 
 ## Classical way
 
