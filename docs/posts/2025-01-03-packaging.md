@@ -1,6 +1,7 @@
 ---
 date:
     created: 2025-01-03
+    updated: 2025-01-06
 tags: 
     - dev tools
 categories: 
@@ -45,7 +46,7 @@ slug: packaging
     python setup.py sdist bdist_wheel
     ```
 
-## With `uv`
+## Alternatively, with `uv`
 
 `uv` is a modern python dev tool, see [features](https://docs.astral.sh/uv/getting-started/features/)
 and 
@@ -64,3 +65,23 @@ then
 uv build
 ```
 
+## Create a tag and release
+
+```sh
+git tag -a v0.1.0 -m 'release'
+git push --tags
+```
+
+This will create a tag named "v0.1.0" with the message "release". The distribuion files will be displayed as assets for the tag.
+
+
+## Publish
+
+Publish to pypi index requires the developer to setup an account and get the API token. Using `uv`, run this
+
+
+```sh
+uv publish --token TOKEN
+```
+
+with the dev's API token in place of TOKEN. 
