@@ -16,11 +16,12 @@ print(out2)
 # --8<-- [start:vmap]
 from jax import vmap, numpy as jnp
 
-def f(x):
-    return x ** 2
+def f(x,y):
+    return x + y
 
-x = jnp.array([1, 2, 3])
-out = vmap(f)(x)
+xs = jnp.array([0, 1, 2, 3])
+y = jnp.array([4, 5])
+out = vmap(f, in_axes=(0, None), out_axes=1)(xs, y)
 
 print(out)
 # --8<-- [end:vmap]
