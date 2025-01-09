@@ -1,18 +1,20 @@
 ---
 date:
     created: 2025-01-03
-    updated: 2025-01-06
+    updated: 2025-01-09
 tags: 
     - dev tools
 categories: 
     - Tutorial
 slug: packaging
+authors:
+    - xy
 ---
 
 # Mini tutorial for python packaging
 
 !!! abstract 
-    This mini-tutorial is a beginner's cheatsheet to python packaging. Check [Python packaing user guide](https://packaging.python.org/en/latest/) for an authoritive guidance on the topic.  
+    This mini-tutorial is a beginner's cheatsheet to python packaging. Check [Python packaing user guide](https://packaging.python.org/en/latest/) for an authoritative guidance on the topic.  
 <!-- more -->
 
 ## Classical way
@@ -68,11 +70,11 @@ uv build
 ## Create a tag and release
 
 ```sh
-git tag -a v0.1.0 -m 'release'
+git tag -a v0.1.0 -m 'release message'
 git push --tags
 ```
 
-This will create a tag named "v0.1.0" with the message "release". The distribuion files will be displayed as assets for the tag.
+This will create a tag named "v0.1.0" with the message "release message". The distribuion files will be displayed as assets for the tag.
 
 
 ## Publish
@@ -85,3 +87,8 @@ uv publish --token TOKEN
 ```
 
 with the dev's API token in place of TOKEN. 
+
+## Further reading
+
+!!! links
+    why `pyproject.toml`? https://peps.python.org/pep-0518/

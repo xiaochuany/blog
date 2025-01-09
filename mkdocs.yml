@@ -107,6 +107,8 @@ markdown_extensions:
   # callout
   - admonition
   - pymdownx.details
+  # url
+  - pymdownx.magiclink
 
 extra_javascript:
   - js/mathjax.js

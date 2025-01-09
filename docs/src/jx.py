@@ -7,7 +7,7 @@ out = vmap(random.normal)(jnp.array(subkeys))
 
 nnk, *subkeys = random.split(nk, num=3)
 dfs = jnp.array([1, 2])
-out2=  vmap(random.t)(jnp.array(subkeys),dfs)
+out2 = vmap(random.t)(jnp.array(subkeys), dfs)
 
 print(out)
 print(out2)
@@ -16,8 +16,10 @@ print(out2)
 # --8<-- [start:vmap]
 from jax import vmap, numpy as jnp
 
-def f(x,y):
+
+def f(x, y):
     return x + y
+
 
 xs = jnp.array([0, 1, 2, 3])
 y = jnp.array([4, 5])
