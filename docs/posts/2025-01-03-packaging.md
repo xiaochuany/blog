@@ -91,4 +91,5 @@ with the dev's API token in place of TOKEN.
 ## Further reading
 
 !!! links
-    why `pyproject.toml`? https://peps.python.org/pep-0518/
+    - why `pyproject.toml`? https://peps.python.org/pep-0518/  
+    - understand build frontend, build backend. https://peps.python.org/pep-0517
