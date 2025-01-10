@@ -15,6 +15,7 @@ tags:
 !!! abstract
     Mutiple packages came to solve the speed issue of `python` in scientific computing. The de facto standard is of course `numpy`. Think also `numba`, `jax`, `torch` or even a new language :fire: that go beyond what `numpy` offers.  This post is a quick intro to my personal preference as of Jan 2025. 
 
+<!-- more -->
 
 ## Numpy operations
 

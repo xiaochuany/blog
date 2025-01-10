@@ -80,6 +80,8 @@ extra:
       link: https://x.com/xiaochuandev
 
 markdown_extensions:
+  #footnotes
+  - footnotes
   # math
   - pymdownx.arithmatex:
       generic: true

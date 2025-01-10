@@ -1,7 +1,7 @@
 ---
 date:
     created: 2025-01-03
-    updated: 2025-01-09
+    updated: 2025-01-10
 tags: 
     - dev tools
 categories: 
@@ -11,7 +11,7 @@ authors:
     - xy
 ---
 
-# Mini tutorial for python packaging
+# Mini-tutorial for python packaging, release and publish
 
 !!! abstract 
     This mini-tutorial is a beginner's cheatsheet to python packaging. Check [Python packaing user guide](https://packaging.python.org/en/latest/) for an authoritative guidance on the topic.  
@@ -19,13 +19,15 @@ authors:
 
 ## Classical way
 
-- install packages:
+It is good practice to setup an isolated and clean environment e.g. with standard library `venv`. After that, 
+
+- install packages for building wheels and source distributions:
 
     ```bash
     pip install wheel build
     ```
 
-- create `setup.py`:  
+- create `setup.py` where one can specify the requirements and meta-data:  
 
     ```py
     from setuptools import setup, find_packages
@@ -42,7 +44,7 @@ authors:
     )
     ```
 
-- create build distribution and source distribution:
+- actually create wheels and source distribution:
 
     ```bash
     python setup.py sdist bdist_wheel
@@ -50,9 +52,17 @@ authors:
 
 ## Alternatively, with `uv`
 
+
 `uv` is a modern python dev tool, see [features](https://docs.astral.sh/uv/getting-started/features/)
 and 
 [install guide](https://docs.astral.sh/uv/getting-started/installation/).
+
+It is compliant with PEP 517 [^pep517], PEP 518 [^pep518]. 
+
+[^pep517]: why `pyproject.toml`? https://peps.python.org/pep-0518/
+[^pep518]: understand build frontend, build backend. https://peps.python.org/pep-0517
+
+
 
 Use the project interface of `uv` to init project and add dependencies. 
 
@@ -87,9 +97,3 @@ uv publish --token TOKEN
 ```
 
 with the dev's API token in place of TOKEN. 
-
-## Further reading
-
-!!! links
-    - why `pyproject.toml`? https://peps.python.org/pep-0518/  
-    - understand build frontend, build backend. https://peps.python.org/pep-0517
