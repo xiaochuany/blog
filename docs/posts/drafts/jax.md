@@ -21,6 +21,12 @@ tags:
 
 The part of `jax` that's straightforward to use for `numpy` users is the `jax.numpy` module, which has the identical API. Like other parts of `jax`, these operations are built on top of the XLA compiler for high performance numerical computations. 
 
+The caveat of using `jax.numpy.Array` is that they are immutable. 
+
+```py exec="on" result="text" source="above"
+--8<-- "jx.py:array"
+```
+
 ## Random numbers 
 
 Be aware that `jax` follows the functional programming paradigm. This means explicit key handling for samplers. The samplers can be composed with `vmap` to achieve vectorization
@@ -37,7 +43,7 @@ See details in the [official docs](https://jax.readthedocs.io/en/latest/jax.rand
 
 ## `vmap`
 
-More control over the operating axes of `vmap` is possible. Here `in_axes=(0,None)` imposes that the vectorization occurs in the first argument of the function, and the batch axis is axis 0. Without specifying `in_axes`, the `vmap(f)` would expect its arguments to be
+More control over the operating axes of `vmap` is possible. Here `in_axes=(0,None)` imposes that the vectorization occurs in the first argument of the function with the batch axis 0. Without specifying `in_axes`, the `vmap(f)` would expect its arguments to be
 arrays of rank (at least) 1 and containing the same number of elements once unpacked, which is not the case for our inputs.  
 
 Notice that broadcasting à la numpy is performed for the base function (before vmap). The effect of vmap is `np.stack` 
@@ -48,4 +54,67 @@ individual results of the function along the new out_axes (in this example the c
 ```
 More details [here](https://jax.readthedocs.io/en/latest/_autosummary/jax.vmap.html#jax.vmap)
 
-## `jit`
+## `jit` if you can
+
+
+Details [here](https://jax.readthedocs.io/en/latest/jit-compilation.html#)
+ 
+- control flow
+- mark as static
+
+In eager mode, `jax` transformations/opertors run sequentially one at a time.
+With `jit` compilation, `jax` program, more precisely the underlying computation graph, is optimized (e.g. rearrange, fuse transformations) by XLA compiler so that it runs faster.
+
+The idea of `jit` compilation is to run/compile the program in python once, and cache the compiled program for repetitive evaluations. Because of the overhead of compilation, it would be the best if similar inputs would not trigger re-compilation. To this end, `jax` transformations must be agnostic of the values of the inputs, and they must know the shape and dtype of the inputs and outputs. 
+
+It may sould like one should `jit` everything but this is not always possible. Consider this.
+
+```py
+# NOT WORKING!
+from jax import jit
+
+@jit
+def f(x):
+  if x > 0:
+    return x
+  else:
+    return 2 * x
+
+f(3)
+```
+
+This function is not `jit`'able. This would error out becasue the *value* of `x` must be known. Of course one can get around the `if` statement with `jnp.where`. 
+But consider this
+
+```py
+# NOT WORKING!
+from jax import jit
+
+@jit
+def g(x, n):
+  i = 0
+  while i < n:
+    i += 1
+  return x + i
+
+print(g(1,5))
+```
+
+This function is not `jit`'able. This would again error out because the value `n` must be known before hand to know how many iterations needed for the while loop to run. 
+
+Two fixes are possible. One is to use static argument, although this is OK only if the static argument takes a small set of values in production (so as to NOT trigger re-compilation frequently). 
+
+```py exec="on" result="text" source="above"
+--8<-- "jx.py:jit_static"
+```
+
+Another is to use `jax.lax.while_loop`. 
+
+```py exec="on" result="text" source="above"
+---8<--- "jx.py:jit_while"
+```
+
+More control flow operators: check [this page](https://jax.readthedocs.io/en/latest/jax.lax.html#lax-control-flow).
+
+
+## A concrete example: autoregressive time series
