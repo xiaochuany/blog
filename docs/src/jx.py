@@ -45,32 +45,38 @@ print(out)
 from jax import jit
 from functools import partial
 
+
 @partial(jit, static_argnums=1)
 def g(x, n):
-  i = 0
-  while i < n:
-    i += 1
-  return x + i
+    i = 0
+    while i < n:
+        i += 1
+    return x + i
 
-print(g(1,5))
+
+print(g(1, 5))
 # --8<-- [end:jit_static]
 
 # --8<-- [start:jit_while]
 from jax import jit
 from jax.lax import while_loop
 
+
 def cond_fun(val):
-  i,n = val
-  return i < n
+    i, n = val
+    return i < n
+
 
 def body_fun(val):
-  i,n = val
-  return i+1, n
+    i, n = val
+    return i + 1, n
+
 
 @jit
 def g(x, n):
-  end, _  = while_loop(cond_fun, body_fun, (0,n))
-  return x + end
+    end, _ = while_loop(cond_fun, body_fun, (0, n))
+    return x + end
 
-print(g(1,5))
+
+print(g(1, 5))
 # --8<-- [end:jit_while]
