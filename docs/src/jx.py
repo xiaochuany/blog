@@ -14,14 +14,15 @@ print(z)
 from jax import random, vmap, numpy as jnp
 
 k = random.key(42)
-nk, *subkeys = random.split(k, num=3)
-out = vmap(random.normal)(jnp.array(subkeys))
+k, k1 = random.split(k)
 
-nnk, *subkeys = random.split(nk, num=3)
-dfs = jnp.array([1, 2])
-out2 = vmap(random.t)(jnp.array(subkeys), dfs)
+out1 = random.normal(k1, (3,))
 
-print(out)
+k, k2 = random.split(k)
+dfs = jnp.array([1, 2]) # degree of freedom of two t-distributions
+out2 = vmap(random.t, in_axes=(None, 0))(k2, dfs)
+
+print(out1)
 print(out2)
 # --8<-- [end:random]
 
