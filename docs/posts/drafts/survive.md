@@ -2,23 +2,22 @@
 draft: true
 date:
     created: 2025-02-07
-authors:
-    - xy
+# authors:
+#     - xy
 category:
     - Note
 tags:
-    - nonparametric statistics
     - survival analysis
 slug: survive
 ---
 
-# Cox hazard model 
+# Cox proportional hazard model
 
 
-## Hazard 
+## What is hazard?
 
-The cumulative hazard function for a time-to-event (e.g. death in medical trials) distribution can be defined in the most generality using the Lebesgue-Stieltjes integral, 
-which accommodates both continuous and discrete distributions and more. 
+The cumulative hazard function for a time-to-event (e.g. death in medical trials) distribution can be defined in the most generality using the Lebesgue-Stieltjes integral,
+which accommodates both continuous and discrete distributions and more.
 
 For a survival time \( T \) with survival function \( S(t) = P(T > t) \), the cumulative hazard function \( H(t) \) is defined as:
 
@@ -26,25 +25,26 @@ $$
 H(t) = \int_0^t \frac{dF(s)}{S(s^-)},
 $$
 
-where \( F(s) = P(T \leq s) \) and \( S(s^-) = \lim_{u \uparrow s} S(u) \) is the left-continuous survival function.   
+where \( F(s) = P(T \leq s) \) and \( S(s^-) = \lim_{u \uparrow s} S(u) = P[T\ge s] \) is the left-continuous survival function.
 Here the integral is a Lebesgue-Stieltjes integral (TLDR this makes sense because F is monotone thus of finite variation).
 
 **Continuous Distributions**:
 
-If \( T \) is a continuous random variable with density $f$, then \( S(s^-) = S(s) \) and the cumulative hazard reduces to 
-     
+If \( T \) is a continuous random variable with density $f$, then \( S(s^-) = S(s) \) and the cumulative hazard reduces to
+
 $$
 \begin{align}
 H(t) &= \int_0^t h(s) ds \notag\\
 h(t) &= \frac{f(t)}{S(t)} \label{e-hazard-func}
-\end{align} 
+\end{align}
 $$
 
-Notice that $f(t)=-S'(t)$ so by $\eqref{e-hazard-func}$ the survival function satisfies the ODE  
+Notice that $f(t)=-S'(t)$ so by $\eqref{e-hazard-func}$ the survival function satisfies the ODE
 
-$$H'(t) = - S'(t)/S(t)$$
+$$h(t) = - S'(t)/S(t)$$
 
- with boundary values $S(0)=1, S(\infty)=0$. One concludes that \( S(t) = \exp(-H(t)) \). 
+ with boundary values $S(0)=1, S(\infty)=0$. One concludes that \( S(t) = \exp(-H(t)) \).
+ Given an estimator of $H$ or $h$, one can estimate $S$ through this relation.
 
 **Discrete Distributions**:
 
@@ -64,7 +64,7 @@ S(t) &= P[T>t] = P[T>t_i, \forall i = 1, ..., j] \\
 \end{align*}
 $$
 
-where we used the fact that $P[T\ge t_1]=1$. Notice that $\{T>t_{i-1}\}= \{T\ge t_i\}$, hence 
+where we used the fact that $P[T\ge t_1]=1$. Notice that $\{T>t_{i-1}\}= \{T\ge t_i\}$, hence
 
 $$
 S(t) = \prod_{t_j \leq t} \left(1 - h(t_j)\right)
@@ -72,34 +72,131 @@ $$
 
 Note that \( H(t) \neq -\log S(t) \) here; instead, \( -\log S(t) = \sum_{t_j \leq t} -\log(1 - h(t_j)) \), which differs from \( H(t) \).
 
+Again given an estimator of $h$ (note this $h$ is different from the $h$ in the continuous case), one can estimator $S$ through this relation.
+
 **Other cases**:
 
-For mixed distributions with both continuous and discrete components, \( H(t) \) combines integrals over continuous regions and sums over discrete jumps. 
-But it can get more interseting, think Cantor's function (devil's staircase), how would you express the hazard differently? 
+For mixed distributions with both continuous and discrete components, \( H(t) \) combines integrals over continuous regions and sums over discrete jumps.
+But it can get more interseting, think Cantor's function (devil's staircase), how can we  express the hazard differently?
 
-## Cox model
+## Right-cencoring
 
-Original paper 
+In medical applications, it is often necessary to incorporate a censoring distribution on top of the time-to-event distribution.
+Let $C$ denote a nonnegative random variable and assume that the observation is $Y = \min(T,C)$ and $\Delta = I(T\le C)$.
+The indicator evaluates to 1 if the event happens no later than the censoring time (eg dead at time $Y$), and 0 otherwise (eg alive but left the trial at time $Y$). Typically one assume independence between $T$ and $C$. What we really cares about is the time to event distribution which is not observed directly.
+How to estimate the hazard (hence the survival function from discussion above) in such case?
 
-https://www.medicine.mcgill.ca/epidemiology/hanley/c626/cox_jrssB_1972_hi_res.pdf
+It is a nice exercise (see note[^1] for derivation) to see that the independence assumption yields
 
-Cox proportional hazard model is de facto standard model in survival anlysis. This lecture note is a quick intro to the model definition, estimator of covariate 
-coefficients and hypothesis testing procedures.   
+[^1]: https://faculty.washington.edu/yenchic/short_note/note_hazard.pdf
 
-https://web.stanford.edu/class/archive/stats/stats200/stats200.1172/Lecture28.pdf
+$$
+H_T(t) = \int_0^t \frac{dF_{Y,1}(u)}{S_Y(u^-)}
+$$
 
-metrics for evaluation of models
+where $H_T$ is the cumulative hazard function of $T$ and $F_{Y,1}(u)=P[Y\le u, \Delta=1]$.
+Now the whole thing is estimable by replacing all terms by their empirical counterpart,
+which is
 
-so called concordance index ipcw, this is a consistent estimator of the C index. this is C index with weights where weights are 
-the inverse of KM estimtor of the censoring tail proba squared.  Seen as better than concordance index alone (number of concordant pairs/ total number of pairs).
+$$
+\hat H_T(t) = \sum_{i=1}^n \frac{\Delta_i I(Y_i\le t)}{\sum_{j} I(Y_j\ge Y_i)}.
+$$
 
-https://biostats.bepress.com/cgi/viewcontent.cgi?referer=&httpsredir=1&article=1108&context=harvardbiostat
 
-TODO:
+Simple observations about the function $\hat H_T$:
 
-- review KM estimator for censoring time
-- KM for survival function under cencoring
-- define concordance index, consistency.
-- define concordance index ipcw,  consistency
-- describe procedure to estimate covariate coefficients, consistency
-- investigate sksurv. fit some data. visualize.  
+1. piecewise constant
+1. right continuous
+1. it jumps and only jumps at $T_i$ when $\Delta_i=1$ (equivalently $T_i=Y_i$)
+1. those $T_i$ with $\Delta_i=1$ do not have to be distinct, it is possible that $T_i=T_j, \Delta_i=\Delta_j=1$ for some $i\neq j$.
+
+Let $\{t_1, ...,t_m\} = \mbox{set}(\{T_i: \Delta_i=1\})$. We conclude that $\hat H$
+
+- jumps at all $t_i$
+- with magnitude $D_i/N_i$ where $D_i = \sum_j I(T_j=t_i, \Delta_j = 1)$ is the number of observed events at time $t_i$, and $N_i=\sum_{j}I(Y_j\ge t_i)$ is the
+number of invididuals at risk just before $t_i$
+
+Summing over these ratios gives an equivalent expression
+
+$$
+\hat H_T(t) = \sum_{i:t_i\le t} \frac{D_i}{N_i}.
+$$
+
+Let's recap: we estimate the hazard of $T$ using empirical distribution $Y$
+and empirical conditional distribution of $Y$ given $\Delta=1$, then using the general relationship
+between hazard and survival function to get an estimate of the survival function of $T$
+so we come full circle!
+
+
+We have thus two estimators for the survival function of $T$.
+
+$$
+\begin{align*}
+\hat S_T^{\rm{NA}}(t) &= \exp( - \hat H_T(t)) \\
+\hat S_T^{\rm{KM}}(t) &= \prod_{t_i\le t} (1 - \frac{D_i}{N_i})
+\end{align*}
+$$
+
+where KM stands for Kaplan-Meier and NA for Nelson-Aalen.
+
+## Cox proportional hazard model
+
+So far we have discussed observation of time-to-event data (censored or not) without covariate effect.
+Cox PH model incorporates the covariate effect into the modelling of hazard.
+
+A short digression. Google scholar reported 63k citations [data as of 11 Feb 2025] of the paper by Cox [^cox] on his nowadays called "proportional hazard model".
+Some says that this is the 2nd most cited papers in science, but that is probably not true any more
+given that the deep learning industry has exploded the number of publications
+e.g. the transformer paper [^att] has 152k citations now, which was published in 2017.
+
+
+[^cox]: https://www.medicine.mcgill.ca/epidemiology/hanley/c626/cox_jrssB_1972_hi_res.pdf
+[^att]: https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf
+
+
+Anyhow, Cox proportional hazard model remains the de facto standard model in survival anlysis. It assumes a semiparametric form for the
+hazard (assuming the hazard measure absolutely continuous)
+
+$$
+h_{T|X}(t|x) = h_0(t) \exp(\beta\cdot x) \quad t>0, \, x\in \RR^p.
+$$
+
+It is proportional with regard to the change of covariate $x$ for each invididual i.e. $\frac{h(t|x)}{h(t|x+\delta)}$ is constant over time. This is a strong assumption yet quite flexible because
+$h_0$ is an arbitrary function and it allows for (parametric) covariate effect.
+
+Estimation and hypothesis testing of $\beta$ is obviously of utmost importance. This is done based on maximization of partial likelihood (likkelihood conditioning on the occurence time of the observed events, due to PH assumption, we have only $\beta$ in the partial likelihood). The exposition of these notes[^2] is very clear and I will not waste tokens on it.
+See also the notes mentioned before[^1] for a slightly different perspective.
+
+
+[^2]: https://web.stanford.edu/class/archive/stats/stats200/stats200.1172/Lecture28.pdf
+
+
+## Evaluating models
+
+In some medical applications, the ouput of hazard model with covariate effect can be used to help
+doctors to identify the riskiness of patients. Higher hazard is high risk thus shorter time to event, lower hazard is low risk thus longer time to event.
+A common evaluation metric for the goodness of the hazard estimation is the concordance index, aka the C statistic.
+
+It is defined as the raio between the concordant pairs of patients i.e. $(i,j)$ such  that $(\hat H(t|x_i)-\hat H(t|x_j))(Y_i<Y_j)\ge 0$,
+and the total number of pairs $n\choose 2$. This is consistent estimator of ...
+
+## TODO:
+
+$$
+\begin{equation}
+\label{C}
+P[h(Y_i)\le h(Y_j)|Y_i\le Y_j]
+\end{equation}
+$$
+
+Concordance index ipcw [^ipcw] has been proposed to address empirical issues of the C statistic. It is a weighted version of the C index.
+[^ipcw]:https://biostats.bepress.com/cgi/viewcontent.cgi?referer=&httpsredir=1&article=1108&context=harvardbiostat
+
+$$
+ipcw def
+$$
+
+which is also a consistent estimator for $\eqref{C}$.
+
+
+- investigate sksurv. fit some data. visualize.
