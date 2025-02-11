@@ -164,7 +164,7 @@ $$
 It is proportional with regard to the change of covariate $x$ for each invididual i.e. $\frac{h(t|x)}{h(t|x+\delta)}$ is constant over time. This is a strong assumption yet quite flexible because
 $h_0$ is an arbitrary function and it allows for (parametric) covariate effect.
 
-Estimation and hypothesis testing of $\beta$ is obviously of utmost importance. This is done based on maximization of partial likelihood (likkelihood conditioning on the occurence time of the observed events, due to PH assumption, we have only $\beta$ in the partial likelihood). The exposition of these notes[^2] is very clear and I will not waste tokens on it.
+Estimation and hypothesis testing of $\beta$ is obviously of utmost importance. This is done by maximizating partial likelihood (likelihood conditioning on the occurence time of the observed events, due to PH assumption, we have only $\beta$ in the partial likelihood). The exposition of some lecture notes[^2] is very clear so I will not waste tokens on it.
 See also the notes mentioned before[^1] for a slightly different perspective.
 
 
@@ -177,7 +177,7 @@ In some medical applications, the ouput of hazard model with covariate effect ca
 doctors to identify the riskiness of patients. Higher hazard is high risk thus shorter time to event, lower hazard is low risk thus longer time to event.
 A common evaluation metric for the goodness of the hazard estimation is the concordance index, aka the C statistic.
 
-It is defined as the raio between the concordant pairs of patients i.e. $(i,j)$ such  that $(\hat H(t|x_i)-\hat H(t|x_j))(Y_i<Y_j)\ge 0$,
+The C index is defined as the raio between the concordant pairs of patients i.e. $(i,j)$ such  that $(\hat H(t|x_i)-\hat H(t|x_j))(Y_i<Y_j)\ge 0$,
 and the total number of pairs $n\choose 2$. This is consistent estimator of ...
 
 ## TODO:
