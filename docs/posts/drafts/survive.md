@@ -173,30 +173,38 @@ See also the notes mentioned before[^1] for a slightly different perspective.
 
 ## Evaluating models
 
-In some medical applications, the ouput of hazard model with covariate effect can be used to help
-doctors to identify the riskiness of patients. Higher hazard is high risk thus shorter time to event, lower hazard is low risk thus longer time to event.
-A common evaluation metric for the goodness of the hazard estimation is the concordance index, aka the C statistic.
+Having estimated the beta parameters in the Cox PH model, we can rank the riskiness of each individual using 
+$g(x)=\exp(x\cdot\hat\beta)$ which assigns the same ranking to individuals as with the hazard model, thanks to the PH assumption. 
 
-The C index is defined as the raio between the concordant pairs of patients i.e. $(i,j)$ such  that $(\hat H(t|x_i)-\hat H(t|x_j))(Y_i<Y_j)\ge 0$,
-and the total number of pairs $n\choose 2$. This is consistent estimator of ...
+Higher risk score translates to shorter time to event, lower risk score translates to longer time to event. A natural evaluation metric
+is the quality of this ranking. The widely used metric of this type is the C (or concordance) index. The idea is to capture the probability that 
+a pair of independent samples $(T_1,C_1,X_1), (T_2,C_2,X_2)$ are (inversely) ordered correctly by the risk score of $g(X_1), g(X_2)$. 
+To formulate precisely, introduce for $i\in \{1,2\}$
 
-## TODO:
+$$
+\begin{align*}
+E_i &= \{T_i<\max(T_1,T_2),\Delta_i=1\} \\
+F_i &= \{g(X_i)>\min(g(X_1),g(X_2))\}
+\end{align*}
+$$
+
+The probability of interest is 
 
 $$
 \begin{equation}
-\label{C}
-P[h(Y_i)\le h(Y_j)|Y_i\le Y_j]
+\label{e-cpop}
+P[ \cup_{i=1}^2 (E_i\cap F_i) | E_1\cup E_2 ] = \frac{ P[F_1 \cap E_1] + P[F_2 \cap E_2]}{P[E_1]+P[E_2]}
 \end{equation}
 $$
 
-Concordance index ipcw [^ipcw] has been proposed to address empirical issues of the C statistic. It is a weighted version of the C index.
+It is therefore not a surprise to know that C-index is defined by the proportion of concordant (in terms of the risk score comparison) pairs of samples amongst all
+pairs that are comparable (meaning that $Y_i<Y_j$ and $\Delta_i=1$ OR $Y_i>Y_j$ and $\Delta_j=1$), which is a consistent estimator
+of the probability $\eqref{e-cpop}$ under the assumption that $T,C,X$ are independent of each other.  
+
+One may argue that the independence of $X$ and $C$ is too strong of an assumption. To address this,
+C index with ipcw [^ipcw] has been proposed which only assumes $T$ independent of $C$ conditional on $X$. 
+
 [^ipcw]:https://biostats.bepress.com/cgi/viewcontent.cgi?referer=&httpsredir=1&article=1108&context=harvardbiostat
-
-$$
-ipcw def
-$$
-
-which is also a consistent estimator for $\eqref{C}$.
 
 
 - investigate sksurv. fit some data. visualize.
