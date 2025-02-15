@@ -173,22 +173,33 @@ See also the notes mentioned before[^1] for a slightly different perspective.
 
 ## Evaluating models
 
-Having estimated the beta parameters in the Cox PH model, we can rank the riskiness of each individual using 
-$g(x)=\exp(x\cdot\hat\beta)$ which assigns the same ranking to individuals as with the hazard model, thanks to the PH assumption. 
+Having estimated the beta parameters in the Cox PH model, we can rank the riskiness of individuals using 
+$g(x)=\exp(x\cdot\hat\beta)$ which assigns the same ranking to individuals as with the hazard model at any point in time, 
+thanks to the PH assumption. 
 
-Higher risk score translates to shorter time to event, lower risk score translates to longer time to event. A natural evaluation metric
-is the quality of this ranking. The widely used metric of this type is the C (or concordance) index. The idea is to capture the probability that 
-a pair of independent samples $(T_1,C_1,X_1), (T_2,C_2,X_2)$ are (inversely) ordered correctly by the risk score of $g(X_1), g(X_2)$. 
-To formulate precisely, introduce for $i\in \{1,2\}$
+Higher risk score translates to shorter time to event, lower risk score translates to longer time to event. 
+A natural evaluation metric
+is the quality of this ranking. One widely used measure of this type is the concordance probability. 
+The idea is to capture the probability that 
+a pair of independent samples $(T_1,C_1,X_1), (T_2,C_2,X_2)$ are ordered correctly by the risk scores $g(X_1)$ and $g(X_2)$. 
+To formulate this precisely, introduce for $i\in \{1,2\}$ the events
 
-$$
+<!-- $$
 \begin{align*}
 E_i &= \{T_i<\max(T_1,T_2),\Delta_i=1\} \\
 F_i &= \{g(X_i)>\min(g(X_1),g(X_2))\}
 \end{align*}
+$$ -->
+$$
+\begin{align*}
+E_i &= \{T_i<\max(T_1,T_2)\} \\
+F_i &= \{g(X_i)>\min(g(X_1),g(X_2))\}
+\end{align*}
 $$
 
-The probability of interest is 
+Clearly $E_1\cup E_2 = \{T_1\neq T_2\}$. 
+
+The concordance probability is 
 
 $$
 \begin{equation}
@@ -197,14 +208,31 @@ P[ \cup_{i=1}^2 (E_i\cap F_i) | E_1\cup E_2 ] = \frac{ P[F_1 \cap E_1] + P[F_2 \
 \end{equation}
 $$
 
-It is therefore not a surprise to know that C-index is defined by the proportion of concordant (in terms of the risk score comparison) pairs of samples amongst all
-pairs that are comparable (meaning that $Y_i<Y_j$ and $\Delta_i=1$ OR $Y_i>Y_j$ and $\Delta_j=1$), which is a consistent estimator
-of the probability $\eqref{e-cpop}$ under the assumption that $T,C,X$ are independent of each other.  
+Note however that $T_1,T_2$ are not always observable. To connect with the observable $Y$ and $\Delta$ defined [earlier](#right-cencoring),
+observe that 
 
-One may argue that the independence of $X$ and $C$ is too strong of an assumption. To address this,
-C index with ipcw [^ipcw] has been proposed which only assumes $T$ independent of $C$ conditional on $X$. 
+$$
+\begin{align*}
+E_1 =& \{T_1<T_2\} \\
+=&\{\Delta_1=1, \Delta_2=1, Y_1<Y_2\} \\
+&\cup \{\Delta_1=1, \Delta_2=0, Y_1<T_2\} \\ 
+&\cup \{\Delta_1=0, \Delta_2=1, T_1<Y_2\} \\
+&\cup \{\Delta_1=0, \Delta_2=0, T_1<T_2\} \\
+\supset& \{\Delta_1 = 1, Y_1<Y_2\} =:D_1
+\end{align*} 
+$$
 
+and similarly $E_2\supset \{\Delta_2 = 1, Y_1>Y_2\}=: D_2$.
+
+The C-index of Harrell is a consistent estimator of $\eqref{e-cpop}$ with $D_i$ in place of $E_i$. More concretely, 
+is the the proportion of concordant pairs with the smaller observation being the event time ($\Delta=1$)
+ amongst all pairs with 
+with smaller one being the event time (aka the comparable pairs). A related concept is concordance probability estimate[^cpe] which is robost with 
+regard to how censoring is performed. Yet another proposal is called C index IPCW[^ipcw] which is  a weighted version of Harrell's 
+C-index.
+
+[^cpe]: https://www.mskcc.org/sites/default/files/node/2246/documents/cpe.pdf
 [^ipcw]:https://biostats.bepress.com/cgi/viewcontent.cgi?referer=&httpsredir=1&article=1108&context=harvardbiostat
 
-
 - investigate sksurv. fit some data. visualize.
+
