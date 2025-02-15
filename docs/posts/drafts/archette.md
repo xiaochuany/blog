@@ -6,9 +6,9 @@ authors:
     - xy
 category:
     - Note
-tags:
-    - computing
-    - time series
+# tags:
+#     - computing
+#     - time series
 slug: ar
 ---
 
