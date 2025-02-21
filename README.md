@@ -31,6 +31,8 @@ Setting the following should be straightforward
 1. categories_allowed
 1. pagination_per_page
 
+also set `blog_dir: .` if want standalone blog, removing one level of nested folders: new dir structure `/docs/posts`.
+
 the `post_slugify` setting makes use of python markdown extension package, which is a dependency of `material`.  
 
 ## add tags plugin
