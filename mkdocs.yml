@@ -51,7 +51,7 @@ plugins:
         - Note
         - TIL
         - Essay
-      pagination_per_page: 5
+      # pagination_per_page: 5
       post_slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
