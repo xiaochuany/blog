@@ -20,4 +20,4 @@ This is a common workflow:
 - push back to the fork (`git push`)
 - ask for a pull request (`gh pr create` interactively) 
 
-
+Unfortunately the merge step often result in conflicts, and manual intervention is necessary. Fortunately, editors like vscode offer GUI to help visualize the process, making this step less of a pain (after messing up once/twice to understand the GUI).  
