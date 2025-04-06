@@ -24,7 +24,7 @@ Unfortunately the merge step often result in conflicts, and manual intervention 
 
 Alternative workflow (after fetch upstream)
 
-- `git rebase upstream/main`  (resolve conflicts commit by commit)
+- `git rebase upstream/main`  (then resolve conflicts, if any, commit by commit)
 - `git push --force-with-lease`
 - PR
 
