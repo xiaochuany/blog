@@ -21,3 +21,15 @@ This is a common workflow:
 - ask for a pull request (`gh pr create` interactively) 
 
 Unfortunately the merge step often result in conflicts, and manual intervention is necessary. Fortunately, editors like vscode offer GUI to help visualize the process, making this step less of a pain (after messing up once/twice to understand the GUI).  
+
+Alternative workflow (after fetch upstream)
+
+- `git rebase upstream/main`  (resolve conflicts commit by commit)
+- `git push --force-with-lease`
+- PR
+
+To avoid fetch and rebase everytime, use 
+
+```sh
+git config --global pull.rebase true && git pull upstream main
+```
