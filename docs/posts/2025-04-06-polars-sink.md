@@ -25,3 +25,7 @@ lf.sink_parquet(
 )
 ```
 This code processes the LazyFrame and stores the results as a sequence of Parquet files on disk, ensuring no single file exceeds the max_size. Because the output is written incrementally to disk, this method effectively removes the RAM limitation for the final result size.
+
+Github issues tracker for the new streaming engine [^stream] can be used before a dedicated page on streaming engine functionalities/roadmap.  
+
+[^stream]:https://github.com/pola-rs/polars/issues/20947
