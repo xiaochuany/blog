@@ -74,7 +74,14 @@ def get_stat(x,y):
 
 TODO: mean and variance
 
-## General purpose tests
+
+## Association tests
+
+> `spearmanr`
+
+1. statistic: 
+
+## Approximate null distribution by resampling
 
 > `monte_carlo_test(data, rvs, statistic: Callable, n_resamples)`
 
@@ -82,7 +89,19 @@ Note: rvs is callable that takes size as argument. distribution of data under h0
 
 returns the statistic, with the pvalue calculated from empirical distribution obtained by the simulation. 
 
-> `permutation_test(data, statistic: Callable, permutation_type)`
+
+> `bootstrap(data, statistic: Callable)` 
+
+
+> `permutation_test(data: tuple[Array], statistic: Callable, permutation_type)`
+
+permutation_type| action | suitable H0 
+|-|-| - |
+`parings`| permute all obs in one sample | no association/correlation (rho, tau, r = 0)
+`samples`| permute sample membership (pairing unchanged) | T[f(X,Y)] = T[f(Y,X)]
+`independent`| permute pooled sample (default) |  
+
+
 
 a flexible test, a lot to cover...
 
