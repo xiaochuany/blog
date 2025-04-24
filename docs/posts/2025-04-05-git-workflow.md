@@ -12,7 +12,7 @@ tags:
 # Fork, merge and PR
 
 This is a common workflow: 
-
+<!-- more -->
 - fork a repo (`gh repo fork` with the gh cli fork the repo interactively)
 - work on some code then `git add`, `git commit`
 - fetch upstream (`git remote add upstream REPO` then `git fetch upstream`)
