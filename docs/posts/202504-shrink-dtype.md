@@ -1,18 +1,15 @@
 ---
 date:
     created: 2025-04-25
-authors: 
-    - xy
-categories: 
-    - TIL
-tags: 
-    - data-engineering
+authors: [xy]
+categories: [TIL]
+tags: [data-engineering]
 ---
 # An interesting case study of polars in production
 
+<!-- more -->
 The official blog[^case] of `polars` shared a recent case study that's part counterintuitive, part educational. 
 
-<!-- more -->
 [^case]: https://pola.rs/posts/case-metro-digital/
 
 ## Counterintuitive bits

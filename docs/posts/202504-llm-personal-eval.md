@@ -11,12 +11,12 @@ tags:
 
 
 # LLM eval for my personal usage 
+<!-- more -->
 
 As common evaluation metrics for LLM performance are being gamified, everyone starts to run some evaluation thingy most relevant for their own use case.
 
 In this post I keep track of queries that I asked multiple LLMs and record the winner who gave the best answer. 
 Here are the contesters: 
-<!-- more -->
 **Ge** = Gemini, **D** = deepseek, **C** = ChatGPT, **Gr**= Grok.
 
 The reason for excluding Claude is personal: the last time I checked, it appears to be not as generous as other frontier labs to offer their best-ish model to free tier users. And now I have too many chatbot tabs to manage :man_shrugging:

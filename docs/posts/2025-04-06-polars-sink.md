@@ -10,9 +10,9 @@ tags:
 ---
 
 # Polars streaming tricks
+<!-- more -->
 
 When handling datasets larger than the available RAM on a single machine, `polars` offers a convenient streaming capability via the `LazyFrame.collect(streaming=True)` method. Under the hood, this processes the large dataset in chunks, then aggregating the results and so on. A key limitation of this approach is that the aggregated results (intermediate and final) must still fit entirely within the machine's RAM.
-<!-- more -->
 When the final result itself is too large for RAM but all the intermediate results fit into RAM, `polars` provides the sink_* methods as an alternative. These methods allow to write the output directly to disk. Here is an example from the official documentation:
 ```py
 lf = pl.scan_csv("my_dataset/*.csv").filter(pl.all().is_not_null())

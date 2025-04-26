@@ -10,10 +10,10 @@ tags:
 ---
 
 # Walk through `scipy.stats`: part 1 one-sample tests 
+<!-- more -->
 
 `scipy.stats` is a fundamental module for applied statistical work. In this series, we walk through this module with a focus on hypothesis testing.
 In particular, we care about what the tests expect as data inputs and the underlying null hypothesis & distribution.
-<!-- more -->
 We pay attention to the input dtypes/shapes. For instance, the simplest case is when the input is a 1D array or 0D scalar, the topic of this post.  
 
 ## Simple null (asymptotic) distributions

@@ -12,9 +12,9 @@ slug: df-gen-polars
 
 # Generate test dataframe with `polars` (powered by `hypothesis`) 
 
+<!-- more -->
 The sub-module `polars.testing.parametric` provide tools for generating fake data for testing purposes.
 Here is an example showing what can be done with just `dataframes` and `column` functions in this module
-<!-- more -->
 ```py
 import polars as pl
 from polars.testing.parametric import dataframes, column
