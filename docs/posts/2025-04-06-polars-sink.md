@@ -1,18 +1,25 @@
 ---
 date:
     created: 2025-04-06
+    updated: 2025-05-01
 authors:
     - xy
 categories: 
     - TIL
 tags:
     - data-engineering
+slug: polars-stream
 ---
 
 # Polars streaming tricks
 <!-- more -->
 
-When handling datasets larger than the available RAM on a single machine, `polars` offers a convenient streaming capability via the `LazyFrame.collect(streaming=True)` method. Under the hood, this processes the large dataset in chunks, then aggregating the results and so on. A key limitation of this approach is that the aggregated results (intermediate and final) must still fit entirely within the machine's RAM.
+!!! background
+    Polars' lazy execution model (see [my previous post](2024-12-21-polars.md)) allows query optimizer to "rewrite" the query to avoid loading all data into memory such as predicate/project pushdown, constant folding etc. However, the default execusion engine of the optimized query is still in-memory, i.e. loading all the data **required in the optimized query** into memory, therefore can be problematic if the required data is too large.  The streaming engine is an alternative.    
+    
+`polars` offers a convenient streaming capability via the `LazyFrame.collect(streaming=True)` method. Under the hood, this processes the large dataset in chunks, process them, cache the intermediate results and so on. 
+
+A key limitation of this approach is that the final result (and possibly some intermediate results) must still fit entirely within the machine's RAM.
 When the final result itself is too large for RAM but all the intermediate results fit into RAM, `polars` provides the sink_* methods as an alternative. These methods allow to write the output directly to disk. Here is an example from the official documentation:
 ```py
 lf = pl.scan_csv("my_dataset/*.csv").filter(pl.all().is_not_null())
