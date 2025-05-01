@@ -17,7 +17,13 @@ As common evaluation metrics for LLM performance are being gamified, everyone st
 
 In this post I keep track of queries that I asked multiple LLMs and record the winner who gave the best answer. 
 Here are the contesters: 
-**Ge** = Gemini, **D** = deepseek, **C** = ChatGPT, **Gr**= Grok.
+
+| contester | stands for |
+|--------------|------------|
+| G           | Gemini     |
+| D            | deepseek   |
+| C            | ChatGPT    |
+| X           | Grok       |
 
 The reason for excluding Claude is personal: the last time I checked, it appears to be not as generous as other frontier labs to offer their best-ish model to free tier users. And now I have too many chatbot tabs to manage :man_shrugging:
 
@@ -33,9 +39,15 @@ This post is regularly updated.
 
 
 
-## Paset image to markdown - 20250424
+## Paste image to markdown - 20250424
 
 > in vscode in WSL, paste image from clipboard to markdown in customized directory.
 
 C  wins. Other LLMs refer to some obsolete vscode extension which does not work. In think mode C started thinking about using the same extensions, but then made some search in vscode github project and elsewhere,  ended up finding  that this is a feature already built-in in vscode after v1.79 and provided the correct json for me to copy to user settings.   
 
+
+## search the url of a file in github - 20250501
+
+> show me the link to the source code of the new polars streaming engine. this should be hosted in github
+
+G wins. C and X provide irrelevant links. D cannot search (functionality not working in the region where I am which is EU). 
