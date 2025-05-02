@@ -16,7 +16,7 @@ The thing I like the most about material for mkdocs is that it is easy to get st
 
 The ease of use comes at a price though. It may be hard to tweak one little thing you want which is not supported in the yaml config file or/and mkdocs plugin. To do that, you have to dig into the template, the partials and learn Jinja2 template language if you haven't already. It's too much.
 
-Practically all SSG out there seem to follow the same components: a markdown parser, a template system with Jinja2-like language and html/css files. 
+Practically all SSG out there seem to use the same components: a markdown parser, a template system with Jinja2-like language and html/css files. 
 
 It strikes me that fasthtml can do all that with just python. I am not interested in something achieving feature parity with mkdocs, hugo, jekyll, but rather a minimal system that I have full control and maximum customization for SSG use case. 
 
