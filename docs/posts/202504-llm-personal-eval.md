@@ -51,3 +51,18 @@ C  wins. Other LLMs refer to some obsolete vscode extension which does not work.
 > show me the link to the source code of the new polars streaming engine. this should be hosted in github
 
 G wins. C and X provide irrelevant links. D cannot search (functionality not working in the region where I am which is EU). 
+
+
+## Writing task - 20250518
+
+> when checking dataquality what are principles that are mutually exclusive so that I don't forget anaything. this project invovles many datasets forming a graph and I need to check indiviudal datasets as well as the way datasets are joined, transformed from one to another.
+
+I've gone through the drafting, criticizing, improving cycle a few times, with several llms doing part of the job. 
+
+The topic is kinda common and all llms have seen articles, books, blogposts about it already, in one way or another. 
+
+Both D and X followed the prompt and provided solid ideas. G raised some valid points questioning the prompt itself (like DQ checks are often interconnected). C revised the answer G gave that improved readability. 
+
+My votes go to G and C. The result is [here](202505-dq.md).
+
+
