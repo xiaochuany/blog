@@ -10,10 +10,10 @@ tags: [data-engineering]
 
 <!-- more -->
 
-Polars users might find the Snowpark/PySpark API verbose.  
+Polars users might find the Snowpark/PySpark API verbose.
 But the high-level abstractions roughly map: `snowpark.Column` is like `polars.Expr`, and `snowpark.DataFrame` is like `polars.LazyFrame`.
 
-Caveat: the list of methods on `Column` is much smaller than on `Expr`, and there’s no clear namespace separating methods by dtype.  
+Caveat: the list of methods on `Column` is much smaller than on `Expr`, and there’s no clear namespace separating methods by dtype.
 If you don’t see a method for your use case, check the gigantic list under `snowpark.functions`.
 
 Let’s explore.
@@ -69,7 +69,7 @@ And constants like:
 
 * `Window.CURRENT_ROW`
 
-Used as an argument to the `over` method.
+used as an argument to the `over` method.
 
 ## `T` (types)
 
@@ -97,7 +97,7 @@ Notable methods (all return a new DataFrame):
 * `distinct`
 * `fillna`
 
-And the `.columns` attribute.
+and the `.columns` attribute.
 
 ## IO
 
@@ -112,7 +112,7 @@ Ways to bring data in/out:
 
 You get a list of Rows after `collect()`
 The `.as_dict()` method on Row makes it easy to interoperate with Polars:
-Just pass a list of dicts to construct a Polars DataFrame.
+just pass a list of dicts to construct a Polars DataFrame.
 
 ## Testing
 
