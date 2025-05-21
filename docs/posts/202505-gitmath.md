@@ -67,19 +67,19 @@ When you make meaningful progress:
 
 ## Key GitHub Features to Leverage
 
-1. **Issues** - Use as mathematical questions, approaches, or subproblems
+### **Issues** - Use as mathematical questions, approaches, or subproblems
    - Add labels like "promising", "stuck", "counterexample"
    - Reference equations with LaTeX in Markdown: `$E = mc^2$`
 
-2. **Project Board** - Visual organization of your research flow
+### **Project Board** - Visual organization of your research flow
    - Track which approaches are active
    - See what needs verification
 
-3. **PR Process** - Even as a solo researcher, use PRs as checkpoints
+### **PR Process** - Even as a solo researcher, use PRs as checkpoints
    - Force yourself to clearly articulate progress
    - Create a record of major developments
    - Serve as a self-review mechanism
 
-4. **Discussions** - For longer-form mathematical exploration
+### **Discussions** - For longer-form mathematical exploration
    - Work through complex ideas
    - Record insights that don't fit elsewhere
