@@ -7,7 +7,7 @@ tags: [data-engineering]
 ---
 
 # Working with Large Datasets in Snowflake
-
+<!-- more -->
 This post covers how to work with large datasets in Snowflake—we're talking 100+ GB, billions of rows. You can't really do this kind of stuff on your personal laptop (mine has 6 cores and 16GB RAM), so most people turn to the cloud for this workload.
 
 We'll go over some practical tips, using the Snowpark API to illustrate.
