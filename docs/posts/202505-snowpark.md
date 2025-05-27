@@ -99,6 +99,9 @@ Notable methods (all return a new DataFrame):
 
 and the `.columns` attribute.
 
+Note: after joining, columns with the same name need to be aliased explicitly to save/view the joined table.
+e.g. t1.col.alias("c1"), t2.col.alias("c2").  
+
 ## IO
 
 Ways to bring data in/out:

@@ -10,7 +10,7 @@ tags: [data-engineering]
 <!-- more -->
 This post covers how to work with large datasets in Snowflake—we're talking 100+ GB, billions of rows. You can't really do this kind of stuff on your personal laptop (mine has 6 cores and 16GB RAM), so most people turn to the cloud for this workload.
 
-We'll go over some practical tips, using the Snowpark API to illustrate.
+We'll go over some practical tips, using the Snowpark API version 1.32 to illustrate.
 
 ```python
 from snowflake import snowpark as sp
@@ -28,9 +28,9 @@ Snowpark DataFrames are lazily evaluated. That means if you reuse part of a quer
 
 Example:
 
-```python
+```py
 a = session.table("...")
-query = a.group_by("A").agg(...)  # expensive, and this line won't execute anything yet due to lazy evaluation
+query = a.group_by("A").agg(...)  # simulate expensive intermediate step, and this line won't execute anything yet due to lazy evaluation
 
 # branching out
 res1 = query.filter(...).collect()
@@ -41,14 +41,14 @@ Both `res1` and `res2` will trigger the same expensive computation. To avoid tha
 
 ### Temp Table (session scoped)
 
-```python
-query.write.mode("overwrite").save_as_table("temp_table", temporary=True)
+```py
+query.write.mode("overwrite").save_as_table("temp_table", table_type="temporary")
 lf = session.table("temp_table")
 ```
 
 ### Materialized View (persistent, auto-refreshed, costs money)
 
-```python
+```py
 session.sql("""
     create materialized view my_view as
     select id, count(*)
@@ -59,7 +59,7 @@ session.sql("""
 
 ### Parquet File (in stage)
 
-```python
+```py
 path = f"{session.get_session_stage()}/f.parquet"
 a.group_by("A").agg(...).write.format("parquet").save(path)
 lf = sp.DataFrameReader.parquet(path)
