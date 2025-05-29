@@ -54,6 +54,7 @@ Note: all functions return a `Column`, not just `F.col`, e.g.
 * `F.array_size`
 * `F.year`
 * `F.when(...).otherwise(...)`
+* `F.explode` and `F.flatten`
 
 Again, no subnamespaces by dtype — everything is dumped into `functions`.
 
