@@ -7,7 +7,7 @@ tags: [data-engineering]
 ---
 
 # Horizontal ops in snowpark
-
+<!-- more -->
 Horizontal ops such as horizontal any (think `np.any(..., axis=1)`) can be achieved with a chain of logical OR e.g.  `(... | ... | ... )`
 or by using `F.when().otherwise()`. When the number of conditions/columns increases, I would like to use something similar to polars 
 
