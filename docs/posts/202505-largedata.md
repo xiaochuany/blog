@@ -3,7 +3,7 @@ date:
     created: 2025-05-26
 authors: [xy]
 categories: [TIL]
-tags: [data-engineering]
+tags: [data engineering]
 ---
 
 # Working with Large Datasets in Snowflake

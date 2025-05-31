@@ -3,7 +3,7 @@ date:
     created: 2025-05-01
 authors: [xy]
 categories: [TIL]
-tags: [dev-tools]
+tags: [dev tools]
 ---
 
 # Static site generator using fasthtml

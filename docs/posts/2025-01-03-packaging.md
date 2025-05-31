@@ -3,10 +3,9 @@ date:
     created: 2025-01-03
     updated: 2025-01-10
 tags: 
-    - dev-tools
+    - dev tools
 categories: 
     - Tutorial
-slug: packaging
 authors:
     - xy
 ---

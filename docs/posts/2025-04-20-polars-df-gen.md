@@ -6,7 +6,7 @@ authors:
 categories:
     - TIL
 tags:
-    - data-engineering
+    - data engineering
 slug: df-gen-polars
 ---
 

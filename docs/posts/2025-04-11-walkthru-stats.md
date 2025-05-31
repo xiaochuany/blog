@@ -6,7 +6,8 @@ authors:
 categories: 
     - Note
 tags:
-    - industrial-mathematics
+    - industrial mathematics
+draft: true
 ---
 
 # Walk through `scipy.stats`: part 1 one-sample tests 

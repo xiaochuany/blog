@@ -7,8 +7,7 @@ authors:
 categories: 
     - TIL
 tags:
-    - data-engineering
-slug: polars-stream
+    - data engineering
 ---
 
 # Polars streaming tricks

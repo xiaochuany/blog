@@ -6,7 +6,7 @@ authors:
 categories: 
     - Tutorial
 tags:
-    - dev-tools
+    - dev tools
 ---
 
 # Fork, merge and PR

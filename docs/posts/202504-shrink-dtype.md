@@ -3,7 +3,7 @@ date:
     created: 2025-04-25
 authors: [xy]
 categories: [TIL]
-tags: [data-engineering]
+tags: [data engineering]
 ---
 # An interesting case study of polars in production
 
