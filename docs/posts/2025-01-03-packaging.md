@@ -47,7 +47,7 @@ It is good practice to setup an isolated and clean environment e.g. with standar
 - actually create wheels and source distribution:
 
     ```bash
-    python setup.py sdist bdist_wheel
+    python -m build
     ```
 
 ## Alternatively, with `uv`
@@ -97,3 +97,7 @@ uv publish --token TOKEN
 ```
 
 with the dev's API token in place of TOKEN. 
+
+
+!!! useful
+    https://pydevtools.com/handbook/
