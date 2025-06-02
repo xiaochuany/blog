@@ -148,3 +148,6 @@ from functools import reduce
 any_expr = reduce(lambda a, b: a | b, map(F.col, col_names))
 lf.select(any_expr)
 ```
+## Exception
+
+The most common is `sp.exceptions.SnowparkSQLException`, corresponding to 13xx SQL error.
