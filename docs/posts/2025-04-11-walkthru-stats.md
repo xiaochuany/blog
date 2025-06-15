@@ -2,7 +2,7 @@
 date:
     created: 2025-04-16
 authors: [xy]
-categories: [Tutorial]
+categories: [TIL]
 tags: [hypothesis testing]
 draft: true
 ---

@@ -3,7 +3,7 @@ date:
     created: 2025-05-19
     updated: 2025-05-31 
 authors: [xy]
-categories: [Tutorial]
+categories: [TIL]
 tags: [data engineering]
 ---
 

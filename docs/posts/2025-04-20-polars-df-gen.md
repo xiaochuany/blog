@@ -2,7 +2,7 @@
 date:
     created: 2025-04-20
 authors: [xy]
-categories: [Tutorial]
+categories: [TIL]
 tags: [data engineering]
 slug: df-gen-polars
 ---
