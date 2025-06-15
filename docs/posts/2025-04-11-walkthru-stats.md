@@ -1,12 +1,9 @@
 ---
 date:
     created: 2025-04-16
-authors:
-    - xy
-categories: 
-    - Note
-tags:
-    - industrial mathematics
+authors: [xy]
+categories: [Tutorial]
+tags: [hypothesis testing]
 draft: true
 ---
 

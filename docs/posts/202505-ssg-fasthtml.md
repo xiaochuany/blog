@@ -2,7 +2,7 @@
 date:
     created: 2025-05-01
 authors: [xy]
-categories: [TIL]
+categories: [Tutorial]
 tags: [dev tools]
 ---
 

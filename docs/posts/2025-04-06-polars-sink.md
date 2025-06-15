@@ -2,12 +2,9 @@
 date:
     created: 2025-04-06
     updated: 2025-05-01
-authors:
-    - xy
-categories: 
-    - TIL
-tags:
-    - data engineering
+authors: [xy]
+categories: [TIL]
+tags: [data engineering]
 ---
 
 # Polars streaming tricks

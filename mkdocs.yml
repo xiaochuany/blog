@@ -49,9 +49,9 @@ plugins:
       archive_date_format: yyyy
       categories_allowed:
         - Tutorial
-        - Note
         - TIL
         - Essay
+        - Technical
       pagination_per_page: 5
       post_slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:

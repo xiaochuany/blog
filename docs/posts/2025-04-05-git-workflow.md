@@ -1,12 +1,9 @@
 ---
 date:
     created: 2025-04-05
-authors:
-    - xy
-categories: 
-    - Tutorial
-tags:
-    - dev tools
+authors: [xy]
+categories:  [Tutorial]
+tags: [dev tools]
 ---
 
 # Fork, merge and PR

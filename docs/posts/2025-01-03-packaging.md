@@ -2,12 +2,9 @@
 date:
     created: 2025-01-03
     updated: 2025-01-10
-tags: 
-    - dev tools
-categories: 
-    - Tutorial
-authors:
-    - xy
+tags: [dev tools]
+categories: [Tutorial]
+authors: [xy]
 ---
 
 # Mini-tutorial for python packaging, release and publish
