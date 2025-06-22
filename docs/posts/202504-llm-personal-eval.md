@@ -45,6 +45,17 @@ This post is regularly updated.
 
 C  wins. Other LLMs refer to some obsolete vscode extension which does not work. In think mode C started thinking about using the same extensions, but then made some search in vscode github project and elsewhere,  ended up finding  that this is a feature already built-in in vscode after v1.79 and provided the correct json for me to copy to user settings.   
 
+For example. Paste figures into the assets folder in the document directory (one that contains the markdown file) with the name of the image = 
+document name + time + '.png'
+
+```json
+{
+    "markdown.copyFiles.destination": {
+            "**/*.md": "${documentDirName}/assets/${documentBaseName}-${unixTime}.${fileExtName}"
+        }
+}
+```
+
 
 ## search the url of a file in github - 20250501
 
