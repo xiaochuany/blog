@@ -7,7 +7,7 @@ tags: [machine learning]
 ---
 
 # Random forest scaling mini-benchmark
-
+<!-- more -->
 My goal in this minibench is to see how random forest models scale with the sample size/feature size.
 
 I run the script at the end of this post on my Intel i5-10400 6 cores + 8GB RAM machine. I cannot scale sample size any larger i.e. 400k rows with this hardware. 
