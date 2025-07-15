@@ -9,7 +9,7 @@ tags: [machine learning]
 
 # Hierarchical clustering with 36 LOC
 
-
+<!-- more -->
 Clustering is the action of dividing samples into subgroups. 
 
 Hierarchical clustering is a bottom up method that gradually merge individual samples into bigger groups until all samples are merged into one group. The criterion for the merge is distance-based. For example, the single linkage algorithm merges clusters that are closest to each other where the distance between clusters is measured using Euclidean distance between sets. 
