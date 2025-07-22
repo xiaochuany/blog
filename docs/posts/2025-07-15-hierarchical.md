@@ -149,3 +149,11 @@ The inner while loop is necessary becasue when a merge happens, the old cluster 
 
 The purpose of the for loop is to push distances of the new cluster with other clusters into `dheap`, as well as the `dmap`. 
 
+## Demo 
+
+Here is an [interactive demo](https://marimo.app/l/kfj58s). You can activate the app mode by pressing (Ctrl+ .) 
+The visualization is generated one-shot by Gemini 2.5 pro. 
+
+![alt text](assets/2025-07-15-hierarchical-1753218010731.png)
+
+The source is [here](https://github.com/xiaochuany/etudes/blob/main/ml-from-scratch/hierarchical.py) in case the link is not valid any more when you read this post. 

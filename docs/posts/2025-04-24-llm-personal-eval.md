@@ -74,6 +74,6 @@ The topic is kinda common and all llms have seen articles, books, blogposts abou
 
 Both D and X followed the prompt and provided solid ideas. G raised some valid points questioning the prompt itself (like DQ checks are often interconnected). C revised the answer G gave that improved readability. 
 
-My votes go to G and C. The result is [here](202505-dq.md).
+My votes go to G and C. The result is [here](2025-05-14-dq.md).
 
 
