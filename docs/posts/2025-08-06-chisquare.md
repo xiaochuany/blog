@@ -91,7 +91,7 @@ We now check the rank of $V$ is equal to $k-1$.
 We notice
 
 $$
-\Sigma = diag(mathbf{p}) - \mathbf{p} \mathbf{p}^T 
+\Sigma = \mathrm{diag}(\mathbf{p}) - \mathbf{p} \mathbf{p}^T 
 $$
 
 so if $\Sigma x = 0$, we necessarily have $x_1=...=x_k= \sum_{i}x_i p_i$ or $x_1=...=x_k=0$. The former condition holds when $\sum_i p_i=1$ which is the case. Hence the dimension of the null space of $\Sigma$ is 1, therefore the dimension of the range of $\Sigma$ (which is the rank!) has to be $k-1$. It follows right away that $V$ is of rank $k-1$. CQFD. 
