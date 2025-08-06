@@ -102,4 +102,4 @@ So if $\Sigma x = 0$, then necessarily $x_1 = x_2 = \dots = x_k = \sum_i x_i p_i
 
 Therefore, $\text{rank}(\Sigma) = k - 1$, and since $V$ is derived from $\Sigma$, we also have $\text{rank}(V) = k - 1$.
 
-So $\|H\|^2$ is the sum of $k - 1$ independent standard normal squares — that is, chi-square distributed with $k - 1$ degrees of freedom. CQFD.
+So $\|H\|^2$ is the sum of $k - 1$ independent standard normal squares, namely, chi-square distributed with $k - 1$ degrees of freedom. CQFD.
