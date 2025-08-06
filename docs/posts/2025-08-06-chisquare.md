@@ -7,7 +7,7 @@ tags: [statistics]
 ---
 
 
-# Unpacking the $k - 1$ in the chi-square test
+# Unpacking the k-1 in the chi-square test
 <!-- more -->
 
 ## Setting
