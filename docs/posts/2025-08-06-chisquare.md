@@ -7,7 +7,7 @@ tags: [statistics]
 ---
 
 # Unpacking k-1 in chisquare test 
-
+<!-- more -->
 ## Setting 
 
 Let $\mathbf{X}=(X_1,...,X_k)$ be multinomial distribution with $k$ categories, total $n$ and probabilities $\mathbf{p}=(p_1,...,p_k)$. Pearson's chisquare test statistic is 
