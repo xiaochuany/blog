@@ -6,92 +6,100 @@ categories: [TIL]
 tags: [statistics]
 ---
 
-# Unpacking k-1 in chisquare test 
+
+# Unpacking the $k - 1$ in the chi-square test
 <!-- more -->
-## Setting 
 
-Let $\mathbf{X}=(X_1,...,X_k)$ be multinomial distribution with $k$ categories, total $n$ and probabilities $\mathbf{p}=(p_1,...,p_k)$. Pearson's chisquare test statistic is 
+## Setting
 
-$$
-\chi^2 = \sum_{i=1}^k \frac{(X_i - np_i)^2}{np_i}.
-$$
-
-The asymptotic distribution is chisquare with degree of freedom $k-1$ as $n$ grows to infinity. 
-
-The aim of this post is to explain the rationale behind $k-1$. 
-
-This post can be read independently from my previous one about [t-test](2025-07-23-ttest.md), but a core part of the argument has already been presented there, so it could be beneficial to read that post first. 
-
-The core ideas are as follows:
-
-- represent multinomial random vector as iid sum (normal approximation applies)
-- chisquare statistic is then close to the squared norm of Gaussian vector in k-1 dimensional subspace 
-- spectral decomposition shows that the latter can be written as the sum of $k-1$ independent standard Gaussians.
-
-The last step is a slight generalization of the linear algebra tricks we pull off in the post about t-test.  
-
-## Multivarite central limit theorem
-
-Let $E=\{e_1,...,e_k\}$ be the canonical basis of $R^k$ i.e. $e_i$ has entries 0 everywhere except at the $i$-th coordinate, where the value is 1. 
-
-Let $I_i$ denote a random vector taking values in $E$ with 
+Let $\mathbf{X} = (X_1, \dots, X_k)$ be a multinomial random vector with $k$ categories, total count $n$, and probabilities $\mathbf{p} = (p_1, \dots, p_k)$. Pearson’s chi-square test statistic is
 
 $$
-P[I_i = e_i] = p_i 
+\chi^2 = \sum_{i=1}^k \frac{(X_i - n p_i)^2}{n p_i}.
 $$
 
-Then we have 
+As $n \to \infty$, the distribution of $\chi^2$ converges to a chi-square distribution with $k - 1$ degrees of freedom.
+
+The goal of this post is to explain where the $k - 1$ comes from.
+
+This post can be read independently of my previous one on the [t-test](2025-07-23-ttest.md), but a core part of the argument was already presented there, so reading that first might help.
+
+Core ideas:
+
+- Represent the multinomial vector as a sum of i.i.d. random vectors (so normal approximation applies).
+- The chi-square statistic becomes close to the squared norm of a Gaussian vector lying in a $(k - 1)$-dimensional subspace.
+- Spectral decomposition shows that this squared norm is distributed as a sum of $k - 1$ independent standard normal squares.
+
+That last part is a generalization of the linear algebra trick we used in the t-test post.
+
+
+## Multivariate central limit theorem
+
+Let $E = \{e_1, \dots, e_k\}$ be the canonical basis of $\mathbb{R}^k$ where each $e_i$ has a 1 in the $i$-th position and 0 elsewhere.
+
+Let $I_i$ be a random vector taking values in $E$ such that
 
 $$
-(X_1,...,X_k) = \sum_i^n I_i. 
+P[I_i = e_j] = p_j.
 $$
 
-The mean of this vector is $n\mathbf{p}$ and its covariance normalized by $n$
-$Cov[X_i,X_j]/n$ does not depend on $n$, which we denote by $\Sigma = \Sigma(\mathbf{p})$. 
-
-
-By the central limit theorem, 
+Then
 
 $$
-\frac{1}{\sqrt{n}}\Big(\sum_i^n I_i - n \mathbf{p}\Big) \to N(0,\Sigma)
+(X_1, \dots, X_k) = \sum_{i=1}^n I_i.
 $$
 
+The mean of this sum is $n \mathbf{p}$. Its covariance, normalized by $n$, does not depend on $n$, so we denote it by $\Sigma = \Sigma(\mathbf{p})$.
 
-Let $G$ denote the normal vector in the limit. It remains to show that 
+By the multivariate central limit theorem:
 
 $$
-\sum_{i=1}^k \frac{G_i^2}{p_i} = \| (G_1/\sqrt{p_1},...,G_k/\sqrt{p_k}) \|^2
+\frac{1}{\sqrt{n}}\left( \sum_{i=1}^n I_i - n \mathbf{p} \right) \to \mathcal{N}(0, \Sigma).
 $$
 
-is chisquare distributed with degree of freedom k-1. 
+Let $G$ denote this limiting Gaussian vector. Then the chi-square statistic is asymptotically approximated by
+
+$$
+\sum_{i=1}^k \frac{G_i^2}{p_i} = \left\| \left( \frac{G_1}{\sqrt{p_1}}, \dots, \frac{G_k}{\sqrt{p_k}} \right) \right\|^2.
+$$
+
+We now want to show that this norm squared follows a chi-square distribution with $k - 1$ degrees of freedom.
 
 
 ## Checking the covariance
 
-We claim 
- $Cov[X_i,X_j]/n = (p_i 1_{i=j} - p_i p_j)$.
-
-
-It follows that the Gaussian vector $H = (G_1/\sqrt{p_1},...,G_k/\sqrt{p_k})$
-has covariance 
+We claim:
 
 $$
-V_{ij} = 1_{i=j} - p_j.
+\text{Cov}[X_i, X_j]/n = p_i \delta_{ij} - p_i p_j.
 $$
 
-We have shown that $\chi^2$ can be approximated by (in fact converges to) $\|H\|^2$. The rest of the argument is very much the same as in my [previous post about t-test](2025-07-23-ttest.md) so I only sketch it. 
+Hence, the Gaussian vector $H = (G_1 / \sqrt{p_1}, \dots, G_k / \sqrt{p_k})$ has covariance matrix
 
+$$
+V_{ij} = \delta_{ij} - p_j.
+$$
+
+So we’ve shown that $\chi^2$ converges in distribution to $\|H\|^2$. The rest of the argument is nearly identical to the [t-test post](2025-07-23-ttest.md), so I'll just sketch it here.
 
 ## Linear algebra again
 
-We check easily that $V=V^2$ which implies that its eigenvalues are either 0 or 1. Since $H= V Z$ where $Z$ is standard Gaussian in $\mathbb{R}^k$, we can use spectral decomposition to represent the squared norm of $H$ as a sum of independent standard Gaussian squared, where the number of terms is equal to the rank of the $V$. 
+Note that $V = V^2$, so it is a projection matrix. Its eigenvalues are either 0 or 1.
 
-We now check the rank of $V$ is equal to $k-1$. 
+We can write $H = VZ$, where $Z$ is a standard Gaussian in $\mathbb{R}^k$. Then $\|H\|^2 = \|VZ\|^2$ is the sum of squares of the projections of $Z$ onto the image of $V$.
 
-We notice
+Spectral decomposition lets us write this as a sum of $r$ independent standard normal squares, where $r = \text{rank}(V)$.
+
+We now check that $\text{rank}(V) = k - 1$.
+
+Recall:
 
 $$
-\Sigma = \mathrm{diag}(\mathbf{p}) - \mathbf{p} \mathbf{p}^T 
+\Sigma = \text{diag}(\mathbf{p}) - \mathbf{p} \mathbf{p}^\top.
 $$
 
-so if $\Sigma x = 0$, we necessarily have $x_1=...=x_k= \sum_{i}x_i p_i$ or $x_1=...=x_k=0$. The former condition holds when $\sum_i p_i=1$ which is the case. Hence the dimension of the null space of $\Sigma$ is 1, therefore the dimension of the range of $\Sigma$ (which is the rank!) has to be $k-1$. It follows right away that $V$ is of rank $k-1$. CQFD. 
+So if $\Sigma x = 0$, then necessarily $x_1 = x_2 = \dots = x_k = \sum_i x_i p_i$. That is, the null space consists of constant vectors, hence it's one-dimensional.
+
+Therefore, $\text{rank}(\Sigma) = k - 1$, and since $V$ is derived from $\Sigma$, we also have $\text{rank}(V) = k - 1$.
+
+So $\|H\|^2$ is the sum of $k - 1$ independent standard normal squares — that is, chi-square distributed with $k - 1$ degrees of freedom. CQFD.
