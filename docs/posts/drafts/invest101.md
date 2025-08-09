@@ -45,3 +45,10 @@ summarizing a conversation with GPT5.
     - need economy: food, persnonal care (low growth)
 - US exposure
     - think ex US or global ETF with balanced weights to lower both valuation risk and currency risk.
+
+## Example: MSCI world index 
+
+The MSCI World Index captures large and mid-cap representation across 23 Developed Markets (DM) countries*. With 1,322 constituents,
+the index covers approximately 85% of the free float-adjusted market capitalization in each country. 
+
+https://www.msci.com/documents/10199/178e6643-6ae6-47b9-82be-e1fc565ededb
