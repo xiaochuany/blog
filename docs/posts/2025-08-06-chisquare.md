@@ -10,6 +10,8 @@ tags: [statistics]
 # Unpacking the k-1 in the chi-square test
 <!-- more -->
 
+This post is a continuation of my previous one about [t-test](2025-07-23-ttest.md). The aim, as before, is to spell out all the details about the degree of freedom in the chi-square test. 
+
 ## Setting
 
 Let $\mathbf{X} = (X_1, \dots, X_k)$ be a multinomial random vector with $k$ categories, total count $n$, and probabilities $\mathbf{p} = (p_1, \dots, p_k)$. Pearson’s chi-square test statistic is
@@ -103,3 +105,33 @@ So if $\Sigma x = 0$, then necessarily $x_1 = x_2 = \dots = x_k = \sum_i x_i p_i
 Therefore, $\text{rank}(\Sigma) = k - 1$, and since $V$ is derived from $\Sigma$, we also have $\text{rank}(V) = k - 1$.
 
 So $\|H\|^2$ is the sum of $k - 1$ independent standard normal squares, namely, chi-square distributed with $k - 1$ degrees of freedom. CQFD.
+
+
+## Generalization again
+
+Now consider contingency tables which are pivot tables of bivariate categorical data. We assume iid sequence $\{(X_i,Y_i), i=1,...,n \}$. Both are categorical with $a$ and $b$ categories respectively. The data can be stored as a table of shape (n,2). Pivoting on the second column (Y's) with the first column (X's) as index, we get frequencies of each one of the $ab$ combinations. The pivot table is of shape (a,b). In dataframe land, this is done as follows:
+
+```py
+import polars as pl
+import numpy as np
+
+x = pl.from_numpy(np.random.randint(0,2,size=(10,2)))
+x.pivot(on="column_1",index="column_0",values="column_0",aggregate_function="len")
+```
+
+The cells in the pivot table sum to n.
+
+It is again possible to express the frequencies as sum of $n$ iid random matrices $A_1, \dots, A_n$. Each is of shape (a,b) matrix. If $(X_1,Y_1)=(k,l)$ then $A_{1,kl}=1$ and 0 elsewhere. Again we have multinomial distribution with parameters $(n, p_{ij})$ with $p_{ij}=P[X_1=i, Y_1=j]$. 
+
+Except from a fancier way of indexing n values (using 2d array), the situation is exactly the same as before, so that when n get larger, we can approximate the statistic
+
+$$
+C = \sum_{1\le i\le a, 1\le j\le b} \frac{(X_{ij}-n p_{ij})^2}{n p_{ij}}
+$$
+
+by a chisquare with $ab-1$ degree of freedom. 
+
+In fact, a common setup for contingency tables is to assume independence between variables. In such case the matrix $(p_{ij})$ is rank 1 because $p_{ij}=r_i q_j$ where $\mathbf{r} = (r_1, \dots, r_a)$ and $\mathbf{q} = (q_1, \dots, q_b)$ are marginal distributions of the pair $(X_1,Y_1)$.
+
+We claim that $C$ is asymptotically chisquare with degree of freedom $(a-1)(b-1)$. It suffices to show that the covariance matrix of $(X_{ij})$ (a projection as we have shown already), divided by $n$,  is of rank $(a-1)(b-1)$. We can show this by investigating the null space of the covariance matrix (show it's of dimension $a+b-1$). We leave this as an exercise to the interested reader :grinning:
+
