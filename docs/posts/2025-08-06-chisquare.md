@@ -10,7 +10,7 @@ tags: [statistics]
 # Unpacking the k-1 in the chi-square test
 <!-- more -->
 
-This post is a continuation of my previous one about [t-test](2025-07-23-ttest.md). The aim, as before, is to spell out all the details about the degree of freedom in the chi-square test. 
+This post is a continuation of my previous one about [t-test](2025-07-23-ttest.md). The aim, as before, is to spell out all the details about the degrees of freedom in the chi-square test. 
 
 ## Setting
 
@@ -129,9 +129,9 @@ $$
 C = \sum_{1\le i\le a, 1\le j\le b} \frac{(X_{ij}-n p_{ij})^2}{n p_{ij}}
 $$
 
-by a chisquare with $ab-1$ degree of freedom. 
+by a chisquare with $ab-1$ degrees of freedom. 
 
 In fact, a common setup for contingency tables is to assume independence between variables. In such case the matrix $(p_{ij})$ is rank 1 because $p_{ij}=r_i q_j$ where $\mathbf{r} = (r_1, \dots, r_a)$ and $\mathbf{q} = (q_1, \dots, q_b)$ are marginal distributions of the pair $(X_1,Y_1)$.
 
-We claim that $C$ is asymptotically chisquare with degree of freedom $(a-1)(b-1)$. It suffices to show that the covariance matrix of $(X_{ij})$ (a projection as we have shown already), divided by $n$,  is of rank $(a-1)(b-1)$. We can show this by investigating the null space of the covariance matrix (show it's of dimension $a+b-1$). We leave this as an exercise to the interested reader :grinning:
+We claim that $C$ is asymptotically chisquare with degrees of freedom $(a-1)(b-1)$. It suffices to show that the covariance matrix of $(X_{ij})$ (a projection as we have shown already), divided by $n$,  is of rank $(a-1)(b-1)$. We can show this by investigating the null space of the covariance matrix (show it's of dimension $a+b-1$). We leave this as an exercise to the interested reader :grinning:
 
