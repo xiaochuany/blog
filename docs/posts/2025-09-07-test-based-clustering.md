@@ -4,14 +4,13 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [machine learning]
-draft: true
 ---
 
 # Repurpose hierarchical clustering 
-
+<!-- more -->
 A while ago, I wrote about [hierarchical clustering](2025-07-15-hierarchical.md) with a focus on clean implementation of this classic method. 
 
-In this short post, my goal is to repurpose it for consolidation of categorical features based on hypothesis testing. By consolidation I mean merge together some  values of a categorical variable which behave similarly with regard to the target variable (think default status in credit risk modelling) in some statistical sense. 
+In this short post, my goal is to repurpose it for consolidation of categorical features based on hypothesis testing. By consolidation I mean merge together values of a categorical variable which behave similarly with regard to the target variable (think default tag in credit risk modelling) in some statistical sense. 
 
 The idea is simple: when we merge clusters in the bottom up fashion a la hierarchical clustering, we could use p-value as a "distance". Here distince is in quote because p-value should actually be viewed as a similarity measure: lower p-value would reject the null that two clusters have the same distribution, therefore suggesting a large distributional distance. On the other hand, higher p-value would suggest a low distributional distance. 
 
