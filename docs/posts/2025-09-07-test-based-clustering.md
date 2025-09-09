@@ -3,7 +3,7 @@ date:
     created: 2025-09-07
 authors: [xy]
 categories: [TIL]
-tags: [machine learning]
+tags: [machine learning, statistics]
 ---
 
 # Repurpose hierarchical clustering 
