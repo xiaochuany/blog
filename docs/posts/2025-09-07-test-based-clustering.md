@@ -4,9 +4,10 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [machine learning, statistics]
+slug: repurpose-hierarchical-clustering
 ---
 
-# Repurpose hierarchical clustering 
+# Repurpose hierarchical clustering for feature engineering
 <!-- more -->
 A while ago, I wrote about [hierarchical clustering](2025-07-15-hierarchical.md) with a focus on clean implementation of this classic method. 
 
