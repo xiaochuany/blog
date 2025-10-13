@@ -3,10 +3,8 @@ date:
     created: 2025-04-24
 authors:
     - xy
-categories:
-    - TIL
-tags:
-    - LLM
+categories: [TIL]
+tags: [LLM]
 ---
 
 

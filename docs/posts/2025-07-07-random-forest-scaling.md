@@ -2,8 +2,8 @@
 date: 
     created: 2025-07-07
 authors: [xy]
-categories: [TIL]
-tags: [machine learning]
+categories: [Analysis]
+tags: [machine learning, python]
 ---
 
 # Random forest scaling mini-benchmark

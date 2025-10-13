@@ -2,8 +2,8 @@
 date:
     created: 2025-01-03
     updated: 2025-01-10
-categories: [TIL]
-tags: [dev tools]
+categories: [Tutorial]
+tags: [dev tools, python]
 authors: [xy]
 ---
 

@@ -4,7 +4,7 @@ date:
     updated: 2025-05-01
 authors: [xy]
 categories: [TIL]
-tags: [data engineering]
+tags: [data engineering, python]
 ---
 
 # Polars streaming tricks

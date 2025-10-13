@@ -2,8 +2,8 @@
 date: 
     created: 2025-08-06
 authors: [xy]
-categories: [TIL]
-tags: [statistics]
+categories: [Analysis]
+tags: [statistics, quant methods]
 ---
 
 

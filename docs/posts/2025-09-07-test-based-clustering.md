@@ -2,8 +2,8 @@
 date: 
     created: 2025-09-07
 authors: [xy]
-categories: [TIL]
-tags: [machine learning, statistics]
+categories: [Analysis]
+tags: [machine learning, statistics, risk modelling, python]
 slug: repurpose-hierarchical-clustering
 ---
 

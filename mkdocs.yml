@@ -52,6 +52,7 @@ plugins:
         - TIL
         - Essay
         - Technical
+        - Analysis
       pagination_per_page: 5
       post_slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
