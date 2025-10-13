@@ -1,8 +1,7 @@
 ---
 date:
     created: 2025-04-24
-authors:
-    - xy
+authors: [xy]
 categories: [TIL]
 tags: [LLM]
 ---

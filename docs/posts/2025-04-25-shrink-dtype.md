@@ -4,7 +4,7 @@ date:
     updated: 2025-06-15
 authors: [xy]
 categories: [TIL]
-tags: [data engineering, python]
+tags: [data engineering]
 ---
 # Puzzling query optimization behaviour and dtypes shrinking in polars
 

@@ -2,16 +2,17 @@
 date:
     created: 2025-01-03
     updated: 2025-01-10
-categories: [Tutorial]
-tags: [dev tools, python]
 authors: [xy]
+categories: [Tutorial]
+tags: [dev tools]
 ---
 
 # Mini-tutorial for python packaging, release and publish
 
+<!-- more -->
+
 !!! abstract 
     This mini-tutorial is a beginner's cheatsheet to python packaging. Check [Python packaing user guide](https://packaging.python.org/en/latest/) for an authoritative guidance on the topic.  
-<!-- more -->
 
 ## Classical way
 

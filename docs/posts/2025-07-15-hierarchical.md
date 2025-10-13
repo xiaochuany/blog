@@ -3,7 +3,7 @@ date:
     created: 2025-07-15
 authors: [xy]
 categories: [Analysis]
-tags: [machine learning, python]
+tags: [quant methods]
 ---
 
 

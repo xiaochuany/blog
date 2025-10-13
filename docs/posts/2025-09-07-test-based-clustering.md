@@ -3,7 +3,7 @@ date:
     created: 2025-09-07
 authors: [xy]
 categories: [Analysis]
-tags: [machine learning, statistics, risk modelling, python]
+tags: [quant methods]
 slug: repurpose-hierarchical-clustering
 ---
 

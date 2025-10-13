@@ -3,7 +3,7 @@ date:
     created: 2025-04-16
 authors: [xy]
 categories: [TIL]
-tags: [hypothesis testing, python]
+tags: [quant methods]
 draft: true
 ---
 
