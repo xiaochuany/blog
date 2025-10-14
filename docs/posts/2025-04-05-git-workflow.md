@@ -34,8 +34,25 @@ To avoid fetch and rebase everytime, use
 git config --global pull.rebase true && git pull upstream main
 ```
 
-## More commands
+## How to undo changes
 
-There is `git restore .` which removes modifications in the current directory that are not yet staged (havn't run `git add` yet). 
+Conceptually, we may think of git as managing three copies of the same project, they are called 
 
-Once staged, we can undo these changes using `git revert`
+- working directory  
+- index/staging area
+- HEAD
+
+Initially they are all the same thing. After some edits, the working directory changes but the index and HEAD remain untouched.
+
+Once we run `git add`, the edits are synced to index so working directory and the index are the same thing. 
+
+Once we run `git commit`, the edits are synced to the HEAD and we are once again in a state of all being equal. 
+
+At any point in time of this process, we can undo changes. 
+
+- `git restore .` removes modifications in the current directory that are not yet staged. 
+- Once staged (after `git add`), we can drop these changes using `git restore --staged .`  
+- Once commit, we have all three copies the same thing, but we can still drop the changes by restore the previous version of the HEAD (or any other version before) `git reset --soft HEAD~1` 
+
+
+
