@@ -11,6 +11,7 @@ tags: [dev tools]
 <!-- more -->
 
 This is a common workflow: 
+
 - fork a repo (`gh repo fork` with the gh cli fork the repo interactively)  
 - work on some code then `git add`, `git commit`  
 - fetch upstream (`git remote add upstream REPO` then `git fetch upstream`)  
@@ -32,3 +33,9 @@ To avoid fetch and rebase everytime, use
 ```sh
 git config --global pull.rebase true && git pull upstream main
 ```
+
+## More commands
+
+There is `git restore .` which removes modifications in the current directory that are not yet staged (havn't run `git add` yet). 
+
+Once staged, we can undo these changes using `git revert`
