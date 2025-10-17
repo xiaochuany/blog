@@ -15,12 +15,12 @@ $$
 F = \frac{\chi^2_{d}/d}{\chi^2_{e}/e}
 $$
 
-where $d$ and $e$ are the degree of freedom of the numerator and the denominator. These scaling factors ensures
+where $d$ and $e$ are the degree of freedom of the chisquares in the numerator and the denominator. These scaling factors ensures
 that both numerator and denominator have unit expected value. We can write $F = F(d,e)$ to indicate that F is actually 
 a parametric family of distributions. 
 
 Its density function can be spelled out with Gamma functions and such, but that's not what 
-we care about in this post. Our goal is to explore test statistics equal or approaching F distribution as the sample size grows.  
+we care about in this post. Our goal is to explore test statistics equal or approaching F distribution as the sample size grows. [TODO: cover large sample case in more detail]
 
 ## Equality of variance
 
@@ -38,3 +38,5 @@ has the mean value equal to the population variance $\sigma^2$. Similarly for $Y
 By taking the ratio of two sample variances, the unknown true variance cancels out. 
 If the data distribution were Gaussian, this ratio follows the F distribution, which we  
 use to find the p-value.  
+
+[TODO: cover non gaussian data]
