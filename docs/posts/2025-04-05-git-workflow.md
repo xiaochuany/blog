@@ -55,4 +55,8 @@ At any point in time of this process, we can undo changes.
 - Once commit, we have all three copies the same thing, but we can still drop the changes by restore the previous version of the HEAD (or any other version before) `git reset --soft HEAD~1` 
 
 
+## What happens during the fetch and merge process
 
+Again conceptually, we may think of remote branch yet another copy of the same project. When we run `git fetch`, we sync the remote branch with the latest content
+in the remote repository. 
+Assuming we fetch remote content before edits, the working directory is same as index and HEAD, `git merge` would compare remote with local and merge them. It's similar if you decide to rebase. 
