@@ -9,15 +9,16 @@ tags: [quant methods]
 
 # F tests
 
-F distribution is defined as the ratio of two independent scaled chisquare distributions
+F distribution is the ratio of two independent random variables. Each comes from a chisquare distribution
+scaled by its own degree of freedom so that its expected value is one. If the first chisquare has $d$ degrees of freedom and the second $e$, the ratio 
 
 $$
 F = \frac{\chi^2_{d}/d}{\chi^2_{e}/e}
 $$
 
-where $d$ and $e$ are the degree of freedom of the chisquares in the numerator and the denominator. These scaling factors ensures
-that both numerator and denominator have unit expected value. We can write $F = F(d,e)$ to indicate that F is actually 
-a parametric family of distributions. 
+defines the F distribution. 
+
+We can write $F = F(d,e)$ to indicate that F is actually a parametric family of distributions. 
 
 Its density function can be spelled out with Gamma functions and such, but that's not what 
 we care about in this post. Our goal is to explore test statistics equal or approaching F distribution as the sample size grows. [TODO: cover large sample case in more detail]
