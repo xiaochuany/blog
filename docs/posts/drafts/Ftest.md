@@ -18,10 +18,8 @@ $$
 
 defines the F distribution. 
 
-We can write $F = F(d,e)$ to indicate that F is actually a parametric family of distributions. 
-
-Its density function can be spelled out with Gamma functions and such, but that's not what 
-we care about in this post. Our goal is to explore test statistics equal or approaching F distribution as the sample size grows. [TODO: cover large sample case in more detail]
+We write $F = F(d,e)$ to show that F depends on two parameters $d$ and $e$. Its exact form can be expressed with Gamma functions, but the detail is not our concern here. 
+Our goal is to understand how test statistics follow or approach F distribution as the sample size grows. [TODO: cover large sample case in more detail]
 
 ## Equality of variance
 
@@ -41,3 +39,7 @@ If the data distribution were Gaussian, this ratio follows the F distribution, w
 use to find the p-value.  
 
 [TODO: cover non gaussian data]
+
+[TODO: ANOVA use variance to test equality of means between groups. reduced to t test when the number of groups is 2]
+
+[TODO: in regression. quadratic form of beta estimator divided by estimator of the sample variance leads to F.]
