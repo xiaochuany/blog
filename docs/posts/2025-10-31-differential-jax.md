@@ -4,7 +4,6 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [low latency programming]
-draft: true
 ---
 
 # Jax as a differntial calculus tool
@@ -30,7 +29,7 @@ The key steps of the experiment
 3. compute the diff between a function with its quadratic approximation
 4. evaluate the diff over a few scales.  
 
-```py
+```py exec="on" result="text" source="above"
 import jax
 import jax.numpy as jnp
 import jax.random as jr
