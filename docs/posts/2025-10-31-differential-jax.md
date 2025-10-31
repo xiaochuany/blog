@@ -7,7 +7,7 @@ tags: [low latency programming]
 ---
 
 # Jax as a differntial calculus tool
-
+<!-- more -->
 Back in January, I wrote a [tutorial](2025-01-08-jax.md) about Jax, highlighting its power in high performance computing and its near-mathematical syntax.
 Now I show how to use Jax as a differential calculus tool for students and educators. 
 
@@ -77,7 +77,7 @@ confirms the cubic term in Taylor expansion described above.
 ---
 
 From the example above you see how easy it is to use Jax for showcasing differential caculus results. We can imagine its use in solving differential equations or
-designing optimization algorithm. Check out jax based projects `diffrax` and `optox` for those use case.
+designing optimization algorithm. Check out jax based projects `diffrax` and `optax` for those use case.
 
 
 
