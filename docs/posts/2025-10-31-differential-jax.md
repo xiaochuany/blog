@@ -6,7 +6,7 @@ categories: [Analysis]
 tags: [low latency programming]
 ---
 
-# Jax as a differential calculus tool
+# JAX as a differential calculus tool
 <!-- more -->
 Back in January, I wrote a [tutorial](2025-01-08-jax.md) about JAX, highlighting its power in high performance computing and its near-mathematical syntax.
 Now I show how to use JAX as a differential calculus tool for students and educators. 
