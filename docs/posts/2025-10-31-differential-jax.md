@@ -8,8 +8,8 @@ tags: [low latency programming]
 
 # Jax as a differential calculus tool
 <!-- more -->
-Back in January, I wrote a [tutorial](2025-01-08-jax.md) about Jax, highlighting its power in high performance computing and its near-mathematical syntax.
-Now I show how to use Jax as a differential calculus tool for students and educators. 
+Back in January, I wrote a [tutorial](2025-01-08-jax.md) about JAX, highlighting its power in high performance computing and its near-mathematical syntax.
+Now I show how to use JAX as a differential calculus tool for students and educators. 
 
 The goal is to approximate a differentiable function by a few terms in its Taylor expansion near a fixed point. The neat mathematical statement is 
 
