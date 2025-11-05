@@ -11,6 +11,8 @@ tags: [low latency programming]
 Back in January, I wrote a [tutorial](2025-01-08-jax.md) about JAX, highlighting its power in high performance computing and its near-mathematical syntax.
 Now I show how to use JAX as a differential calculus tool for students and educators. 
 
+## Taylor expansion 
+
 The goal is to approximate a differentiable function by a few terms in its Taylor expansion near a fixed point. The neat mathematical statement is 
 
 $$
@@ -74,9 +76,43 @@ print(errors)
 We observe that, roughly speaking, as we reduce the distance from x to xo by 10x we see an improvement of the approximation by 1000x, which 
 confirms the cubic term in Taylor expansion described above. 
 
+## Chain rule
+
+Consider $g:\mathbb{R}^p\to \mathbb{R}^q, f:\mathbb{R}^q \to \mathbb{R}^r$ with sufficient differentiability. We have
+
+$$
+f(g(x)) = J_f(g(x)) J_g(x)
+$$
+
+where $J_f, J_g$ are the Jacobian matrices of $f,g$ respectively. 
+
+
+```py exec="on" result="text" source="above"
+def g(x): 
+    p = x.size
+    A = jr.normal(jr.key(1), (2,p))
+    return A.dot(x)
+
+def f(x):
+    """an elementwise activation function"""
+    return (1+jnp.exp(-x))**(-1)
+
+def h(x):
+    return f(g(x))
+
+x = jr.normal(jr.key(99), 3)
+
+res = jnp.allclose(
+    jax.jacobian(h)(x), 
+    jax.jacobian(f)(g(x)) @ jax.jacobian(g)(x)
+)
+
+print(res)
+```
+
 ---
 
-From the example above you see how easy it is to use Jax for showcasing differential caculus results. We can imagine its use in solving differential equations or
+From the examples above you see how easy it is to use Jax for showcasing differential caculus results. We can imagine its use in solving differential equations or
 designing optimization algorithm. Check out jax based projects `diffrax` and `optax` for those use case.
 
 
