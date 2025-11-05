@@ -85,7 +85,7 @@ $$
 f(g(x)) = J_f(g(x)) J_g(x)
 $$
 
-where $J_f, J_g$ are the Jacobian matrices of $f,g$ respectively. 
+where $J_f, J_g$ are the Jacobian matrices of $f,g$ respectively. In the special case $q=1$, we can write $J_f$ as $\nabla f$ and can call `jax.grad` in place `jax.jacobian`, both producing a 1D array. 
 
 
 ```py exec="on" result="text" source="above"
