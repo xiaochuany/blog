@@ -88,6 +88,10 @@ where $J_f, J_g$ are the Jacobian matrices of $f,g$ respectively.
 
 
 ```py exec="on" result="text" source="above"
+import jax
+import jax.numpy as jnp
+import jax.random as jr
+
 def g(x): 
     p = x.size
     A = jr.normal(jr.key(1), (2,p))
@@ -112,8 +116,8 @@ print(res)
 
 ---
 
-From the examples above you see how easy it is to use Jax for showcasing differential caculus results. We can imagine its use in solving differential equations or
-designing optimization algorithm. Check out jax based projects `diffrax` and `optax` for those use case.
+From the examples above you see how easy it is to use JAX for showcasing differential caculus results. We can imagine its use in solving differential equations or
+designing optimization algorithms. Check out JAX based projects `diffrax` and `optax` for those use case.
 
 
 
