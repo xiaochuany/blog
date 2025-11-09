@@ -43,3 +43,30 @@ use to find the p-value.
 [TODO: ANOVA use variance to test equality of means between groups. reduced to t test when the number of groups is 2]
 
 [TODO: in regression. quadratic form of beta estimator divided by estimator of the sample variance leads to F.]
+
+
+## F test for model comparison
+
+### a unified framework
+
+linear regression. 
+
+link ANOVA to linear regression with categorical features. watch out for multicolinearity. 
+
+link ARCH to auxilliary linear regression 
+
+compare a restricted model with a more complex model. 
+
+### clarify linear regression assumptions
+
+error. regressors. estimator. distribution
+
+as broad as possible. caveat. 
+
+### F test statistic
+
+its distribtution under Gaussian/non Gaussian assumption.
+
+### practicalities
+
+statsmodel, scipy, arch. functions to call. 
