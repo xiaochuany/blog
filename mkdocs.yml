@@ -79,6 +79,9 @@ extra:
     - icon: fontawesome/brands/x-twitter
       name: xiaochuan on X
       link: https://x.com/xiaochuandev
+  analytics:
+    provider: google
+    property: G-VQFRTKQCML
 
 markdown_extensions:
   #footnotes
