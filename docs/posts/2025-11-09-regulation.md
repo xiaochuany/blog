@@ -12,10 +12,11 @@ tags: [regulations]
 
 *courtesy of GPT5*
 
-
 EU banking rules look messy because different bodies write different layers: global standards, EU legislation, technical rules, and supervisory practice. But once you stack them properly, the architecture becomes predictable.
 
 Here’s the map you want in your head.
+
+Related [post](2025-06-15-basel.md) on the distinction between pillar 1 and pillar 2.
 
 ---
 
