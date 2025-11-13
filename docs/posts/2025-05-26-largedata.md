@@ -1,6 +1,7 @@
 ---
 date:
     created: 2025-05-26
+    updated: 2025-11-13
 authors: [xy]
 categories: [TIL]
 tags: [data engineering]
@@ -45,6 +46,17 @@ Both `res1` and `res2` will trigger the same expensive computation. To avoid tha
 query.write.mode("overwrite").save_as_table("temp_table", table_type="temporary")
 lf = session.table("temp_table")
 ```
+
+The result is materialized and *named* so that it can be queried from SQL. 
+Use this if you want more control e.g. how to cache. 
+
+### Temp DataFrame(session scoped)
+
+```py
+c = query.cache_result()
+```
+
+The result is again materialized but no explict table name. Suitable for pure snowpark routines. Use this over if you want simplicity.  
 
 ### Materialized View (persistent, auto-refreshed, costs money)
 
