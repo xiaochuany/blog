@@ -8,14 +8,25 @@ tags: [low latency programming]
 draft: true
 ---
 
-# convolution shape reminders
+# Manipulate convolutions in deep learning frameworks with ease 
 
 <!-- more -->
 
-## Idea
+## Original idea
 
 Given a signal $f$ and a measurement function $g$, say a probability density function on a compact subset of $\mathbb R^d$ around the origin, the convolution $f*g$ at point $x$ tells us 
 a sort of average of $f$ around the point $x$. 
+
+## Fine grain control in deep learning frameworks 
+
+There are a few knobs to control its behaviour  
+
+- Stride is about how to move kernels.  `stride=k` means you slide kernel `k` position at a time.
+- Padding is about adding zeros to the boundary of the input. 
+- Input dilation is about adding zeros in between positions of the input, thereby inflating the input size by a factor.  
+- Kernel dilation is about adding zeros in between positions of the kenrel, thereby expanding the reach of a kernel with the same parameter size. 
+
+Using/combining these allows to define layers that down-samples or up-samples an input feature map. Let's cover some in this post. 
 
 ## 1d batched 
 
