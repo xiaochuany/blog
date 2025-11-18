@@ -4,7 +4,6 @@ date:
 authors: [xy]
 categories: [Tutorial]
 tags: [dev tools]
-draft: true
 ---
 
 # A guide to convolution parameters in neural nets
@@ -118,4 +117,25 @@ layer(jnp.ones((224,5))).shape   # (441, 6)
 Here dilation adds $(T-1)(d-1)$ zeros to the input sequence. The length of the dilated input is $T+(T-1)(d-1)$ + pad. 
 The output spatial shape is T+(T-1)*(d-1) + pad - k + 1. 
 
+## Example: causal conv in 1D
 
+```py
+class CausalConv1D(nnx.Module):
+    def __init__(self, in_c, out_c, kernel_size, *, dilation, rngs):
+        self.conv = nnx.Conv(
+            in_c, out_c, kernel_size,
+            padding= [(dilation*(kernel_size-1),0)], 
+            kernel_dilation = dilation,
+            rngs=rngs
+        )
+
+    def __call__(self, x):
+        return self.conv(x)
+```
+
+The padding is prescribed in a way that keeps the total sequence length unchanged after the convolution, and it is causal. Usage:
+
+```py
+layer = CausalConv1D(3,4,5,dilation=2, rngs=rngs)
+layer(jnp.ones((22,3))).shape  # (22,4)
+```
