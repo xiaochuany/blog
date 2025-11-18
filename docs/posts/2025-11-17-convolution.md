@@ -54,7 +54,7 @@ For instance, if each channel of the input represents the system's state at a ti
 
 Here we don't see the knobs because they take a sensible default.  
 
-```
+```py
 import jax.numpy as jnp
 
 layer(jnp.ones((32,32, 3))).shape # (32,32,4) no batch dimension
