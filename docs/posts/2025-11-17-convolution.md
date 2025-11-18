@@ -56,6 +56,7 @@ Here we don't see the knobs because they take a sensible default.
 
 ```
 import jax.numpy as jnp
+
 layer(jnp.ones((32,32, 3))).shape # (32,32,4) no batch dimension
 layer(jnp.ones((1,32,32, 3))).shape # (1,32,32,4)
 layer(jnp.ones((1,1,32,32, 3))).shape # (1,1,32,32,4)
