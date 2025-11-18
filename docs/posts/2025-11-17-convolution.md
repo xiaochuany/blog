@@ -7,21 +7,24 @@ tags: [low latency programming]
 draft: true
 ---
 
-# Getting used to convolutions in neural nets with ease 
+# A guide to convolution parameters in neural nets
 
 <!-- more -->
 
 ## Original idea
 
-Given a signal $f$ and a measurement $g$, say a probability density/mass function, the convolution $f*g$ at point $x$ tells us 
+Given a signal $f$ and a kernel $g$, say a probability density/mass function, the convolution $f*g$ at point $x$ measures 
 an "average" of $f$ around the point $x$, mathematically defined as 
 
 $$
 f*g = \int f(x-y) g(y) \mu(dy)
 $$
 
-Here $\mu$ is some reference measure on the ambient space. Because of the averaging, convolution typically improves regularity of the 
-signal, provided that $g$ is smooth. 
+Here $\mu$ is some reference measure on the ambient space, say Lebesgue or counting measure on Euclidean space. Because of the averaging, convolution typically improves the smoothness of the signal, provided that $g$ is smooth in some way. 
+
+In deep learning, $g$ is a learnable whereas in mathematics/engineering, the kernel is prescribed by the user. 
+
+Different convolutions would invovle translations and scalings of the signal and the kernel.     
 
 ## Concepts that provides a granular control  
 
