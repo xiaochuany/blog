@@ -122,8 +122,6 @@ The output spatial shape is T+(T-1)*(d-1) + pad - k + 1.
 ```py
 import jax
 import jax.numpy as jnp
-import jax.random as jr
-import optax
 from flax import nnx
 
 class TemporalBlock(nnx.Module):
@@ -182,7 +180,7 @@ class TCN(nnx.Module):
             block = TemporalBlock(in_ch, out_ch, kernel_size, dilation, dropout, rngs)
             self.blocks.append(block)
         
-        self.decoder = nnx.Conv(num_channels[-1], out_features, kernel_size=1, rngs=rngs) # (B, T, Hidden) -> (B, T, 1)
+        self.decoder = nnx.Conv(num_channels[-1], out_features, kernel_size=1, rngs=rngs) # (B, T, last_hidden) -> (B, T, 1)
 
     def __call__(self, x):
         
@@ -197,6 +195,6 @@ Usage:
 ```py
 model = TCN(5, [25,25,25], 1, 3, rngs=nnx.Rngs(1))
 B, T, C = 32, 1024, 5
-x_dummy = jr.normal(jr.key(12), (B, T, C))
+x_dummy = jnp.ones((B, T, C))
 model(x_dummy).shape   # (B, T, 1)
 ```
