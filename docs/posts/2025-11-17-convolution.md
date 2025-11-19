@@ -25,7 +25,7 @@ In deep learning, $g$ is a learnable whereas in mathematics/engineering, the ker
 
 Different convolutions would invovle translations and scalings of the signal and the kernel.     
 
-## Concepts that provides a granular control  
+## Concepts that provide a granular control
 
 There are quite a few knobs at our disposal.
 
