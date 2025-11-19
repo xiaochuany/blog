@@ -10,7 +10,7 @@ tags: [dev tools]
 
 <!-- more -->
 
-## Original idea
+## Origin
 
 Given a signal $f$ and a kernel $g$, say a probability density/mass function, the convolution $f*g$ at point $x$ measures 
 an "average" of $f$ around the point $x$, mathematically defined as 
@@ -19,7 +19,7 @@ $$
 f*g = \int f(x-y) g(y) \mu(dy)
 $$
 
-Here $\mu$ is some reference measure on the ambient space, say Lebesgue or counting measure on Euclidean space. Because of the averaging, convolution typically improves the smoothness of the signal, provided that $g$ is smooth in some way. 
+Here $\mu$ is some reference measure on the ambient space, e.g. Lebesgue or counting measure on the Euclidean space. Because of the average, convolution typically improves the smoothness of the signal, provided that $g$ is smooth.
 
 In deep learning, $g$ is a learnable whereas in mathematics/engineering, the kernel is prescribed by the user. 
 
@@ -117,25 +117,86 @@ layer(jnp.ones((224,5))).shape   # (441, 6)
 Here dilation adds $(T-1)(d-1)$ zeros to the input sequence. The length of the dilated input is $T+(T-1)(d-1)$ + pad. 
 The output spatial shape is T+(T-1)*(d-1) + pad - k + 1. 
 
-## Example: causal conv in 1D
+## Application: Temporal Convolutional Network
 
 ```py
-class CausalConv1D(nnx.Module):
-    def __init__(self, in_c, out_c, kernel_size, *, dilation, rngs):
-        self.conv = nnx.Conv(
-            in_c, out_c, kernel_size,
-            padding= [(dilation*(kernel_size-1),0)], 
-            kernel_dilation = dilation,
-            rngs=rngs
+import jax
+import jax.numpy as jnp
+import jax.random as jr
+import optax
+from flax import nnx
+
+class TemporalBlock(nnx.Module):
+    """
+    A single residual block for the TCN.
+    Structure: Input -> (Dilated Conv -> ReLU -> Dropout) x2 -> Add Residual -> ReLU
+    """
+    def __init__(self, in_channels, out_channels, kernel_size, dilation, dropout, rngs):
+        # 'CAUSAL' is equivalent to [(dilation*(kernek_size-1),0)]
+        self.conv1 = nnx.Conv(
+            in_channels, out_channels, kernel_size, 
+            strides=1, padding="CAUSAL", kernel_dilation=dilation, rngs=rngs
         )
+        self.conv2 = nnx.Conv(
+            out_channels, out_channels, kernel_size, 
+            strides=1, padding="CAUSAL", kernel_dilation=dilation, rngs=rngs
+        )
+        self.dropout = nnx.Dropout(dropout, rngs=rngs)
+        
+        # If input/output channels differ, we need a 1x1 conv to match dimensions for the residual add
+        self.downsample = (
+            nnx.Conv(in_channels, out_channels, kernel_size=1, rngs=rngs) 
+            if in_channels != out_channels else None
+        )
+        
+    def __call__(self, x):
+        residual = x
+        if self.downsample is not None:
+            residual = self.downsample(x)
+
+        y = self.conv1(x)
+        y = nnx.relu(y)
+        y = self.dropout(y)
+        y = self.conv2(y)
+        y = nnx.relu(y)
+        y = self.dropout(y)
+
+        return nnx.relu(y + residual)
+
+class TCN(nnx.Module):
+    def __init__(self, in_channels, num_channels, out_features, kernel_size=2, dropout=0.2, rngs=None):
+        """
+        Args:
+            in_channels: Number of input features (C).
+            num_channels: List of hidden sizes for each layer (e.g. [25, 25, 25]).
+                          The length of this list determines the depth of the network before final decoder
+        """
+        self.blocks = nnx.List()
+        num_levels = len(num_channels)
+        
+        for i in range(num_levels):
+            dilation = 2 ** i  # 1, 2, 4, 8, ...
+            in_ch = in_channels if i == 0 else num_channels[i-1]
+            out_ch = num_channels[i]
+            
+            block = TemporalBlock(in_ch, out_ch, kernel_size, dilation, dropout, rngs)
+            self.blocks.append(block)
+        
+        self.decoder = nnx.Conv(num_channels[-1], out_features, kernel_size=1, rngs=rngs) # (B, T, Hidden) -> (B, T, 1)
 
     def __call__(self, x):
-        return self.conv(x)
+        
+        x = nnx.Sequential(*self.blocks)(x)    
+        x = self.decoder(x)
+        
+        return x
 ```
 
-The padding is prescribed in a way that keeps the total sequence length unchanged after the convolution, and it is causal. Usage:
+Usage:
 
 ```py
-layer = CausalConv1D(3,4,5,dilation=2, rngs=rngs)
-layer(jnp.ones((22,3))).shape  # (22,4)
+model = TCN(5, [25,25,25], 1, 3, rngs=nnx.Rngs(1))
+B, T, C = 32, 1024, 5
+x_dummy = jr.normal(jr.key(12), (B, T, C))
+model(x_dummy).shape   # (B, T, 1)
 ```
