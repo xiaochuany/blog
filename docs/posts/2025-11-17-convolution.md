@@ -19,7 +19,7 @@ $$
 f*g = \int f(x-y) g(y) \mu(dy)
 $$
 
-Here $\mu$ is some reference measure on the ambient space, e.g. Lebesgue or counting measure on the Euclidean space. Because of the average, convolution typically improves the smoothness of the signal, provided that $g$ is smooth.
+Here $\mu$ is some reference measure on the ambient space, e.g. Lebesgue or counting measure on the Euclidean space. 
 
 In deep learning, $g$ is a learnable whereas in mathematics/engineering, the kernel is prescribed by the user. 
 
