@@ -109,12 +109,14 @@ mesh = Mesh(devices, axis_names=('data_axis',))
 GLOBAL_BATCH_SIZE = 128 * len(devices) 
 
 dataset = (grain.MapDataset.range(10000)
+    .shuffle(0)
+    .repeat() # infinite
     .map(lambda x: x) 
     .batch(GLOBAL_BATCH_SIZE) # <--- ONE Big Batch, not list of batches
     .to_iter_dataset()
     .mp_prefetch(grain.multiprocessing.MultiprocessingOptions(num_workers=4))
 )
-iterator = iter(dataset)
+iterator = iter(dataset) # infinite
 
 # --- DEFINE SHARDING ---
 data_sharding = NamedSharding(mesh, PartitionSpec('data_axis'))
@@ -125,7 +127,7 @@ def train_step(batch):
     return jnp.sum(batch) * 2
 
 # --- TRAINING LOOP ---
-for i in range(5):
+for i in range(5): #  num of training steps here
     host_batch = next(iterator)
     
     device_batch = jax.device_put(host_batch, data_sharding)
