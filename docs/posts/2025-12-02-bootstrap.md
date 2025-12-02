@@ -15,7 +15,7 @@ where we can avoid the frustration: run large scale bootstrap efficiently (no OO
 
 Consider the following situation: we resample with replacement a set of size one million from a set of the same size. We repeat 100k times. 
 If each invididual element takes 4 bytes (say Float32), we need 4e11 bytes, approximately 400GB to store all data in memory. 
-This is larger than most available RAM on a consumer device. Holding all these data in memory is not an option. 
+This is larger than RAM available on most consumer devices. Holding all these data in memory is not an option. 
 
 However, it is rarely the case that we need to hold all these data. The purpose of bootstrap is to estimate the variability of 
 a handful of quantities across all replications (100k in our example). A reduction step would reduce that memory footprint of a 
