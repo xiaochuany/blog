@@ -7,13 +7,15 @@ tags: [low latency programming, quant methods]
 ---
 
 # Scalable bootstrapping
-
+<!-- more -->
 It is frustrating to see the out of memory error. It is equally frurstating to wait hours for the computation to finish.  
 
 Sometimes these frustrations are inevitable, sometimes they are artificial. The goal of this post is to identify some cases 
 where we can avoid the frustration, that is, run large scale bootstrap efficiently (no OOM and fast).    
 
-Consider this: we resample with replacement from a set of size one million to form a set of the same size. We replicate this 100k times. If each invididual element takes 4 bytes (say Int32), we need 4e12 bytes, approximately 400GB to store all data. This is obviously larger than the available RAM on a consumer hardware. Holding all these data in memory is not an option. 
+Consider this: we resample with replacement from a set of size one million to form a set of the same size. We replicate this 100k times. 
+If each invididual element takes 4 bytes (say Int32), we need 4e12 bytes, approximately 400GB to store all data. 
+This is obviously larger than the available RAM on a consumer hardware. Holding all these data in memory is not an option. 
 
 However, it is rarely the case that we need to hold all these data. The purpose of bootstrap is to estimate the variability of 
 a handful of quantities across all replications (100k in our example). A reduction step would reduce that memory consumption for a 
