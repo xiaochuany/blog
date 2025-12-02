@@ -21,7 +21,7 @@ However, it is rarely the case that we need to hold all these data. The purpose 
 a handful of quantities across all replications (100k in our example). A reduction step would reduce that memory consumption for a 
 single replication to O(1). If we execute these reductions sequentially, we can avoid OOM. 
 
-This is exactly what we do below. An important point here is that  `jax.lax.map` avoids the python native for loop, making the seqeuntial execution more efficient. This runs almost instantly. 
+This is exactly what we do below. An important point here is that  `jax.lax.map` avoids the python native for loop, making the seqeuntial execution more efficient. This runs almost instantly after the first compilation. 
 
 ```py
 import jax
@@ -43,7 +43,17 @@ resample_all_sequential(jr.split(key, 1000000), seq).shape
 
 
 
-## Side note: why vmap does not work? 
+## Side note: why not vmap? 
 
 In situation like bootstraping it is natural to use vmap and feed a large number of keys into the vmapped functions. This will not work
 because under the hood, JAX will materialize the whole data matrix even if we have a reduction at the end of each replication, which, as we mentioned before, is way too large. 
+
+However, it is possible to take a hybrid approach. use vmap to take 100 keys at a time, then splash a sequential map on top. I don't feel much of a difference for the scale I try. 
+
+```py
+@jax.jit
+def resample_batched(keys, seq):
+    keys_reshaped = keys.reshape(-1, 100)
+    return jax.lax.map(
+        jax.vmap(lambda k: resample(k, seq)), keys_reshaped).flatten()
+```
