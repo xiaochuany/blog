@@ -32,6 +32,9 @@ A remarkable observation is the following
 
 > merging two bins only decreases the IV
 
+This monotonicity makes the search problem tractable. If the IV in the current branch is lower than the best known IV value previously explored, this branch can be abandoned altogether. The exact implementation is still non trivial but luckily Google does it for us.  
+
+My main inerest here is to convince myself this remarkable property is true. 
 Mathematically, this is equivalent to the statement that 
 
 $$
