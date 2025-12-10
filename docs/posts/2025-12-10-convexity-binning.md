@@ -26,7 +26,7 @@ A popular library for this task in the python ecosystem is `optbinning` which ca
 
 At first sight, this is a very hard combinatorial optimization problem. A first reduction of complexity is to pre-bin the scores 
 at a relatively granular level e.g. 100 bins by quantiles, then search for the optimal way of merging these pre-bins to achieve the best IV. 
-This reduces the search space but the problem is still a hard one.  
+This reduces the search space but the search problem is still a hard one.  
 
 A remarkable observation is the following 
 
