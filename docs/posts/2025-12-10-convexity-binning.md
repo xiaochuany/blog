@@ -22,7 +22,7 @@ an elegant approach caught my attention. Here is the formulation:
 > 
 > where the IV is computed for the probability vectors $(B_i/\sum_j B_j)$ and $(G_i/\sum_j G_j)$.  
 
-A popular library in the python ecosystem is `optbinning` which calls under the hood Google's OR-Tools. 
+A popular library for this task in the python ecosystem is `optbinning` which calls under the hood Google's OR-Tools. 
 
 At first sight, this is a very hard combinatorial optimization problem. A first reduction of complexity is to pre-bin the scores 
 at a relatively granular level e.g. 100 bins by quantiles, then search for the optimal way of merging these pre-bins to achieve the best IV. 
