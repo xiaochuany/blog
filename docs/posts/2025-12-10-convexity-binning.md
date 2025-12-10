@@ -18,7 +18,7 @@ an elegant approach caught my attention. Here is the formulation:
 > aka the symmetrized KL divergence, subject to the constraints
 > - monotonicity of the bad rates in the bins (e.g. default rate is increasing wrt score)
 > - consecutive bins are statitically different (e.g. z test for binomials results in a p value < 0.05)
-> - a range for the final number of bins
+> - upper and lower bounds for the final number of bins
 > 
 > where the IV is computed for the probability vectors $(B_i/\sum_j B_j)$ and $(G_i/\sum_j G_j)$.  
 
