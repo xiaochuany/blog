@@ -51,6 +51,7 @@ is subadditive.
 
 Note that $g$ is homogeneous of degree 1, hence showing subadditivity of $g$ is equivalent of showing the convexity of $g$. 
 Indeed, if $g$ were convex,
+
 $$
 g(u + v) = 2 g((u+v)/2) \le 2 (g(u)/2+g(v)/2) = g(u)+g(v). 
 $$
