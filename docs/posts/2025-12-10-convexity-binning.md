@@ -56,14 +56,14 @@ $$
 g(u + v) = 2 g((u+v)/2) \le 2 (g(u)/2+g(v)/2) = g(u)+g(v). 
 $$
 
-Now it remains to show the convexity of $g$. Here is the lemma:
+Now it remains to show the convexity of $g$. Here is the key lemma:
 
 !!! lemma 
-Let $f:\mathbb R^d->\mathbb R$ be a convext function and define $g:\mathbb R^{d+1}\to\mathbb{R}$ by 
-$$
-g(x,t) = t f(\frac{x}{t}) \quad t>0.
-$$
-Then $g$ is a convex function. 
+    Let $f:\mathbb R^d->\mathbb R$ be a convext function and define $g:\mathbb R^{d+1}\to\mathbb{R}$ by 
+    $$
+    g(x,t) = t f(\frac{x}{t}) \quad t>0.
+    $$
+    Then $g$ is a convex function. 
 
 We can apply the lemma with $f(x)=x\log(x)$ and note that $f$ is a convex function. 
 
