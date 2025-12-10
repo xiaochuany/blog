@@ -13,13 +13,14 @@ tags: [quant methods]
 As I was exploring methodologies in credit rating assignment (say in the PD model), 
 an elegant approach caught my attention. Here is the formulation: 
 
-> given a collection of continuous scores and coresponding binary status (good or bad), find a partition of scores into bins that maximize the the information value
-> aka the symmetrized KL divergence, subject to the constraints
-> - monotonicity of the bad rates in the bins (e.g. default rate is increasing wrt score)
-> - consecutive bins are statitically different (e.g. z test for binomials results in a p value < 0.05)
+> given a collection of continuous scores and coresponding binary status (good or bad), find a partition of scores into bins that maximize the the information value (IV)
+> aka the symmetrized KL divergence, subject to the constraints  
+>
+> - monotonicity of the bad rates in the bins (e.g. default rate is increasing wrt score)  
+> - consecutive bins are statitically different (e.g. z test for binomials results in a p value < 0.05)  
 > - upper and lower bounds for the final number of bins
 > 
-> where the IV is computed for the probability vectors $(B_i/\sum_j B_j)$ and $(G_i/\sum_j G_j)$.  
+> The IV is computed between the probability vectors $(B_i/\sum_j B_j)$ and $(G_i/\sum_j G_j)$, where $B_i$ and $G_i$ are the number of bad and good observations in bin $i$.  
 
 A popular library for this task in the python ecosystem is `optbinning` which calls under the hood Google's OR-Tools. 
 
