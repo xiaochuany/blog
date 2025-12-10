@@ -14,10 +14,10 @@ draft: true
 As I was exploring methodologies in credit rating assignment (say in the PD model), 
 an elegant approach caught my attention. Here is the formulation: 
 
-> given a collection of continuous scores and coresponding binary status (good or bad), find a partition that maximize the the information value
+> given a collection of continuous scores and coresponding binary status (good or bad), find a partition of scores into bins that maximize the the information value
 > aka the symmetrized KL divergence, subject to the constraints
-> - monotonicity of the bad rates in the final bins (e.g. default rate is increasing wrt score)
-> - consecutive parts are statitically different (e.g. z test for binomials results in a p value < 0.05)
+> - monotonicity of the bad rates in the bins (e.g. default rate is increasing wrt score)
+> - consecutive bins are statitically different (e.g. z test for binomials results in a p value < 0.05)
 > - a range for the final number of bins
 > where the IV is computed for the probability vectors $(B_i/\sum_j B_j)$ and $(G_i/\sum_j G_j)$.  
 
