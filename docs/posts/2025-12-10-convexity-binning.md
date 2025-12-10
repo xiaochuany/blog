@@ -4,7 +4,6 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [quant methods]
-draft: true
 ---
 
 # A tale of convexity in credit rating assignment problem 
