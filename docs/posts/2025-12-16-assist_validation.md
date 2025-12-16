@@ -18,9 +18,34 @@ Reading regulatory texts is a necessity in this context. Given the sheer amount 
 
 My goal here is to lay out a workflow that uses AI to facilitate the process of retrieving the constraints, therefore allowing developers and validators spend more time on the interesting optimization part of their job. 
 
-## the setup 
+## Technical preparation 
 
 For starters, just use the chat UI of your choice and a collection of prompts saved in a text file. When the workflow stabiliszes, it might worth developing an app more tailored to the task, but not now. 
 
-## initial questions 
+## Initial context
 
+Give the right context is important for retrieval. A good starting poitn is to provide a 5-tuple 
+
+(risk type, parameter, model type, data regime, use)
+
+For examplle, (credit risk, PD, IRB, high-default porfolio, pillar 1 capital). 
+
+## Breakdown of constraints by category
+
+Asking "list all requirements for X per EBA" and hoping to get a comprehensive full coverage one-shot is unrealistic. A better approach is to think of any model as a function $f(t, \cdot)$, where we stress the dependance on time. Regulatory texts can be translated into some  structural properties of the function, such as 
+
+1. existence
+2. inequalities
+3. invariants
+4. scope of coverage
+5. temporal dynamics
+
+To consider a concrete example, let's consider the tuple (IRRBB, average maturity, internal behaviour model, ..., ALM and reporting). 
+
+1. must exist (which article?)
+2. when data volume decreases -> widen estimation error
+3. some thing should be monotone
+4. which portfolio
+5. does it change in one year.
+
+Fo each propertie
