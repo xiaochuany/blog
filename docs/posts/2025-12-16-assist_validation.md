@@ -11,8 +11,7 @@ draft: true
 
 This post records my attempt of using AI to help reviewing a large number of regulatory texts, in particular, in the context of risk model development and validation in a highly regulated environment. 
 
-In such environment, model development and validation is the art of constrainnt optimization. 
-Regulators and supervisors set the constraints, and institutions optimize their business metrics over the space of constraint solutions.
+In such environment, model development and validation is the art of constrainnt optimization. Regulators and supervisors set the constraints, and institutions optimize their business metrics over the space of constraint solutions.
 
 Reading regulatory texts is a necessity in this context. Given the sheer amount of regulataions, directives, guidelines, guides ..., it is hard (if not unrealistic) for anyone to read and remember all the contraints for the compliance of their risk mdoels.   
 
@@ -29,28 +28,27 @@ A good starting point is to provide a 6-tuple to AI:
 - jurisdiction
 - risk type
 - parameter
+- approach
 - portfolio
 - use case
-- approach
 
-For examplle, (EU, credit risk, PD, IRB, pillar 1 capital, retail). This narrows the scope quite a bit.    
+For examplle, (EU, credit risk, PD, IRB, retail, pillar 1 capital) narrows the scope quite a bit.    
 
-## Breakdown of constraints by category
+## Break down constraints 
 
-Asking "list all requirements for X per EBA" and hoping to get a comprehensive full coverage one-shot is unrealistic. 
+Asking "list all requirements for X per EBA" and hoping to get a comprehensive full coverage is unrealistic. 
 
-I find instrumental to think regulatory requirements as constraints on the space of estimators one can choose. The idea is to find 
-orthogonal dimensions to categorize these constraints. Here is an attempt. 
+Regulatory requirements may be viewed as constraints on the space of parameter estimators. To help AI achieving full coverage, we can design orthogonal dimensions so that *ideally* every requirement can be described with one and only one dimension. This is somewhat reminiscent of data quality dimensions. 
+
+Here is an attempt
 
 1. existence
-2. inequalities
+2. directionality
 3. invariants
-4. scope of coverage
-5. temporal dynamics
+4. scope 
+5. governance
 
-To consider a concrete example, let's consider the tuple 
-
-(risk type, parameter, model type, data regime, use) = (IRRBB, average maturity, internal behaviour model, non-contractual data + customer behaviour, ALM + reporting + ICAAP). 
+Let's consider a concrete example (IRRBB, average maturity, internal behaviour model, non-contractual data + customer behaviour, ALM + reporting + ICAAP). 
 
 1. must exist (which article?)
 2. when data volume decreases -> widen estimation error
