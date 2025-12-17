@@ -24,15 +24,23 @@ For starters, just use the chat UI of your choice and a collection of prompts sa
 
 ## Initial context
 
-Give AI the right context is important for retrieval. A good starting point is to provide a 5-tuple 
+A good starting point is to provide a 6-tuple to AI: 
 
-(risk type, parameter, model type, data regime, use)
+- jurisdiction
+- risk type
+- parameter
+- portfolio
+- use case
+- approach
 
-For examplle, (credit risk, PD, IRB, high-default porfolio, pillar 1 capital). 
+For examplle, (EU, credit risk, PD, IRB, pillar 1 capital, retail). This narrows the scope quite a bit.    
 
 ## Breakdown of constraints by category
 
-Asking "list all requirements for X per EBA" and hoping to get a comprehensive full coverage one-shot is unrealistic. A better approach is to think of any model as a function $f(t, \cdot)$, where we stress the dependance on time. Regulatory texts can be translated into some  structural properties of the function, such as 
+Asking "list all requirements for X per EBA" and hoping to get a comprehensive full coverage one-shot is unrealistic. 
+
+I find instrumental to think regulatory requirements as constraints on the space of estimators one can choose. The idea is to find 
+orthogonal dimensions to categorize these constraints. Here is an attempt. 
 
 1. existence
 2. inequalities
