@@ -104,3 +104,9 @@ Prompt 6 — Regression test (future-proofing)
 If yes, which one?”
 
 If none → no rework.
+
+## case EU credit PD IRB retail p1capital
+
+
+
+
