@@ -44,69 +44,24 @@ Here is an attempt
 
 1. existence
 2. directionality
-3. invariants
+3. shape
 4. scope 
 5. governance
 
-Let's consider a concrete example (IRRBB, average maturity, internal behaviour model, non-contractual data + customer behaviour, ALM + reporting + ICAAP). 
+Let's consider a concrete example: IRB PD rating assignments for EU credit risk retail portfolio.
 
-1. must exist (which article?)
-2. when data volume decreases -> widen estimation error
-3. some thing should be monotone
-4. which portfolio
-5. does it change in one year.
+## Prompts
 
-Fo each propertie
+1. IRB PD rating assignments for EU credit risk retail portfolio., list binding ECB/EBA/CRR requirements related only to (existence / directionality / shape / scope / governance). Cite article or paragraph.
 
-1. regulatory extraction: For IRB PD Margin of Conservatism, list binding ECB/EBA/CRR requirements related only to (existence / directionality / shape / scope / governance). Cite article or paragraph.
-2. f
+2. Are there any IRB PD rating assignment requirements that do not fall into the five buckets (existence, directionality, shape, scope, governance)? If yes, list them and explain why.
 
-Prompt 1 — Regulatory extraction (per bucket)
+3. Construct an IRB PD rating assignments implementation that satisfies all requirements except (existence / directionality / shape / scope / governance). What supervisory finding would ECB raise?
 
-“For IRB PD Margin of Conservatism, list binding ECB/EBA/CRR requirements related only to (existence / directionality / shape / scope / governance).
-Cite article or paragraph.”
-
-(run once per bucket)
-
-Prompt 2 — Completeness test
-
-“Are there any IRB PD MoC requirements that do not fall into the five buckets (existence, directionality, shape, scope, governance)?
-If yes, list them and explain why.”
-
-If “no” → coverage achieved.
-
-Prompt 3 — Independence test
-
-“Construct an IRB PD MoC implementation that satisfies all requirements except monotonicity.
-What supervisory finding would ECB raise?”
-
-Repeat for each bucket.
-
-If ECB raises a distinct finding each time → model is complete.
-
-Prompt 4 — Minimal counterexample
-
-“Give the simplest IRB PD MoC implementation that looks reasonable but would be rejected by SSM.
+4. “Give the simplest IRB PD rating assignments implementation that looks reasonable but would be rejected by SSM.
 Specify the violated requirement and reference.”
 
-This catches fake-safe designs.
+5. You are an ECB JST validator reviewing this IRB PD MoC. Which part would you challenge first and why?
 
-Prompt 5 — JST flip (threat model)
-
-“You are an ECB JST validator reviewing this IRB PD MoC.
-Which part would you challenge first and why?”
-
-If answer mentions data scarcity / uncertainty coverage / rank violations, you’re aligned.
-
-Prompt 6 — Regression test (future-proofing)
-
-“Would any recent CRR / EBA / ECB updates invalidate any of the five IRB PD MoC bullets?
-If yes, which one?”
-
-If none → no rework.
-
-## case EU credit PD IRB retail p1capital
-
-
-
+6. Would any recent CRR / EBA / ECB updates invalidate any of the five IRB PD MoC bullets? If yes, which one?
 
