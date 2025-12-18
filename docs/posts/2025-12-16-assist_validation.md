@@ -52,7 +52,7 @@ Let's consider a concrete example: IRB PD rating assignments for EU credit risk 
 
 ## Prompts
 
-1. IRB PD rating assignments for EU credit risk retail portfolio., list binding ECB/EBA/CRR requirements related only to (existence / directionality / shape / scope / governance). Cite article or paragraph.
+1. For IRB PD rating assignments for EU credit risk retail portfolio. list ECB/EBA/CRR requirements related only to (existence / directionality / shape / scope / governance). Cite article or paragraph.
 
 2. Are there any IRB PD rating assignment requirements that do not fall into the five buckets (existence, directionality, shape, scope, governance)? If yes, list them and explain why.
 
