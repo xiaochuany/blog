@@ -43,11 +43,11 @@ narrows down the scope of search quite a bit.
 
 Asking "list all requirements for X per EBA" and hoping to get a comprehensive full coverage is unrealistic. 
 
-Regulatory requirements may be viewed as constraints on the space of parameter estimators. To help AI achieving full coverage, we can design orthogonal dimensions so that *ideally* every requirement can be described with one and only one dimension. This is somewhat reminiscent of data quality dimensions. 
+Regulatory requirements may be viewed as constraints on the space of parameter estimators. To help AI achieving full coverage, we can design orthogonal dimensions so that *ideally* every requirement can be described with one and only one dimension. 
 
 Here is an attempt
 
-1. Data standards: data quality, grouping, inclusion/exclusion, proxy data
+1. data standards: data quality, grouping, inclusion/exclusion, proxy data
 2. quantifications: formula, floor/cap, conservatism, assumption
 3. performance monitoring: backtesting, discriminatory power, stability, frequency
 4. governance: roles/responsabilities, processes
