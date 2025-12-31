@@ -8,6 +8,8 @@ tags: [AI assistant, regulations]
 
 # A case study for AI assisted review of regulatory texts
 
+<!-- more -->
+
 This post records my attempt of using AI to help reviewing a large number of regulatory texts, in particular, in the context of risk model development and validation in a highly regulated environment. 
 
 In such environment, model development and validation is the art of constraint optimization. Regulators and supervisors set the constraints, and institutions optimize their business metrics over the space of constraint solutions.
