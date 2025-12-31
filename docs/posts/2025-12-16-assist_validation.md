@@ -4,7 +4,6 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [AI assistant, regulations]
-draft: true
 ---
 
 # A case study for AI assisted review of regulatory texts
