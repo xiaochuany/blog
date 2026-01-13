@@ -31,10 +31,20 @@ SOFR, Secured Overnight Financing Rate
 
 also SONIA (GBP), TONAR (JPY), SARON (SWF) published by  central banks of the corresponding currency. 
 
-## observables 
+## Observed prices
 
-Overnight indexed swap is a key figure 
+Bonds
+- tenor and coupon are observed   
 
-bonds, ois 
+OIS
+- the float leg is overnight index such as ESTR, SOFR
+- the fixed leg is observed per supply/demand
 
-## derived ones
+## Derive the discounting factor
+
+The discount factor is the present value of 1 ccy at time $T$. More broadly, we can talk about the value at time $T_0$ of 1 ccy at time $T$.
+The general notation is $P(T_0,T)$. From this factor one can derive several curves. We postpone the discussion of curves in later sections. 
+
+
+
+This discounting factor is tied to the market  
