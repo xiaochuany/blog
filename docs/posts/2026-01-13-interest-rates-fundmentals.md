@@ -73,17 +73,19 @@ Let's vibe code a calculator and visualization tool.
 
 ### derivatives
 
-Pricing derivatives involves discounting future cashflow. The discount facor has to be computed from input data that is relevant to the derivative market at hand. 
+Pricing derivatives involves discounting future cashflow. The discount facor has to be computed from input data that is relevant to the derivative market of consideration. 
 
-Take OIS as an example. As said before, both legs are observed: fix leg is the price at which this instrument is being traded and the float leg is publisehd by central banks (computed as the average transaction rate of previous day). OIS with longer maturity (than overnight) has the float leg calculated using the compounded rate of historical overnight index. For example, at time $t$, OIS with maturity 2 days is computed with $(1+r_{t-1})(1+r_t) - 1$, where $r_s$ is the index rate on day $s$. 
+Take OIS as an example. As said before, both legs are observed: fix leg is the price at which this instrument is being traded and the float leg is publisehd by central banks (computed as the average transaction rate of previous day). 
 
-To find the discoutning factor, we equate present value of the fix leg to the present value of the float leg and solve for $P(0,T_i)$ 
+To find the discounting factor, we equate present value of the fix leg (LHS) to the present value of the float leg (RHS) and solve for $P(0,t_i)$ 
 
 $$
-K(T_n) \sum_{i=1}^n P(0, T_i) = 1 - P(0,T_n)
+K(t_n) \sum_{i=1}^n \delta_i P(0, t_i) = 1 - P(0,t_n)
 $$
 
-The left hand is 
+where $\delta_i$ is the day count fraction for each period. For instance, in a 2Y OIS with annual exchange of cashflows using the ACT/360 convention, $\delta_i = \frac{t_i - t_{i-1}}{360}$ such that $\delta_1 \approx \frac{365}{360}$ and $\delta_2 \approx \frac{365}{360}$.
+
+To see why the prsent value of the floating leg is $1-P(0,t_n)$, use the replication argument: invest 1 into a bank account with the index rate, and sell a bond which pays 1 at maturity. Then the payoff of this porfolio is $\prod_{i=1}^n (1+\delta_i r_i)-1$, which is exactly the payoff of the float leg. The present value of the deposit is 1 and the present value of 1 is $P(0,t_n)$, justifying the RHS.
 
 
 
