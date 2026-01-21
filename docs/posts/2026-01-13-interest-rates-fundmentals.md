@@ -2,13 +2,25 @@
 date:
     created: 2026-01-13
 authors: [xy]
-categories: [TIL]
+categories: [Analysis]
 tags: [quant methods]
 draft: true
 ---
 
 # Interest rates fundamentals
 <!-- more -->
+
+## Goals
+
+understand yield curves publisehd by ECB like this one 
+
+![yield curve](assets/2026-01-13-interest-rates-fundmentals-1768685687074.png)
+
+- how they are computed
+- how they are used
+
+!!! reference 
+    shreve 2004
 
 ## First principle
 
