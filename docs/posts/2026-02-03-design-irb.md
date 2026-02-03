@@ -1,4 +1,13 @@
-# build a validation library
+---
+date:
+    created: 2026-02-03
+authors: [xy]
+categories: [TIL]
+tags: [quant methods]
+draft: true
+---
+
+# Build a validation library
 
 ## data assumption 
 
