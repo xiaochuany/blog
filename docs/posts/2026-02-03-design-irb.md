@@ -7,7 +7,131 @@ tags: [quant methods]
 draft: true
 ---
 
-# Build a validation library
+# Design an IRB model validation library
+
+## the status quo
+
+A common workflow for validation of risk models is to write a bunch of functions for the relevant statstical tests (often offloading to scipy/statsmodels/sklearn), save them in a py file, write a orchestration notebook that runs a collection of functions and save the results (charts/excels) in folders. 
+
+There is nothing wrong with this workflow. 
+
+Yet there are multiple pain points: 
+- manual code is still needed: e.g. before passing the result of a funciton to the next function, do a manual groupby
+- passing multiple dataframes/charts around in and out of functions and having to name them
+
+
+## motivaiton
+
+My motivation of designing a library for IRB model validation comes from the following observation: for pillar 1 models, regulators' checks on the *output* of the model are pretty focused:  monotonicity, ranking quality, heterogeneity, homogeneity, calibration etc etc. 
+
+In other words, it is possible to make some strong assumptions like what to expect from the model. Then it is possible to resolve the  pain poitns I mentioned. 
+
+
+## core  
+
+The scope of the library is focused. We run regulatory tests on IRB models (PD, LGD, CCF). 
+The core is a builder pattern on top of a dataframe library (pandas/polars) which allows users to add checks gradually and lazily.    
+
+
+
+1. register a namespace for the checks 
+
+```py
+@pl.api.register_lazyframe_namespace("irb")
+class IRBAccessor:
+    def __init__(self, lf: pl.LazyFrame):
+        self._lf = lf
+
+    def configure(self, **kwargs) -> Report:
+        return Report(self._lf, IRBConfig(**kwargs))
+```
+
+this ensures that user can call `df.irb.configure(...)` on a dataframe `df` to enter the builder pattern, which is a `Report` object. 
+
+2. the config tells the builder pattern necessary column names for the checks 
+
+```
+@dataclass(frozen=True)
+class IRBConfig:
+    # Portfolio Metadata
+    id_col: str | None = None
+    date_col: str | None = None
+
+    # PD / Classification Columns
+    default_col: str | None = None
+    score_col: str | None = None
+    grade_col: str | None = None
+    pd_col: str | None = None
+```
+
+user can call `df.configure(score_col="score", default_col="default")` to overwrite the default values (None).
+
+3. once the configuration is done, add tests to the builder looks like this
+
+```
+report = df.configure(score_col="score", default_col="default")
+(
+    report
+    .add_sample(val=lf_val)
+    .check_representativeness(variables = ["obligor_type"])
+)
+```
+ 
+Of course these methods have to be implemented on the `Report` class. e.g. 
+
+```
+class Report:
+    def __init__(
+        self,
+        lf: pl.LazyFrame,
+        config: IRBConfig,
+        checks: list[Check] = None,
+        samples: dict[str, pl.LazyFrame] = None
+    ):
+        self._lf = lf
+        self._config = config
+        self._checks = checks or []
+        self._samples = samples or {}
+
+        # Ensure all checks satisfy the Check protocol
+        for i, check in enumerate(self._checks):
+            if not isinstance(check, Check):
+                raise TypeError(f"Item at index {i} in 'checks' does not satisfy the Check protocol: {type(check)}")
+
+    def add_samples(self, **samples: pl.LazyFrame) -> Self:
+        """Returns a new Report containing the merged samples."""
+        return Report(
+            self._lf,
+            self._config,
+            self._checks,
+            {**self._samples, **samples}
+        )
+
+    def check_representativeness(self, versus: str, variables: list[str]) -> Self:
+        check = RepresentativenessCheck(
+            target_lf=self._lf,
+            baseline_lf=self._samples[versus],
+            baseline_name=versus,
+            variables=variables
+        )
+
+        return Report(
+            self._lf,
+            self._config,
+            self._checks + [check],
+            self._samples
+        )
+```
+
+
+
+
+
+
+- 
+
+We are in the era where AI can write most of the code,  The design comes in a few parts. 
+
 
 ## data assumption 
 
