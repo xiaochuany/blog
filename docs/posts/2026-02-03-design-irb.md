@@ -17,7 +17,7 @@ Possible complaints about this workflow include:
 
 - passing around many dataframes from functions to functions can be painful
 - having to create many intermediate dataframes in memory can feel repetitive and ressource consuming
-- hard to structure it easily so as to see what's tested at a glance
+- hard to see what are being tested at a glance
 
 ## Moving from functions to building a report object
 
