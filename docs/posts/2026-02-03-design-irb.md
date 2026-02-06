@@ -9,6 +9,8 @@ draft: true
 
 # Design an IRB model validation library
 
+<!-- more -->
+
 ## What is the status quo
 
 A common workflow for validation of risk models is to write a bunch of functions for the relevant statstical tests (often offloading to scipy/statsmodels/sklearn), save them in a py file, write an orchestration notebook that reads the data, runs a collection of functions and save the charts/excels somewhere. 
