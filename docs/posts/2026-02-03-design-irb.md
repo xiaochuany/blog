@@ -3,7 +3,7 @@ date:
     created: 2026-02-03
 authors: [xy]
 categories: [TIL]
-tags: [quant methods]
+tags: [dev tools, AI assistant]
 draft: true
 ---
 
