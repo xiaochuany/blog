@@ -26,7 +26,7 @@ The core idea of the design is to create a dataframe interface which allows user
 - registers a new namespace `irb` on the `polars.LazyFrame` class;
 - provides a unifided configuration interface for all PD, LGD, CCF models by calling `polars.LazyFrame.irb.configure(id_col="obligor_id",score_col="score", ...)`, which in turn creates an empty `Report` object;
 - offers a fluent builder API for the `Report` class, allowing users to chain `.check_X().check_Y()`;
-- The `Report` object is just a queue of checks which are not executed until the user calls `.show()` (pretty report for notebook) or `.run()` (for manual inspection of the tables/charts). 
+- The `Report` object is just a queue of checks which are not executed until the user calls `.show()` (pretty html report for notebook) or `.run()` (for manual inspection of specific tables/charts in the report). 
 
 The choice of `polars` over `pandas` fits the lazy execution philosophy here. But obviously this does not prevent pandas users from using the library. Here is an example:  
 
