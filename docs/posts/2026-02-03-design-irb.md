@@ -11,7 +11,7 @@ draft: true
 
 ## What is the status quo
 
-A common workflow for validation of risk models is to write a bunch of functions for the relevant statstical tests (often offloading to scipy/statsmodels/sklearn), save them in a py file, write a orchestration notebook that reads the data, runs a collection of functions and save the charts/excels somewhere. 
+A common workflow for validation of risk models is to write a bunch of functions for the relevant statstical tests (often offloading to scipy/statsmodels/sklearn), save them in a py file, write an orchestration notebook that reads the data, runs a collection of functions and save the charts/excels somewhere. 
 
 Possible complaints about this workflow include:
 
