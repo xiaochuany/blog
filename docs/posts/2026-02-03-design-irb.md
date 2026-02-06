@@ -4,7 +4,6 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [dev tools, AI assistant]
-draft: true
 ---
 
 # Design an IRB model validation library
