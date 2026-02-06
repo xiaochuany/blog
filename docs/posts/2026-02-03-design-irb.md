@@ -92,7 +92,7 @@ User calls  `df.configure(score_col="score", default_col="default")` to overwrit
 
 #### Report class
 
-Always return a new Report object for immutability. It is cheap to create them because the lazyframe is just a query plan + reference to data source, and the checks are essentiablly callables. 
+Always return a new Report object for immutability. It is cheap to create them because a lazyframe is just a query plan + reference to data source, and the checks are essentiablly callables. 
 
 ```py
 class Report:
