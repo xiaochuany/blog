@@ -52,7 +52,7 @@ report = lf.irb.configure(...)
 
 We are in an era where LLMs write most of the code. In this instance, I mostly outlined the API design; reported bugs; insisted on being minimalist. I don't know how fast are we heading into an era where humans are not necessary (/ourperforms us) for design/taste.   
 
-Personally, I don't feel comfortable generating the whole library/too many lines of code in one go becaues the assumptions made by LLM along the way can be not perfectly aligned with the intent of the developer. Also since I still read all the code LLM generates, I prefer let AI generate a small chunk of code at a time to keep my sanity. It's better for detecing early diversion from my intent/design choice which are not provided in the initial prompt. 
+Personally, I don't feel comfortable generating the whole library/too many lines of code in one go becaues the assumptions made by LLM along the way can be misaligned with the intent of the developer. Also since I still read all the code LLM generates, I prefer let AI generate a small chunk of code at a time to keep my sanity. It's better for detecing early diversion from my intent/design choice which are not provided in the initial prompt. 
 
 
 ## A few details 
