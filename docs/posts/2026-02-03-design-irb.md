@@ -58,6 +58,10 @@ Personally, I don't feel comfortable generating the whole library/too many lines
 
 ## A few details 
 
+#### class diagram 
+
+![alt text](assets/2026-02-03-design-irb-1771366504179.png)
+
 #### register a new namespace
 
 ```py
@@ -93,7 +97,7 @@ User calls  `df.configure(score_col="score", default_col="default")` to overwrit
 
 #### Report class
 
-Always return a new Report object for immutability. It is cheap to create them because a lazyframe is just a query plan + reference to data source, and the checks are essentiablly callables. 
+The builder always returns a new Report object for immutability. It is cheap to create them because a lazyframe is just a query plan + reference to data source, and the checks are essentially callables. For instance, below `RepresentativenessCheck` is essentially a function that computes the PSI between two categorical columns whose implementation is delegated somewhere else.    
 
 ```py
 class Report:
@@ -108,11 +112,6 @@ class Report:
         self._config = config
         self._checks = checks or []
         self._samples = samples or {}
-
-        # Ensure all checks satisfy the Check protocol
-        for i, check in enumerate(self._checks):
-            if not isinstance(check, Check):
-                raise TypeError(f"Item at index {i} in 'checks' does not satisfy the Check protocol: {type(check)}")
 
     def add_samples(self, **samples: pl.LazyFrame) -> Self:
         """Returns a new Report containing the merged samples."""
@@ -138,8 +137,5 @@ class Report:
             self._samples
         )
 ```
-
-
-
 
 
