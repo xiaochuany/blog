@@ -20,7 +20,7 @@ Possible complaints about this workflow include:
 - having to create many intermediate dataframes in memory can feel repetitive and ressource consuming
 - hard to see what are being tested at a glance
 
-## Moving from functions to building a report object
+## Move from calling functions to building a report object
 
 The core design is to create a dataframe interface which allows users to specify the tests in one go. To be more precise, the library
 
@@ -51,10 +51,9 @@ report = lf.irb.configure(...)
 
 ## Comments on the use of AI coding tools
 
-We are in an era where LLMs write most of the code. In this instance, I mostly outlined the API design; reported bugs; insisted on being minimalist. I don't know how fast are we heading into an era where humans are not necessary (/ourperforms us) for design/taste.   
+We are in an era where LLMs write most of the code. In this instance, I mostly outlined the API design; reported bugs; insisted on being minimalist. I don't know how fast are we heading into an era where humans are not necessary (/outperform us) for design/taste.   
 
-Personally, I don't feel comfortable generating the whole library/too many lines of code in one go becaues the assumptions made by LLM along the way can be misaligned with the intent of the developer. Also since I still read all the code LLM generates, I prefer let AI generate a small chunk of code at a time to keep my sanity. It's better for detecing early diversion from my intent/design choice which are not provided in the initial prompt. 
-
+Personally, I don't feel comfortable generating the whole library/too many lines of code in one go becaues the assumptions made by LLM along the way can be misaligned with the intent of the developer. Also since I still read all the code LLM generates, I prefer let AI generate a small chunk of code at a time to keep my sanity. It's better for detecing early the divergence from my intent/design choice which are not provided in the initial prompt. 
 
 ## A few details 
 
