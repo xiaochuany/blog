@@ -51,11 +51,11 @@ report = lf.irb.configure(...)
 
 ## Comments on the use of AI coding tools
 
-We are in an era where LLMs write most of the code. In this instance, I mostly outlined the API design; reported bugs; insisted on being minimalist. I don't know how fast are we heading into an era where humans are not necessary (/outperform us) for design/taste.   
+We are in an era where LLMs write most of the code. In this instance, I mostly outlined the API design; reported bugs; insisted on being minimalist. I don't know how fast are we heading into an era where humans are not necessary even for design. 
 
-Personally, I don't feel comfortable generating the whole library/too many lines of code in one go becaues the assumptions made by LLM along the way can be misaligned with the intent of the developer. Also since I still read all the code LLM generates, I prefer let AI generate a small chunk of code at a time to keep my sanity. It's better for detecing early the divergence from my intent/design choice which are not provided in the initial prompt. 
+Personally, I don't feel comfortable with generating too many lines of code in one go becaues the assumptions made by LLM along the way can be misaligned with my intent. Also since I still read all the code LLM generates, I prefer let AI generate a small chunk of code at a time to keep my sanity. It's better for detecing early the divergence from my intent/design choice which are not provided in the initial prompt. Perhaps this is just a matter of personal preference.
 
-## A few details 
+## A few implementation details 
 
 #### class diagram 
 
@@ -96,7 +96,7 @@ User calls  `df.configure(score_col="score", default_col="default")` to overwrit
 
 #### Report class
 
-The builder always returns a new Report object for immutability. It is cheap to create them because a lazyframe is just a query plan + reference to data source, and the checks are essentially callables. For instance, below `RepresentativenessCheck` is essentially a function that computes the PSI between two categorical columns whose implementation is delegated somewhere else.    
+The builder always returns a new Report object for immutability. It is cheap to create them because a lazyframe is just a query plan + reference to data source, and the checks are essentially callables. For instance, below `RepresentativenessCheck` is a wrapper around `psi` function which computes the PSI between two categorical columns.    
 
 ```py
 class Report:
