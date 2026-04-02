@@ -32,7 +32,7 @@ The key steps of the experiment
 3. compute the diff between a function with its quadratic approximation
 4. evaluate the diff over a few scales.  
 
-```py exec="on" result="text" source="above"
+```py
 import jax
 import jax.numpy as jnp
 import jax.random as jr
@@ -72,6 +72,8 @@ xs = xo + u * scales[:,None] # broadcast to (d,5)
 errors = jax.vmap(diff, in_axes=(0,None))(xs, xo) # (5,) one for each scale
 
 print(errors)
+# [1.01747675e-03 1.03140168e-06 1.03226050e-09 1.03650422e-12
+#  4.44089210e-15]
 ```
 
 We observe that, roughly speaking, as we reduce the distance from x to xo by 10x we see an improvement of the approximation by 1000x, which 
@@ -88,7 +90,7 @@ $$
 where $J_f, J_g$ are the Jacobian matrices of $f,g$ respectively. In the special case $q=1$, we can write $J_f$ as $\nabla f$ and can call `jax.grad` in place `jax.jacobian`, both producing a 1D array. 
 
 
-```py exec="on" result="text" source="above"
+```py
 import jax
 import jax.numpy as jnp
 import jax.random as jr
@@ -113,6 +115,7 @@ res = jnp.allclose(
 )
 
 print(res)
+# True
 ```
 
 ---
