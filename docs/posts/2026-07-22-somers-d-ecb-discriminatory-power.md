@@ -3,7 +3,7 @@ date:
     created: 2026-07-22
 authors: [xy]
 categories: [Analysis]
-tags: [quant method]
+tags: [quant methods]
 ---
 
 
