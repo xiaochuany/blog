@@ -6,7 +6,7 @@ categories: [TIL]
 tags: [quant methods]
 ---
 
-# Cross-Validation Isn't About the Loop
+# Cross validation is more than the loop
 <!-- more -->
 
 Technically, cv is just a loop so we shouldn't be scared of writing a custom one. 
