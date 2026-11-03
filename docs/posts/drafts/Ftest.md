@@ -5,6 +5,7 @@ draft: true
 authors: [xy]
 categories: [TIL]
 tags: [quant methods]
+slug: f-tests
 ---
 
 # F tests

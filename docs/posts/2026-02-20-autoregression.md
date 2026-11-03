@@ -5,6 +5,7 @@ authors: [xy]
 categories: [TIL]
 tags: [quant methods]
 draft: true
+slug: asymptotic-distribution-of-ar1-ols-estimators-mds-and-limit-theorems
 ---
 
 # Asymptotic Distribution of AR(1) OLS Estimators: MDS and Limit Theorems

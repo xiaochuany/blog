@@ -5,6 +5,7 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [low latency programming]
+slug: jax-as-a-differential-calculus-tool
 ---
 
 # JAX as a differential calculus tool

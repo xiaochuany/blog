@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [dev tools]
+slug: static-site-generator-using-fasthtml
 ---
 
 # Static site generator using fasthtml

@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [quant methods]
+slug: ecb-gauc-discrimination-of-the-model-or-of-the-rating-system
 ---
 
 

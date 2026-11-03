@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [Tutorial]
 tags: [dev tools]
+slug: a-guide-to-convolution-parameters-in-neural-nets
 ---
 
 # A guide to convolution parameters in neural nets

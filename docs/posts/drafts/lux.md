@@ -5,6 +5,7 @@ authors: [xy]
 categories: [TIL]
 tags: [Luxembourgish]
 draft: true
+slug: just-enough-luxembourgish
 ---
 
 # Just enough Luxembourgish

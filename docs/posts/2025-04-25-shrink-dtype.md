@@ -5,6 +5,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [data engineering]
+slug: puzzling-query-optimization-behaviour-and-dtypes-shrinking-in-polars
 ---
 # Puzzling query optimization behaviour and dtypes shrinking in polars
 

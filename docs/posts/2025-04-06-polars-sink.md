@@ -5,6 +5,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [data engineering]
+slug: polars-streaming-tricks
 ---
 
 # Polars streaming tricks

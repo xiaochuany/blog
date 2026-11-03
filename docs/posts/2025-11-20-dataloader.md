@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [Tutorial]
 tags: [dev tools, low latency programming, data engineering]
+slug: high-performance-data-loading-with-grain
 ---
 
 # High performance data loading with grain

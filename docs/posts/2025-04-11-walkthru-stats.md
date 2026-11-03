@@ -5,6 +5,7 @@ authors: [xy]
 categories: [TIL]
 tags: [quant methods]
 draft: true
+slug: walk-through-scipystats-part-1-one-sample-tests
 ---
 
 # Walk through `scipy.stats`: part 1 one-sample tests 

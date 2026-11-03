@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [quant methods]
+slug: hierarchical-clustering-with-36-loc
 ---
 
 

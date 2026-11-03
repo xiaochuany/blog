@@ -5,6 +5,7 @@ authors: [xy]
 categories: [TIL]
 tags: [life hack]
 draft: true
+slug: school-options
 ---
 
 # School options

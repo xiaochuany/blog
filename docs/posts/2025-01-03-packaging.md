@@ -5,6 +5,7 @@ date:
 authors: [xy]
 categories: [Tutorial]
 tags: [dev tools]
+slug: mini-tutorial-for-python-packaging-release-and-publish
 ---
 
 # Mini-tutorial for python packaging, release and publish

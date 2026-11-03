@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [low latency programming, quant methods]
+slug: scalable-bootstrapping
 ---
 
 # Scalable bootstrapping

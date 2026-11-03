@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [quant methods]
+slug: cross-validation-is-more-than-the-loop
 ---
 
 # Cross validation is more than the loop
