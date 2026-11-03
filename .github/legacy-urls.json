@@ -1,0 +1,566 @@
+{
+  "source_revision": "60f8b6309680f47775166205545e2104d889b726",
+  "published_revision": "ad51483314521232f75a0afdf897585e7dad9644",
+  "site_url": "https://xiaochuany.github.io/blog/",
+  "pages": {
+    "2024/12/18/mkdocs-intro/": {
+      "title": "Technical writing with material for mkdocs",
+      "anchors": [
+        "add-blog-plugin",
+        "add-rss-plugin",
+        "add-tags-plugin",
+        "author",
+        "credit",
+        "customize-the-theme",
+        "extra",
+        "first-steps-to-follow",
+        "markdown-extension-code-block",
+        "markdown-extension-maths",
+        "metadata-of-posts",
+        "nav",
+        "technical-writing-with-material-for-mkdocs"
+      ]
+    },
+    "2024/12/21/essentials-of-polars-for-pandas-experts/": {
+      "title": "Essentials of polars for pandas experts",
+      "anchors": [
+        "eager-vs-lazy",
+        "essentials-of-polars-for-pandas-experts",
+        "expression",
+        "fn:mig",
+        "fn:pod",
+        "fn:pycon",
+        "fn:pydata",
+        "fnref:mig",
+        "fnref:pod",
+        "fnref:pycon",
+        "fnref:pydata",
+        "go-further",
+        "syntax-difference",
+        "why-polars-is-fast-in-a-nutshell"
+      ]
+    },
+    "2025/01/03/mini-tutorial-for-python-packaging-release-and-publish/": {
+      "title": "Mini-tutorial for python packaging, release and publish",
+      "anchors": [
+        "alternatively-with-uv",
+        "classical-way",
+        "create-a-tag-and-release",
+        "fn:pep517",
+        "fn:pep518",
+        "fnref:pep517",
+        "fnref:pep518",
+        "mini-tutorial-for-python-packaging-release-and-publish",
+        "publish"
+      ]
+    },
+    "2025/01/12/intro-to-jax/": {
+      "title": "Intro to JAX",
+      "anchors": [
+        "grad-grad",
+        "intro-to-jax",
+        "jit-if-you-can",
+        "numpy-operations",
+        "pytree",
+        "random-numbers",
+        "reference",
+        "simple-profilingtesting",
+        "type-hints",
+        "vmap"
+      ]
+    },
+    "2025/02/15/survive/": {
+      "title": "The Cox survival guide: hazards, models and time",
+      "anchors": [
+        "cox-proportional-hazard-model",
+        "evaluating-models",
+        "fn:1",
+        "fn:2",
+        "fn:att",
+        "fn:cox",
+        "fn:cpe",
+        "fn:ipcw",
+        "fnref2:1",
+        "fnref:1",
+        "fnref:2",
+        "fnref:att",
+        "fnref:cox",
+        "fnref:cpe",
+        "fnref:ipcw",
+        "right-cencoring",
+        "the-cox-survival-guide-hazards-models-and-time",
+        "what-is-hazard"
+      ]
+    },
+    "2025/04/05/fork-merge-and-pr/": {
+      "title": "Fork, merge and PR",
+      "anchors": [
+        "fork-merge-and-pr",
+        "how-to-undo-changes",
+        "what-happens-during-the-fetch-and-merge-process"
+      ]
+    },
+    "2025/04/06/polars-streaming-tricks/": {
+      "title": "Polars streaming tricks",
+      "anchors": [
+        "fn:stream",
+        "fnref:stream",
+        "polars-streaming-tricks"
+      ]
+    },
+    "2025/04/13/mortgate/": {
+      "title": "Build a mortgate calculator with fasthtml",
+      "anchors": [
+        "build-a-mortgate-calculator-with-fasthtml"
+      ]
+    },
+    "2025/04/20/df-gen-polars/": {
+      "title": "Generate test dataframe with polars (powered by hypothesis)",
+      "anchors": [
+        "generate-test-dataframe-with-polars-powered-by-hypothesis"
+      ]
+    },
+    "2025/04/24/llm-eval-for-my-personal-usage/": {
+      "title": "LLM eval for my personal usage",
+      "anchors": [
+        "llm-eval-for-my-personal-usage",
+        "paste-image-to-markdown-20250424",
+        "search-the-url-of-a-file-in-github-20250501",
+        "writing-task-20250518"
+      ]
+    },
+    "2025/04/25/puzzling-query-optimization-behaviour-and-dtypes-shrinking-in-polars/": {
+      "title": "Puzzling query optimization behaviour and dtypes shrinking in polars",
+      "anchors": [
+        "counterintuitive-bits",
+        "fn:case",
+        "fnref:case",
+        "puzzling-query-optimization-behaviour-and-dtypes-shrinking-in-polars",
+        "shrink-dtype"
+      ]
+    },
+    "2025/05/01/static-site-generator-using-fasthtml/": {
+      "title": "Static site generator using fasthtml",
+      "anchors": [
+        "archetecture",
+        "genesis",
+        "static-site-generator-using-fasthtml"
+      ]
+    },
+    "2025/05/14/a-dimensional-approach-to-data-quality-principles/": {
+      "title": "A dimensional approach to data quality principles",
+      "anchors": [
+        "1-accuracy",
+        "1-monitoring-measurement",
+        "1-relevance",
+        "1-stewardship-ownership",
+        "1-transformation-integrity",
+        "2-completeness",
+        "2-issue-management-remediation",
+        "2-metadata-lineage",
+        "2-regulatory-compliance",
+        "2-usability-interpretability",
+        "3-auditability-reproducibility",
+        "3-consistency",
+        "3-performance-scalability",
+        "4-lifecycle-management",
+        "4-resilience-error-handling",
+        "4-timeliness",
+        "5-security-privacy",
+        "5-uniqueness",
+        "6-validity",
+        "a-dimensional-approach-to-data-quality-principles",
+        "i-intrinsic-data-quality-characteristics-of-the-data",
+        "ii-data-management-operational-excellence",
+        "iii-governance-risk-compliance",
+        "iv-user-centric-value-realization",
+        "putting-it-all-together-a-sample-workflow",
+        "v-continuous-improvement-monitoring"
+      ]
+    },
+    "2025/05/19/intro-to-snowpark-api/": {
+      "title": "Intro to Snowpark API",
+      "anchors": [
+        "column-class",
+        "dataframe-class",
+        "exception",
+        "f-namespace-functions",
+        "first-imports",
+        "horizontal-ops-in-snowpark",
+        "intro-to-snowpark-api",
+        "io",
+        "null-handling",
+        "row-class",
+        "t-types",
+        "testing",
+        "window-class"
+      ]
+    },
+    "2025/05/21/repurposing-github-for-mathematical-research/": {
+      "title": "Repurposing gitHub for mathematical research",
+      "anchors": [
+        "1-setup-problem-definition",
+        "2-working-process-using-issues",
+        "3-exploration-via-branches",
+        "4-documentation-using-pull-requests",
+        "5-simulation-verification",
+        "6-progress-tracking",
+        "basic-repository-structure",
+        "discussions-for-longer-form-mathematical-exploration",
+        "issues-use-as-mathematical-questions-approaches-or-subproblems",
+        "key-github-features-to-leverage",
+        "pr-process-even-as-a-solo-researcher-use-prs-as-checkpoints",
+        "project-board-visual-organization-of-your-research-flow",
+        "repurposing-github-for-mathematical-research",
+        "simple-workflow"
+      ]
+    },
+    "2025/05/25/gpu-puzzles-annotated/": {
+      "title": "GPU puzzles annotated",
+      "anchors": [
+        "gpu-puzzles-annotated",
+        "puzzle-1",
+        "puzzle-2",
+        "puzzle-3",
+        "puzzle-4"
+      ]
+    },
+    "2025/05/26/working-with-large-datasets-in-snowflake/": {
+      "title": "Working with large datasets in Snowflake",
+      "anchors": [
+        "cache-the-results",
+        "choose-the-right-warehouse",
+        "materialized-view-persistent-auto-refreshed-costs-money",
+        "monitoring",
+        "parquet-file-in-stage",
+        "predicate-and-projection-pushdown",
+        "temp-dataframesession-scoped",
+        "temp-table-session-scoped",
+        "working-with-large-datasets-in-snowflake"
+      ]
+    },
+    "2025/06/07/duckdb-basics/": {
+      "title": "duckdb basics",
+      "anchors": [
+        "connection",
+        "duckdb-basics",
+        "example",
+        "extensions",
+        "in-memory"
+      ]
+    },
+    "2025/06/07/sqlite-the-absolute-basics/": {
+      "title": "SQLite: the absolute basics",
+      "anchors": [
+        "basics",
+        "compare-primary-key-and-unique",
+        "create-strict-table-and-index",
+        "examples",
+        "parametrized-query",
+        "routines",
+        "set-foreign-key",
+        "sqlite-the-absolute-basics"
+      ]
+    },
+    "2025/06/15/basel-framework/": {
+      "title": "Basel Framework",
+      "anchors": [
+        "basel-framework"
+      ]
+    },
+    "2025/06/17/exploring-a-large-database/": {
+      "title": "Exploring a large database",
+      "anchors": [
+        "describe-a-table",
+        "exploring-a-large-database",
+        "foreign-keys",
+        "having-applications-in-mind",
+        "learn-the-data-model-from-an-architect",
+        "use-metadata-tables",
+        "visualizations"
+      ]
+    },
+    "2025/07/07/random-forest-scaling-mini-benchmark/": {
+      "title": "Random forest scaling mini-benchmark",
+      "anchors": [
+        "random-forest-scaling-mini-benchmark"
+      ]
+    },
+    "2025/07/10/logging-in-python/": {
+      "title": "Logging in python",
+      "anchors": [
+        "logging-in-python"
+      ]
+    },
+    "2025/07/15/hierarchical-clustering-with-36-loc/": {
+      "title": "Hierarchical clustering with 36 LOC",
+      "anchors": [
+        "demo",
+        "hierarchical-clustering-with-36-loc",
+        "inter-cluster-distance",
+        "main-loop",
+        "merge",
+        "why-heap"
+      ]
+    },
+    "2025/07/23/unpacking-the-n-1-in-the-t-test/": {
+      "title": "Unpacking the n-1 in the t test",
+      "anchors": [
+        "a-slight-generalisation-two-sample-t-test-with-equal-variance",
+        "fun-fact",
+        "putting-all-together",
+        "relate-to-t-statistic",
+        "setting-up-the-target",
+        "some-linear-algebra",
+        "unpacking-the-n-1-in-the-t-test"
+      ]
+    },
+    "2025/08/01/use-code-when-dataikus-ui-gets-in-the-way/": {
+      "title": "Use code when Dataiku's UI gets in the way",
+      "anchors": [
+        "access-custom-variables",
+        "feed-partition-numbers-with-code",
+        "partition-dependency-function",
+        "python-recipe-that-takes-as-input-a-partitioned-dataset",
+        "sql-recipe-that-takes-as-input-a-partitioned-dataset",
+        "use-code-when-dataikus-ui-gets-in-the-way"
+      ]
+    },
+    "2025/08/05/vasicek-in-basel/": {
+      "title": "Vasicek in Basel",
+      "anchors": [
+        "capital-requirement",
+        "one-factor-model",
+        "vasicek-in-basel"
+      ]
+    },
+    "2025/08/06/unpacking-the-k-1-in-the-chi-square-test/": {
+      "title": "Unpacking the k-1 in the chi-square test",
+      "anchors": [
+        "checking-the-covariance",
+        "generalization-again",
+        "linear-algebra-again",
+        "multivariate-central-limit-theorem",
+        "setting",
+        "unpacking-the-k-1-in-the-chi-square-test"
+      ]
+    },
+    "2025/08/23/monotonic-binning-with-pava/": {
+      "title": "Monotonic binning with PAVA",
+      "anchors": [
+        "bonus-stack-based-approach",
+        "complexity",
+        "monotonic-binning-with-pava",
+        "pava",
+        "the-catch"
+      ]
+    },
+    "2025/08/28/a-patching-pattern/": {
+      "title": "A patching pattern",
+      "anchors": [
+        "a-patching-pattern",
+        "example-1-add-a-lookup-method-to-dataframe",
+        "example-2-change-the-formatting-of-ttestresult"
+      ]
+    },
+    "2025/09/02/cheatsheet-for-regular-expression/": {
+      "title": "Cheatsheet for regular expression",
+      "anchors": [
+        "anchors",
+        "bonus-gpt4-split-pattern",
+        "characer-class",
+        "cheatsheet-for-regular-expression",
+        "escape-with",
+        "example-match-the-endpoints-in-intervals",
+        "grouping",
+        "or-with-negation-with",
+        "quantifiers",
+        "shorthand"
+      ]
+    },
+    "2025/09/07/repurpose-hierarchical-clustering/": {
+      "title": "Repurpose hierarchical clustering for feature engineering",
+      "anchors": [
+        "repurpose-hierarchical-clustering-for-feature-engineering"
+      ]
+    },
+    "2025/10/31/jax-as-a-differential-calculus-tool/": {
+      "title": "JAX as a differential calculus tool",
+      "anchors": [
+        "chain-rule",
+        "jax-as-a-differential-calculus-tool",
+        "taylor-expansion"
+      ]
+    },
+    "2025/11/09/a-simple-overview-to-eu-banking-regulations/": {
+      "title": "A simple overview to EU banking regulations",
+      "anchors": [
+        "1-basel-standards-the-global-blueprint",
+        "2-crr-and-crd-the-eu-turns-basel-into-law",
+        "3-eba-technical-details-and-uniformity",
+        "4-ecbssm-and-ncas-how-the-rules-are-enforced",
+        "5-where-specific-modelsrisks-sit-three-concrete-examples",
+        "6-the-whole-stack-in-one-line",
+        "a-simple-overview-to-eu-banking-regulations",
+        "crd-capital-requirements-directive",
+        "crr-capital-requirements-regulation",
+        "example-1-irrbb-interest-rate-risk-in-the-banking-book",
+        "example-2-irb-models-internal-ratings-based-credit-risk-models",
+        "example-3-ifrs-9-expected-credit-loss-models"
+      ]
+    },
+    "2025/11/18/a-guide-to-convolution-parameters-in-neural-nets/": {
+      "title": "A guide to convolution parameters in neural nets",
+      "anchors": [
+        "a-guide-to-convolution-parameters-in-neural-nets",
+        "application-temporal-convolutional-network",
+        "concepts-that-provide-a-granular-control",
+        "input-dilation",
+        "kernel-dilation",
+        "origin",
+        "padding-patterns",
+        "simplest-setup"
+      ]
+    },
+    "2025/11/20/high-performance-data-loading-with-grain/": {
+      "title": "High performance data loading with grain",
+      "anchors": [
+        "caveat-on-the-import",
+        "dataloader-api-is-verbose",
+        "dataset-api-is-cooler",
+        "high-performance-data-loading-with-grain",
+        "taking-advange-of-tpusgpus"
+      ]
+    },
+    "2025/12/02/scalable-bootstrapping/": {
+      "title": "Scalable bootstrapping",
+      "anchors": [
+        "scalable-bootstrapping",
+        "side-note-why-not-vmap"
+      ]
+    },
+    "2025/12/10/a-tale-of-convexity-in-credit-rating-assignment-problem/": {
+      "title": "A tale of convexity in credit rating assignment problem",
+      "anchors": [
+        "a-tale-of-convexity-in-credit-rating-assignment-problem"
+      ]
+    },
+    "2025/12/14/hit-ecb-data-api/": {
+      "title": "Hit ECB data API",
+      "anchors": [
+        "hit-ecb-data-api"
+      ]
+    },
+    "2025/12/23/a-guide-to-preparing-tax-form-in-luxembourg/": {
+      "title": "A guide to preparing tax form in Luxembourg",
+      "anchors": [
+        "a-guide-to-preparing-tax-form-in-luxembourg",
+        "a-simplified-mental-model",
+        "benefit-of-class-2",
+        "chapter-level-pointers-inside-title-i-the-most-relevant-for-personal-deductionsexemptions",
+        "cheat-sheet-topic-where-to-look-first",
+        "earning",
+        "financial-investment",
+        "memo-where-to-look-in-the-lir",
+        "quick-tip-for-speed",
+        "spending"
+      ]
+    },
+    "2025/12/30/a-case-study-for-ai-assisted-review-of-regulatory-texts/": {
+      "title": "A case study for AI assisted review of regulatory texts",
+      "anchors": [
+        "a-case-study-for-ai-assisted-review-of-regulatory-texts",
+        "break-down-constraints",
+        "high-level-process",
+        "initial-context",
+        "keep-it-simple",
+        "prompt-template"
+      ]
+    },
+    "2025/12/31/2026-resolution/": {
+      "title": "2026 Resolution",
+      "anchors": [
+        "2026-resolution",
+        "outlive-plan-per-attias-book"
+      ]
+    },
+    "2026/02/03/design-an-irb-model-validation-library/": {
+      "title": "Design an IRB model validation library",
+      "anchors": [
+        "a-few-implementation-details",
+        "class-diagram",
+        "comments-on-the-use-of-ai-coding-tools",
+        "design-an-irb-model-validation-library",
+        "move-from-calling-functions-to-building-a-report-object",
+        "register-a-new-namespace",
+        "report-class",
+        "unified-config-for-pd-lgd-ccf",
+        "what-is-the-status-quo"
+      ]
+    },
+    "2026/07/22/ecb-gauc-discrimination-of-the-model-or-of-the-rating-system/": {
+      "title": "ECB gAUC: discrimination of the model or of the rating system?",
+      "anchors": [
+        "an-interesting-open-question",
+        "but-model-validation-asks-a-different-question",
+        "ecb-gauc-discrimination-of-the-model-or-of-the-rating-system",
+        "segmentation-is-different"
+      ]
+    },
+    "2026/07/23/cross-validation-is-more-than-the-loop/": {
+      "title": "Cross validation is more than the loop",
+      "anchors": [
+        "cross-validation-is-more-than-the-loop"
+      ]
+    },
+    "404.html": {},
+    "archive/2024/": {},
+    "archive/2025/": {},
+    "archive/2025/page/2/": {},
+    "archive/2025/page/3/": {},
+    "archive/2025/page/4/": {},
+    "archive/2025/page/5/": {},
+    "archive/2025/page/6/": {},
+    "archive/2025/page/7/": {},
+    "archive/2025/page/8/": {},
+    "archive/2026/": {},
+    "category/analysis/": {},
+    "category/analysis/page/2/": {},
+    "category/analysis/page/3/": {},
+    "category/til/": {},
+    "category/til/page/2/": {},
+    "category/til/page/3/": {},
+    "category/til/page/4/": {},
+    "category/til/page/5/": {},
+    "category/tutorial/": {},
+    "category/tutorial/page/2/": {},
+    "": {},
+    "page/2/": {},
+    "page/3/": {},
+    "page/4/": {},
+    "page/5/": {},
+    "page/6/": {},
+    "page/7/": {},
+    "page/8/": {},
+    "page/9/": {},
+    "tags/": {}
+  },
+  "files": [
+    "assets/2025-07-07-random-forest-scaling-1751918656538.png",
+    "assets/2025-07-15-hierarchical-1753218010731.png",
+    "assets/2025-08-01-dataiku-1754253620803.png",
+    "assets/2025-08-01-dataiku-1754253733013.png",
+    "assets/2025-08-01-dataiku-1754253891884.png",
+    "assets/2025-08-01-dataiku-1754254102886.png",
+    "assets/2025-08-01-dataiku-1754254868742.png",
+    "assets/2025-08-02-vasicek-1754403524354.png",
+    "assets/2026-01-13-interest-rates-fundmentals-1768685687074.png",
+    "assets/2026-02-03-design-irb-1771366504179.png",
+    "assets/mortgage.png",
+    "drafts/image-1.png",
+    "drafts/image-2.png",
+    "drafts/image.png",
+    "feed_rss_created.xml",
+    "feed_rss_updated.xml"
+  ]
+}

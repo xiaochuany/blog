@@ -1,9 +1,10 @@
 site_name: Xiaochuan's blog
 site_description: life is short
 site_url: https://xiaochuany.github.io/blog/
+use_directory_urls: true
 
 theme:
-  name: material
+  variant: classic
   features:
     # - navigation.tabs
     - navigation.indexes
@@ -24,26 +25,10 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings:
-      handlers:
-        python:
-          options:
-            show_root_heading: true
-            show_if_no_docstring: true
-            inherited_members: true
-            members_order: source
-            separate_signature: true
-            unwrap_annotated: true
-            filters:
-            - '!^_'
-            merge_init_into_class: true
-            docstring_section_style: spacy
-            signature_crossrefs: true
-            show_symbol_type_heading: true
-            show_symbol_type_toc: true
-
   - blog:
       blog_dir: .
+      post_url_date_format: yyyy/MM/dd
+      post_url_format: "{date}/{slug}"
       blog_toc: true
       archive_date_format: yyyy
       categories_allowed:
@@ -53,10 +38,6 @@ plugins:
         - Technical
         - Analysis
       pagination_per_page: 5
-      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-        kwds:
-          case: lower
-          short: true
   - tags
   - rss:
       match_path: "posts/.*"
@@ -97,12 +78,11 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: ['.', 'docs/src']
       check_paths: true
-  - pymdownx.superfences
   # emoji
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:zensical.extensions.emoji.twemoji
+      emoji_generator: !!python/name:zensical.extensions.emoji.to_svg
   # diagram
   - pymdownx.superfences:
       custom_fences:
