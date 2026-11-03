@@ -1,91 +1,77 @@
-# blog
+# Xiaochuan's blog
 
-made with `material for mkdocs`
+Built with [Zensical](https://zensical.org/) and its native blog, tags, search,
+and RSS support. Published at <https://xiaochuany.github.io/blog/>.
 
-## credit
+## Develop locally
 
-[template by material team](https://github.com/mkdocs-material/create-blog/blob/main/mkdocs.yml)
+Use Python 3.12:
 
-## first steps to follow
+```sh
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+zensical serve
+```
 
-1. `pip install mkdocs-material`
-1. init docs locally `mkdocs new .` 
-1. create empty remote repo and push local to remote 
-1. add ci config file as per [material docs](https://squidfunk.github.io/mkdocs-material/publishing-your-site/)
-1. set publish branch to `gh-pages`
+Build and check all pre-migration links before publishing:
 
-after these steps, ci should work and a site is published. new edits of docs in the main branch would trigger rebuild of the site. 
+```sh
+zensical build --clean --strict
+python scripts/check_legacy_urls.py
+```
 
-## customize the theme
+Configuration stays in `mkdocs.yml`, which Zensical supports directly. The
+`classic` theme keeps the existing appearance, light/dark toggle, code copying,
+MathJax, Mermaid, social links, and analytics.
 
-in `mkdocs.yml` config the theme, then customize it e.g. [dark/light toggle](https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/)
+## Write a post
 
-## add blog plugin
+Add a Markdown file under `docs/posts/` with front matter:
 
-without any setting, the plugin creates a directory structure (`/docs/blog/posts`). 
+```yaml
+---
+date:
+  created: 2026-11-03
+authors: [xy]
+categories: [TIL]
+tags: [python]
+---
+```
 
-Setting the following should be straightforward
+Follow it with a `# Title`, an introduction, and `<!-- more -->` to end the
+excerpt. Supported categories are listed in `mkdocs.yml`. Authors are defined in
+`docs/.authors.yml`. Set `draft: true` to preview a post without publishing it.
+Dates in metadata determine URLs; filenames can have different dates.
 
-1. blog_toc
-1. archive_date_format
-1. categories_allowed
-1. pagination_per_page
+## Existing links
 
-also set `blog_dir: .` if want standalone blog, removing one level of nested folders: new dir structure `/docs/posts`.
+The migration preserves the `/blog/` base path, directory URLs, and the
+`yyyy/MM/dd/{slug}/` article format. Existing explicit `slug` values are retained.
+The previous `pymdownx.slugs.slugify(case="lower", short=True)` setting is
+replaced by Zensical's built-in default, verified against the published output.
+No redirects are needed because the article URLs are unchanged.
 
-the `post_slugify` setting makes use of python markdown extension package, which is a dependency of `material`.  
+`.github/legacy-urls.json` records the published routes from `gh-pages` commit
+`ad51483314521232f75a0afdf897585e7dad9644`, generated from source commit
+`60f8b6309680f47775166205545e2104d889b726`. The checker verifies every captured
+page, each article's title and anchors, its canonical URL, images, and RSS links.
+CI runs it before deployment to prevent link regressions.
 
-## add tags plugin
+When changing an existing article's title, set `slug:` to its original URL slug
+so the address stays stable. If a deliberate title or section change affects the
+snapshot, update the corresponding entry only after preserving any old links.
+Keep the original baseline entries when adding posts.
 
-add `tags` plugin in `mkdocs.yml` and `tags.md` in `docs`.
+## Publish
 
-## add rss plugin
+Pull requests build and check the site. Pushes to `main` or `master` publish the
+checked artifact to the existing `gh-pages` branch with `ghp-import`. GitHub
+Pages continues serving that branch; no hosting or domain change is needed.
 
-rss is a third party plugin which requires installation. 
+The old `mkdocs gh-deploy` command is replaced by `zensical build` followed by
+`ghp-import --no-jekyll --push site`. Dependencies are pinned in
+`requirements.txt` and CI uses Python 3.12.
 
-It is important that have the site_name, site_description and site_url settings configured as instructed in the basic blog tutorial. The RSS plugin makes use of this information to construct the feed, so make sure you have configured them.
-
-- `pip install mkdocs-rss-plugin`
-- add rss in  `mkdocs.yml`
-- add in ci: run `pip install mkdocs-rss-plugin`
-
-## extra 
-
-such as social media accounts in the footer
-
-## mdx: maths
-
-- add `arithmatex` extension in `mkdocs.yml`
-- add `mathjax.js` to  extra_javascript (file put under `docs/js`, define macros as needed)   
-
-can use `katex` instead per [documentation](https://squidfunk.github.io/mkdocs-material/reference/math/?h=math)
-
-## mdx: code block
-
-- add highlight, inlinehilite, snippets, superfences
-
-## nav
-
-rename nav (side) bar and/or turn it around. 
-
-add to `features` in `theme` the following   
-- navigation.tabs : tabs
-- navigation.indexes : index attached to sections (overview page)
-
-also add `nav` section to be explicit what to include in the sidebar/tabs. 
-
-## author
-
-add `docs/blog/.author.yml` and use it in all posts
-
-
-## metadata of posts
-
-metadata include: 
-
-- date (enough)
-- authors
-- tags
-- categories
-- slug (if want to customize)
-- readtime
+Originally based on the
+[Material for MkDocs blog template](https://github.com/mkdocs-material/create-blog/blob/main/mkdocs.yml).
