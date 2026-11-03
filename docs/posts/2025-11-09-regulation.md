@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [regulations]
+slug: a-simple-overview-to-eu-banking-regulations
 ---
 
 # A simple overview to EU banking regulations

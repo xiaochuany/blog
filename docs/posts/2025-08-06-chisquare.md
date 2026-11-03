@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [quant methods]
+slug: unpacking-the-k-1-in-the-chi-square-test
 ---
 
 

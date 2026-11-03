@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [AI assistant]
+slug: llm-eval-for-my-personal-usage
 ---
 
 

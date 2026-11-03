@@ -5,6 +5,7 @@ draft: true
 authors: [xy]
 categories: [TIL]
 tags: [investing]
+slug: investment-101
 ---
 
 # Investment 101

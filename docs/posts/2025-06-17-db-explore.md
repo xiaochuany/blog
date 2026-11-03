@@ -5,6 +5,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [data engineering]
+slug: exploring-a-large-database
 ---
 
 # Exploring a large database

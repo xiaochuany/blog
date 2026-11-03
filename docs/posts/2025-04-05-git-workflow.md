@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories:  [Tutorial]
 tags: [dev tools]
+slug: fork-merge-and-pr
 ---
 
 # Fork, merge and PR

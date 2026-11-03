@@ -5,6 +5,7 @@ authors: [xy]
 categories: [Analysis]
 tags: [quant methods]
 draft: true
+slug: interest-rates-fundamentals
 ---
 
 # Interest rates fundamentals

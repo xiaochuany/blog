@@ -5,6 +5,7 @@ authors: [xy]
 categories: [TIL]
 tags: [diffusion, statistics]
 draft: true
+slug: frm-learning-objectives
 ---
 
 # FRM learning objectives

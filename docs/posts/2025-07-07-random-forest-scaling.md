@@ -4,6 +4,7 @@ date:
 authors: [xy]
 categories: [Analysis]
 tags: [quant methods]
+slug: random-forest-scaling-mini-benchmark
 ---
 
 # Random forest scaling mini-benchmark

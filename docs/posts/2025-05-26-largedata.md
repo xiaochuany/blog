@@ -5,6 +5,7 @@ date:
 authors: [xy]
 categories: [TIL]
 tags: [data engineering]
+slug: working-with-large-datasets-in-snowflake
 ---
 
 # Working with large datasets in Snowflake
