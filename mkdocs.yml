@@ -40,6 +40,8 @@ plugins:
       pagination_per_page: 5
   - tags
   - rss:
+      # Browser XSLT support is being removed; serve plain RSS XML.
+      stylesheet: ""
       match_path: "posts/.*"
       date_from_meta:
         as_creation: date.created
