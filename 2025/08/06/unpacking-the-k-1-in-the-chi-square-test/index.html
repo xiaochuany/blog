@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.74">
+      <meta name="generator" content="zensical-0.1.0">
     
     
       
@@ -830,7 +830,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              5 min read
                             
                           </span>
                         </div>
@@ -857,7 +857,7 @@
 
 <p>This post is a continuation of my previous one about <a href="../../../07/23/unpacking-the-n-1-in-the-t-test/">t-test</a>. The aim, as before, is to spell out all the details about the degrees of freedom in the chi-square test. </p>
 <h2 id="setting">Setting</h2>
-<p>Let <span class="arithmatex">\(\mathbf{X} = (X_1, \dots, X_k)\)</span> be a multinomial random vector with <span class="arithmatex">\(k\)</span> categories, total count <span class="arithmatex">\(n\)</span>, and probabilities <span class="arithmatex">\(\mathbf{p} = (p_1, \dots, p_k)\)</span>. Pearson’s chi-square test statistic is</p>
+<p>Let <span class="arithmatex">\(\mathbf{X} = (X_1, \dots, X_k)\)</span> be a multinomial random vector with <span class="arithmatex">\(k\)</span> categories, total count <span class="arithmatex">\(n\)</span>, and probabilities <span class="arithmatex">\(\mathbf{p} = (p_1, \dots, p_k)\)</span>, all strictly positive. Pearson’s chi-square test statistic is</p>
 <div class="arithmatex">\[
 \chi^2 = \sum_{i=1}^k \frac{(X_i - n p_i)^2}{n p_i}.
 \]</div>
@@ -898,8 +898,9 @@ P[I_i = e_j] = p_j.
 \]</div>
 <p>Hence, the Gaussian vector <span class="arithmatex">\(H = (G_1 / \sqrt{p_1}, \dots, G_k / \sqrt{p_k})\)</span> has covariance matrix</p>
 <div class="arithmatex">\[
-V_{ij} = \delta_{ij} - p_j.
+V_{ij} = \frac{\Sigma_{ij}}{\sqrt{p_i p_j}} = \delta_{ij} - \sqrt{p_i p_j}.
 \]</div>
+<p>Equivalently, <span class="arithmatex">\(V = I - uu^\top\)</span> with <span class="arithmatex">\(u = (\sqrt{p_1}, \dots, \sqrt{p_k})^\top\)</span>. Since <span class="arithmatex">\(u^\top u = \sum_i p_i = 1\)</span>, this is an orthogonal projection.</p>
 <p>So we’ve shown that <span class="arithmatex">\(\chi^2\)</span> converges in distribution to <span class="arithmatex">\(\|H\|^2\)</span>. The rest of the argument is nearly identical to the <a href="../../../07/23/unpacking-the-n-1-in-the-t-test/">t-test post</a>, so I'll just sketch it here.</p>
 <h2 id="linear-algebra-again">Linear algebra again</h2>
 <p>Note that <span class="arithmatex">\(V = V^2\)</span>, so it is a projection matrix. Its eigenvalues are either 0 or 1.</p>
@@ -911,7 +912,7 @@ V_{ij} = \delta_{ij} - p_j.
 \Sigma = \text{diag}(\mathbf{p}) - \mathbf{p} \mathbf{p}^\top.
 \]</div>
 <p>So if <span class="arithmatex">\(\Sigma x = 0\)</span>, then necessarily <span class="arithmatex">\(x_1 = x_2 = \dots = x_k = \sum_i x_i p_i\)</span>. That is, the null space consists of constant vectors, hence it's one-dimensional.</p>
-<p>Therefore, <span class="arithmatex">\(\text{rank}(\Sigma) = k - 1\)</span>, and since <span class="arithmatex">\(V\)</span> is derived from <span class="arithmatex">\(\Sigma\)</span>, we also have <span class="arithmatex">\(\text{rank}(V) = k - 1\)</span>.</p>
+<p>Therefore, <span class="arithmatex">\(\text{rank}(\Sigma) = k - 1\)</span>. Writing <span class="arithmatex">\(D = \text{diag}(\mathbf{p})\)</span>, we have <span class="arithmatex">\(V = D^{-1/2}\Sigma D^{-1/2}\)</span>. Since <span class="arithmatex">\(D^{-1/2}\)</span> is invertible, <span class="arithmatex">\(\text{rank}(V) = \text{rank}(\Sigma) = k - 1\)</span>.</p>
 <p>So <span class="arithmatex">\(\|H\|^2\)</span> is the sum of <span class="arithmatex">\(k - 1\)</span> independent standard normal squares, namely, chi-square distributed with <span class="arithmatex">\(k - 1\)</span> degrees of freedom. CQFD.</p>
 <h2 id="generalization-again">Generalization again</h2>
 <p>Now consider contingency tables which are pivot tables of bivariate categorical data. We assume iid sequence <span class="arithmatex">\(\{(X_i,Y_i), i=1,...,n \}\)</span>. Both are categorical with <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> categories respectively. The data can be stored as a table of shape (n,2). Pivoting on the second column (Y's) with the first column (X's) as index, we get frequencies of each one of the <span class="arithmatex">\(ab\)</span> combinations. The pivot table is of shape (a,b). In dataframe land, this is done as follows:</p>
@@ -928,8 +929,24 @@ V_{ij} = \delta_{ij} - p_j.
 C = \sum_{1\le i\le a, 1\le j\le b} \frac{(X_{ij}-n p_{ij})^2}{n p_{ij}}
 \]</div>
 <p>by a chisquare with <span class="arithmatex">\(ab-1\)</span> degrees of freedom. </p>
-<p>In fact, a common setup for contingency tables is to assume independence between variables. In such case the matrix <span class="arithmatex">\((p_{ij})\)</span> is rank 1 because <span class="arithmatex">\(p_{ij}=r_i q_j\)</span> where <span class="arithmatex">\(\mathbf{r} = (r_1, \dots, r_a)\)</span> and <span class="arithmatex">\(\mathbf{q} = (q_1, \dots, q_b)\)</span> are marginal distributions of the pair <span class="arithmatex">\((X_1,Y_1)\)</span>.</p>
-<p>We claim that <span class="arithmatex">\(C\)</span> is asymptotically chisquare with degrees of freedom <span class="arithmatex">\((a-1)(b-1)\)</span>. It suffices to show that the covariance matrix of <span class="arithmatex">\((X_{ij})\)</span> (a projection as we have shown already), divided by <span class="arithmatex">\(n\)</span>,  is of rank <span class="arithmatex">\((a-1)(b-1)\)</span>. We can show this by investigating the null space of the covariance matrix (show it's of dimension <span class="arithmatex">\(a+b-1\)</span>). We leave this as an exercise to the interested reader <img alt="😀" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f600.svg" title=":grinning:" /></p>
+<p>A common use of contingency tables is to test the null hypothesis <span class="arithmatex">\(H_0\)</span> that the two variables are independent. Under <span class="arithmatex">\(H_0\)</span>, <span class="arithmatex">\(p_{ij}=r_i q_j\)</span>, where <span class="arithmatex">\(\mathbf{r} = (r_1, \dots, r_a)\)</span> and <span class="arithmatex">\(\mathbf{q} = (q_1, \dots, q_b)\)</span> are the marginal distributions of the pair <span class="arithmatex">\((X_1,Y_1)\)</span>. We assume all marginal probabilities are strictly positive.</p>
+<p>If these probabilities were known, the statistic <span class="arithmatex">\(C\)</span> above would still have <span class="arithmatex">\(ab-1\)</span> asymptotic degrees of freedom, even under independence. Independence does not reduce the rank of the multinomial covariance matrix.</p>
+<p>In practice, the marginal probabilities are unknown. We estimate them from the same table under <span class="arithmatex">\(H_0\)</span>:</p>
+<div class="arithmatex">\[
+\widehat r_i = \frac{X_{i+}}{n}, \qquad
+\widehat q_j = \frac{X_{+j}}{n}, \qquad
+\widehat p_{ij} = \widehat r_i\widehat q_j,
+\]</div>
+<p>where <span class="arithmatex">\(X_{i+}=\sum_j X_{ij}\)</span> and <span class="arithmatex">\(X_{+j}=\sum_i X_{ij}\)</span>. The chi-square statistic for testing independence therefore uses fitted expected counts <span class="arithmatex">\(n\widehat p_{ij}=X_{i+}X_{+j}/n\)</span> rather than known probabilities:</p>
+<div class="arithmatex">\[
+\widehat C = \sum_{1\le i\le a, 1\le j\le b}
+\frac{(X_{ij}-n\widehat p_{ij})^2}{n\widehat p_{ij}}.
+\]</div>
+<p>We state without proof that, under <span class="arithmatex">\(H_0\)</span>, <span class="arithmatex">\(\widehat C\)</span> converges in distribution to a chi-square with</p>
+<div class="arithmatex">\[
+ab-1-\bigl((a-1)+(b-1)\bigr) = (a-1)(b-1)
+\]</div>
+<p>degrees of freedom. The reduction comes from fitting the marginal probabilities using the same data, not from a change of parametrization of the original multinomial covariance matrix.</p>
 
   
 
