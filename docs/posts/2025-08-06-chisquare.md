@@ -15,7 +15,7 @@ This post is a continuation of my previous one about [t-test](2025-07-23-ttest.m
 
 ## Setting
 
-Let $\mathbf{X} = (X_1, \dots, X_k)$ be a multinomial random vector with $k$ categories, total count $n$, and probabilities $\mathbf{p} = (p_1, \dots, p_k)$. Pearson’s chi-square test statistic is
+Let $\mathbf{X} = (X_1, \dots, X_k)$ be a multinomial random vector with $k$ categories, total count $n$, and probabilities $\mathbf{p} = (p_1, \dots, p_k)$, all strictly positive. Pearson’s chi-square test statistic is
 
 $$
 \chi^2 = \sum_{i=1}^k \frac{(X_i - n p_i)^2}{n p_i}.
@@ -80,8 +80,10 @@ $$
 Hence, the Gaussian vector $H = (G_1 / \sqrt{p_1}, \dots, G_k / \sqrt{p_k})$ has covariance matrix
 
 $$
-V_{ij} = \delta_{ij} - p_j.
+V_{ij} = \frac{\Sigma_{ij}}{\sqrt{p_i p_j}} = \delta_{ij} - \sqrt{p_i p_j}.
 $$
+
+Equivalently, $V = I - uu^\top$ with $u = (\sqrt{p_1}, \dots, \sqrt{p_k})^\top$. Since $u^\top u = \sum_i p_i = 1$, this is an orthogonal projection.
 
 So we’ve shown that $\chi^2$ converges in distribution to $\|H\|^2$. The rest of the argument is nearly identical to the [t-test post](2025-07-23-ttest.md), so I'll just sketch it here.
 
@@ -103,7 +105,7 @@ $$
 
 So if $\Sigma x = 0$, then necessarily $x_1 = x_2 = \dots = x_k = \sum_i x_i p_i$. That is, the null space consists of constant vectors, hence it's one-dimensional.
 
-Therefore, $\text{rank}(\Sigma) = k - 1$, and since $V$ is derived from $\Sigma$, we also have $\text{rank}(V) = k - 1$.
+Therefore, $\text{rank}(\Sigma) = k - 1$. Writing $D = \text{diag}(\mathbf{p})$, we have $V = D^{-1/2}\Sigma D^{-1/2}$. Since $D^{-1/2}$ is invertible, $\text{rank}(V) = \text{rank}(\Sigma) = k - 1$.
 
 So $\|H\|^2$ is the sum of $k - 1$ independent standard normal squares, namely, chi-square distributed with $k - 1$ degrees of freedom. CQFD.
 
@@ -132,7 +134,30 @@ $$
 
 by a chisquare with $ab-1$ degrees of freedom. 
 
-In fact, a common setup for contingency tables is to assume independence between variables. In such case the matrix $(p_{ij})$ is rank 1 because $p_{ij}=r_i q_j$ where $\mathbf{r} = (r_1, \dots, r_a)$ and $\mathbf{q} = (q_1, \dots, q_b)$ are marginal distributions of the pair $(X_1,Y_1)$.
+A common use of contingency tables is to test the null hypothesis $H_0$ that the two variables are independent. Under $H_0$, $p_{ij}=r_i q_j$, where $\mathbf{r} = (r_1, \dots, r_a)$ and $\mathbf{q} = (q_1, \dots, q_b)$ are the marginal distributions of the pair $(X_1,Y_1)$. We assume all marginal probabilities are strictly positive.
 
-We claim that $C$ is asymptotically chisquare with degrees of freedom $(a-1)(b-1)$. It suffices to show that the covariance matrix of $(X_{ij})$ (a projection as we have shown already), divided by $n$,  is of rank $(a-1)(b-1)$. We can show this by investigating the null space of the covariance matrix (show it's of dimension $a+b-1$). We leave this as an exercise to the interested reader :grinning:
+If these probabilities were known, the statistic $C$ above would still have $ab-1$ asymptotic degrees of freedom, even under independence. Independence does not reduce the rank of the multinomial covariance matrix.
+
+In practice, the marginal probabilities are unknown. We estimate them from the same table under $H_0$:
+
+$$
+\widehat r_i = \frac{X_{i+}}{n}, \qquad
+\widehat q_j = \frac{X_{+j}}{n}, \qquad
+\widehat p_{ij} = \widehat r_i\widehat q_j,
+$$
+
+where $X_{i+}=\sum_j X_{ij}$ and $X_{+j}=\sum_i X_{ij}$. The chi-square statistic for testing independence therefore uses fitted expected counts $n\widehat p_{ij}=X_{i+}X_{+j}/n$ rather than known probabilities:
+
+$$
+\widehat C = \sum_{1\le i\le a, 1\le j\le b}
+\frac{(X_{ij}-n\widehat p_{ij})^2}{n\widehat p_{ij}}.
+$$
+
+We state without proof that, under $H_0$, $\widehat C$ converges in distribution to a chi-square with
+
+$$
+ab-1-\bigl((a-1)+(b-1)\bigr) = (a-1)(b-1)
+$$
+
+degrees of freedom. The reduction comes from fitting the marginal probabilities using the same data, not from a change of parametrization of the original multinomial covariance matrix.
 
